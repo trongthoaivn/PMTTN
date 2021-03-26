@@ -1,0 +1,39 @@
+.anchorpane{
+    -fx-background-image: url("../Image/backgroud_login.jpg");
+    -fx-background-size:cover;
+    -fx-background-radius: 80px;
+}
+.anchorpane_left{
+    -fx-background-color: white;
+}
+.button{
+    -fx-background-radius: 20em;
+    -fx-max-height: 80px;
+    -fx-min-height: 80px;
+    -fx-max-width: 80px;
+    -fx-min-width: 80px;
+    -fx-background-color: rgb(21,131,94);
+    -fx-background-image: url("../Icon/btn_login_.png");
+    -fx-background-size: cover;
+}
+.button:hover{
+    -fx-background-radius: 20em;
+    -fx-max-height: 80px;
+    -fx-min-height: 80px;
+    -fx-max-width: 80px;
+    -fx-min-width: 80px;
+    -fx-background-color: gray;
+    -fx-background-image: url("../Icon/btn_login_hover.png");
+    -fx-background-size: cover;
+
+}
+.text-field{
+    -fx-background-color: #f7f7f7 ;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+.text-field:hover{
+    -fx-border-color: rgb(21,131,94);
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
