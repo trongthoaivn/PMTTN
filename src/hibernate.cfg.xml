@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+  <session-factory>
+    <property name="connection.url">jdbc:sqlserver://localhost:1433;database=TTN</property>
+    <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
+    <mapping class="MODEL.AdminEntity"/>
+    <mapping class="MODEL.BaithiEntity"/>
+    <mapping class="MODEL.BodeEntity"/>
+    <mapping class="MODEL.CauhoiEntity"/>
+    <mapping class="MODEL.GiaovienEntity"/>
+    <mapping class="MODEL.HocsinhEntity"/>
+    <mapping class="MODEL.KetquaEntity"/>
+    <mapping class="MODEL.KhoiEntity"/>
+    <mapping class="MODEL.KythiEntity"/>
+    <mapping class="MODEL.LopEntity"/>
+    <mapping class="MODEL.MadeEntity"/>
+    <mapping class="MODEL.MonhocEntity"/>
+    <mapping class="MODEL.QuyenEntity"/>
+    <mapping class="MODEL.TaikhoanEntity"/>
+    <!-- <property name="connection.username"/> -->
+    <!-- <property name="connection.password"/> -->
+
+    <!-- DB schema will be updated if needed -->
+    <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
+  </session-factory>
+</hibernate-configuration>
