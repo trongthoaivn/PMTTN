@@ -1,12 +1,15 @@
 package MODEL;
 
+import com.sun.org.apache.xml.internal.serializer.SerializerTrace;
+
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Ketqua", schema = "dbo", catalog = "TTN")
-public class KetquaEntity {
+public class KetquaEntity  implements Serializable {
     private Long id;
     private String maKq;
     private Timestamp ngaythi;

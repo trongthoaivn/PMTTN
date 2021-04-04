@@ -399,11 +399,13 @@
     </table>
     <table id="71" parent="42" name="Quyen">
       <ObjectId>1525580473</ObjectId>
+      <Outdated>1</Outdated>
       <CreatedTimestamp>2021-03-26.04:21:30.103</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-26.04:21:30.510</ModifiedTimestamp>
     </table>
     <table id="72" parent="42" name="Taikhoan">
       <ObjectId>1557580587</ObjectId>
+      <Outdated>1</Outdated>
       <CreatedTimestamp>2021-03-26.04:21:30.490</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-26.04:21:30.747</ModifiedTimestamp>
     </table>

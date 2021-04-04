@@ -1,11 +1,12 @@
 package MODEL;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Monhoc", schema = "dbo", catalog = "TTN")
-public class MonhocEntity {
+public class MonhocEntity implements Serializable {
     private Long id;
     private String maMh;
     private String tenMh;

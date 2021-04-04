@@ -1,11 +1,12 @@
 package MODEL;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Made", schema = "dbo", catalog = "TTN")
-public class MadeEntity {
+public class MadeEntity implements Serializable {
     private Long id;
     private String maDe;
     private String tenMade;

@@ -1,27 +1,20 @@
 package MODEL;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Taikhoan", schema = "dbo", catalog = "TTN")
-public class TaikhoanEntity {
-    private Long id;
+public class TaikhoanEntity implements Serializable {
     private String username;
     private String passwords;
     private Boolean trangthai;
     private int maQuyen;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
+    public String toString(){
+        return username + passwords;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     @Id
     @Column(name = "username")
     public String getUsername() {

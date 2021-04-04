@@ -1,12 +1,13 @@
 package MODEL;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Giaovien", schema = "dbo", catalog = "TTN")
-public class GiaovienEntity {
+public class GiaovienEntity implements Serializable {
     private Long id;
     private String maGv;
     private String tenGv;

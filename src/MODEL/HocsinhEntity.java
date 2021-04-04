@@ -1,13 +1,14 @@
 package MODEL;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Date;
 import java.util.Arrays;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Hocsinh", schema = "dbo", catalog = "TTN")
-public class HocsinhEntity {
+public class HocsinhEntity implements Serializable {
     private Long id;
     private String maHs;
     private String tenHs;

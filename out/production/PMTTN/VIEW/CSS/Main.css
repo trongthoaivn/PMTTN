@@ -1,0 +1,107 @@
+.left_toolbox{
+    -fx-background-color: #f8f8f9;
+}
+.left_toolbox_btn_admin{
+    -fx-background-color: white;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-background-image: url("../Icon/user.png");
+    -fx-background-size: cover;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+
+}
+.left_toolbox_btn_teacher{
+    -fx-background-color: white;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-background-image: url("../Icon/tc.png");
+    -fx-background-size: cover;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+
+}
+.left_toolbox_btn_student{
+    -fx-background-color: white;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-background-image: url("../Icon/student.png");
+    -fx-background-size: cover;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+.left_toolbox_btn_exam{
+    -fx-background-color: white;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-background-image: url("../Icon/exam.png");
+    -fx-background-size: cover;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+.left_toolbox_btn_schedule{
+    -fx-background-color: white;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-background-image: url("../Icon/schedule.png");
+    -fx-background-size: cover;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+
+.left_toolbox_btn_network{
+    -fx-background-color: white;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-background-image: url("../Icon/network-hub.png");
+    -fx-background-size: cover;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+.right_toolbox{
+    -fx-background-color: white;
+}
+.top_toolbox{
+    -fx-border-color: #fbfbfb;
+
+}
+
+.image_account{
+    -fx-background-color: #5990f9;
+}
+.border{
+    -fx-background-color: white;
+}
+.border_notify{
+    -fx-background-color: #eee9ff;
+    -fx-background-radius: 20px;
+}
+.btn_notify{
+    -fx-background-image: url("../Icon/user1.png");
+    -fx-background-radius: 5em;
+    -fx-background-size: cover;
+}
+.btn_exit{
+    -fx-background-radius: 10;
+    -fx-background-color: #5990f9;
+}
+.btn_logout{
+    -fx-background-radius: 10;
+    -fx-background-color: #e085d3;
+}
+.menu{
+    -fx-background-image: url("../Icon/menu2.png");
+    -fx-background-size: cover;
+}

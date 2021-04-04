@@ -1,12 +1,14 @@
 package MODEL;
 
 import javax.persistence.*;
+import java.io.Serializable;
+import java.sql.Time;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Kythi", schema = "dbo", catalog = "TTN")
-public class KythiEntity {
+public class KythiEntity implements Serializable {
     private Long id;
     private String maKt;
     private String tenKt;
@@ -71,21 +73,21 @@ public class KythiEntity {
 
     @Basic
     @Column(name = "tg_Batdau")
-    public Object getTgBatdau() {
-        return tgBatdau;
+    public Time getTgBatdau() {
+        return (Time) tgBatdau;
     }
 
-    public void setTgBatdau(Object tgBatdau) {
+    public void setTgBatdau(Time tgBatdau) {
         this.tgBatdau = tgBatdau;
     }
 
     @Basic
     @Column(name = "tg_Ketthuc")
-    public Object getTgKetthuc() {
-        return tgKetthuc;
+    public Time getTgKetthuc() {
+        return (Time) tgKetthuc;
     }
 
-    public void setTgKetthuc(Object tgKetthuc) {
+    public void setTgKetthuc(Time tgKetthuc) {
         this.tgKetthuc = tgKetthuc;
     }
 

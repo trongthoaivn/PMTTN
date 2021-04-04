@@ -1,29 +1,23 @@
 package MODEL;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Admin", schema = "dbo", catalog = "TTN")
-public class AdminEntity {
-    private Long id;
+public class AdminEntity implements Serializable {
     private String maAd;
     private String tenAd;
     private Timestamp ngaysinh;
     private String imgAd;
     private String username;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
+    @Override
+    public String toString(){
+        return username;
     }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
     @Id
     @Column(name = "ma_Ad")
     public String getMaAd() {
