@@ -13,15 +13,14 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.paint.Color?>
 <?import javafx.scene.shape.Circle?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
 <BorderPane fx:id="pane_Main" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="669.0" prefWidth="1212.0" styleClass="border" stylesheets="@../CSS/Main.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.ct_Main">
    <center>
-      <BorderPane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <BorderPane fx:id="pane_Center" prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <top>
-            <HBox alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="869.0" style="-fx-border-color: black;" styleClass="top_toolbox" BorderPane.alignment="CENTER">
+            <HBox alignment="CENTER_RIGHT" prefHeight="52.0" prefWidth="869.0" style="-fx-border-color: white white black white;" styleClass="top_toolbox" BorderPane.alignment="CENTER">
                <children>
                   <AnchorPane prefHeight="51.0" prefWidth="560.0">
                      <children>
@@ -56,7 +55,7 @@
             </HBox>
          </top>
          <center>
-            <Pane prefHeight="618.0" prefWidth="689.0" BorderPane.alignment="CENTER" />
+            <Pane fx:id="pane" prefHeight="618.0" prefWidth="689.0" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </center>
@@ -72,12 +71,12 @@
                   <Font name="Calibri Bold" size="15.0" />
                </font>
             </Label>
-            <Text layoutX="91.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your name">
+            <Text fx:id="txt_login_name" layoutX="91.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your name">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font>
             </Text>
-            <Text fill="#080071" layoutX="116.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your rule">
+            <Text fx:id="txt_rule" fill="#080071" layoutX="116.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your rule">
                <font>
                   <Font name="Chiller" size="20.0" />
                </font>
@@ -91,12 +90,12 @@
                   </ImageView>
                </children>
             </Pane>
-            <Button layoutX="170.0" layoutY="605.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="67.0" styleClass="btn_exit" text="Exit" textFill="WHITE">
+            <Button fx:id="btn_exit" layoutX="170.0" layoutY="605.0" mnemonicParsing="false" onAction="#exit" prefHeight="28.0" prefWidth="67.0" styleClass="btn_exit" text="Exit" textFill="WHITE">
                <font>
                   <Font name="Calibri Bold" size="15.0" />
                </font>
             </Button>
-            <Button layoutX="60.0" layoutY="605.0" mnemonicParsing="false" prefHeight="28.0" prefWidth="67.0" styleClass="btn_logout" text="Logout" textFill="WHITE">
+            <Button fx:id="btn_logout" layoutX="60.0" layoutY="605.0" mnemonicParsing="false" onAction="#logout" prefHeight="28.0" prefWidth="67.0" styleClass="btn_logout" text="Logout" textFill="WHITE">
                <font>
                   <Font name="Calibri Bold" size="15.0" />
                </font>
@@ -112,7 +111,7 @@
          <left>
             <VBox alignment="CENTER" prefHeight="670.0" prefWidth="54.0" spacing="10.0" styleClass="left_toolbox" stylesheets="@../CSS/Main.css" BorderPane.alignment="CENTER">
                <children>
-                  <Button alignment="CENTER" mnemonicParsing="false">
+                  <Button fx:id="btn_admin" alignment="CENTER" mnemonicParsing="false" onAction="#load_frm_admin">
                      <styleClass>
                         <String fx:value="left_toolbox_button" />
                         <String fx:value="left_toolbox_btn_admin" />
@@ -125,7 +124,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button mnemonicParsing="false">
+                  <Button fx:id="btn_teacher" mnemonicParsing="false" onAction="#load_frm_teacher">
                      <styleClass>
                         <String fx:value="left_toolbox_button" />
                         <String fx:value="left_toolbox_btn_teacher" />
@@ -138,7 +137,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button mnemonicParsing="false" styleClass="left_toolbox_btn_student">
+                  <Button fx:id="btn_student" mnemonicParsing="false" onAction="#load_frm_student" styleClass="left_toolbox_btn_student">
                      <effect>
                         <DropShadow>
                            <color>
@@ -147,7 +146,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button mnemonicParsing="false" styleClass="left_toolbox_btn_exam">
+                  <Button fx:id="btn_test" mnemonicParsing="false" onAction="#load_frm_test" styleClass="left_toolbox_btn_exam">
                      <effect>
                         <DropShadow>
                            <color>
@@ -156,7 +155,7 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button mnemonicParsing="false" styleClass="left_toolbox_btn_schedule">
+                  <Button fx:id="btn_schedule" mnemonicParsing="false" onAction="#load_frm_schedule" styleClass="left_toolbox_btn_schedule">
                      <effect>
                         <DropShadow>
                            <color>
@@ -165,7 +164,25 @@
                         </DropShadow>
                      </effect>
                   </Button>
-                  <Button lineSpacing="5.0" mnemonicParsing="false" styleClass="left_toolbox_btn_network">
+                  <Button fx:id="btn_history" layoutX="17.0" layoutY="400.0" mnemonicParsing="false" onAction="#load_frm_history" styleClass="left_toolbox_btn_history">
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color red="0.4901960790157318" green="0.4470588266849518" blue="1.0" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+                  <Button fx:id="btn_statistic" layoutX="17.0" layoutY="476.0" mnemonicParsing="false" onAction="#load_frm_statistic" styleClass="left_toolbox_btn_statistics">
+                     <effect>
+                        <DropShadow>
+                           <color>
+                              <Color red="0.4901960790157318" green="0.4470588266849518" blue="1.0" />
+                           </color>
+                        </DropShadow>
+                     </effect>
+                  </Button>
+                  <Button fx:id="btn_network" lineSpacing="5.0" mnemonicParsing="false" onAction="#load_frm_network" styleClass="left_toolbox_btn_network">
                      <effect>
                         <DropShadow>
                            <color>
@@ -185,22 +202,68 @@
                <top>
                   <HBox alignment="CENTER_LEFT" prefHeight="52.0" prefWidth="81.0" BorderPane.alignment="CENTER">
                      <children>
-                        <Pane prefHeight="52.0" prefWidth="190.0">
+                        <Pane prefHeight="52.0" prefWidth="190.0" style="-fx-background-color: #f8f8f9;">
                            <children>
-                              <Button fx:id="btn_menu" layoutX="7.0" layoutY="4.0" mnemonicParsing="false" onAction="#btn_menu_click" prefHeight="41.0" prefWidth="41.0" styleClass="menu" />
+                              <Button fx:id="btn_menu" layoutX="7.0" layoutY="10.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#btn_menu_click" prefHeight="38.0" prefWidth="38.0">
+                                 <styleClass>
+                                    <String fx:value="menu" />
+                                    <String fx:value="border_notify" />
+                                 </styleClass>
+                              </Button>
                            </children>
                         </Pane>
                      </children>
                   </HBox>
                </top>
                <left>
-                  <Pane fx:id="pane_Menu" prefHeight="618.0" prefWidth="190.0" BorderPane.alignment="CENTER">
+                  <Pane fx:id="pane_Menu" prefHeight="618.0" prefWidth="190.0" style="-fx-background-color: #f8f8f9;" BorderPane.alignment="CENTER">
                      <children>
-                        <Text layoutX="153.0" layoutY="305.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Text" />
-                        <Line endX="65.4000244140625" endY="534.5999755859375" layoutX="125.0" layoutY="83.0" startX="65.4000244140625" startY="-83.0" />
+                        <VBox alignment="TOP_CENTER" layoutX="16.0" layoutY="50.0" prefHeight="499.0" prefWidth="159.0" spacing="10.0">
+                           <children>
+                              <Button fx:id="btn_Add" alignment="CENTER_RIGHT" lineSpacing="10.0" mnemonicParsing="false" onAction="#btn_menu_click" prefHeight="39.0" prefWidth="160.0" text="New Rows " textAlignment="RIGHT">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="menu_btn" />
+                                    <String fx:value="btn_new" />
+                                 </styleClass>
+                              </Button>
+                              <Button fx:id="btn_edit" alignment="CENTER" layoutX="10.0" layoutY="10.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#btn_menu_click" prefHeight="39.0" prefWidth="160.0" text="Delete" textAlignment="RIGHT">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="menu_btn" />
+                                    <String fx:value="btn_delete" />
+                                 </styleClass>
+                              </Button>
+                              <Button fx:id="btn_delete" alignment="CENTER" layoutX="10.0" layoutY="49.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#btn_menu_click" prefHeight="39.0" prefWidth="160.0" text="Edit    " textAlignment="RIGHT">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="menu_btn" />
+                                    <String fx:value="btn_edit" />
+                                 </styleClass>
+                              </Button>
+                              <Button fx:id="btn_refresh" alignment="CENTER" layoutX="10.0" layoutY="88.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#btn_menu_click" prefHeight="39.0" prefWidth="160.0" text="Search" textAlignment="RIGHT">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="menu_btn" />
+                                    <String fx:value="btn_search" />
+                                 </styleClass>
+                              </Button>
+                           </children>
+                        </VBox>
                      </children>
                   </Pane>
                </left>
+               <effect>
+                  <DropShadow blurType="ONE_PASS_BOX" />
+               </effect>
             </BorderPane>
          </center>
       </BorderPane>

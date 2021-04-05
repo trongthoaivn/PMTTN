@@ -103,5 +103,63 @@
 }
 .menu{
     -fx-background-image: url("../Icon/menu2.png");
+    -fx-background-size: 38 38;
+    -fx-background-repeat: no-repeat;
+    -fx-background-position: center;
+}
+.menu_btn{
+    -fx-background-color:  #f8f8f9;
+    -fx-border-color: #f8f8f9 ;
+    -fx-background-radius: 10;
+    -fx-border-radius: 10;
+}
+.menu_btn:hover{
+    -fx-background-color: white;
+    -fx-border-color: white;
+}
+.btn_new{
+    -fx-background-image: url("../Icon/add-file.png");
+    -fx-background-size: 35 35;
+    -fx-background-position: left 5px center;
+    -fx-background-repeat: no-repeat;
+}
+.btn_delete{
+    -fx-background-image: url("../Icon/file.png");
+    -fx-background-size: 35 35;
+    -fx-background-position: left 5px center;
+    -fx-background-repeat: no-repeat;
+}
+.btn_edit{
+    -fx-background-image: url("../Icon/file_edit.png");
+    -fx-background-size: 35 35;
+    -fx-background-position: left 5px center;
+    -fx-background-repeat: no-repeat;
+}
+.btn_search{
+    -fx-background-image: url("../Icon/file_serch.png");
+    -fx-background-size: 35 35;
+    -fx-background-position: left 5px center;
+    -fx-background-repeat: no-repeat;
+}
+.left_toolbox_btn_history{
+    -fx-background-color: white;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-background-image: url("../Icon/history.png");
     -fx-background-size: cover;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+.left_toolbox_btn_statistics{
+    -fx-background-color: white;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-background-image: url("../Icon/statistics.png");
+    -fx-background-size: cover;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
 }
