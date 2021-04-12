@@ -7,6 +7,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "Taikhoan", schema = "dbo", catalog = "TTN")
 public class TaikhoanEntity implements Serializable {
+
     private String username;
     private String passwords;
     private Boolean trangthai;
@@ -15,8 +16,9 @@ public class TaikhoanEntity implements Serializable {
     public String toString(){
         return username + passwords;
     }
+
     @Id
-    @Column(name = "username")
+    @Column(name = "username" )
     public String getUsername() {
         return username;
     }
@@ -67,4 +69,5 @@ public class TaikhoanEntity implements Serializable {
     public int hashCode() {
         return Objects.hash(username, passwords, trangthai, maQuyen);
     }
+
 }

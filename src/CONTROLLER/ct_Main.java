@@ -1,5 +1,7 @@
 package CONTROLLER;
 
+import DAO.adminDao;
+import MODEL.AdminEntity;
 import MODEL.TaikhoanEntity;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -22,6 +24,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.nio.file.OpenOption;
 import java.util.Date;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -105,6 +108,8 @@ public class ct_Main implements Initializable,Runnable {
     @FXML
     private Button btn_refresh;
 
+    AdminEntity admin = new AdminEntity();
+    Pane  frm_admin = null;
 
     @FXML
     void exit(ActionEvent event) {
@@ -117,6 +122,33 @@ public class ct_Main implements Initializable,Runnable {
 
     }
 
+    @FXML
+    void searchRow(ActionEvent event) {
+        if(pane_Center.getCenter() ==frm_admin){
+            System.out.println("search admin");
+        }
+    }
+
+    @FXML
+    void editRow(ActionEvent event) {
+        if(pane_Center.getCenter() ==frm_admin){
+            System.out.println("edit admin");
+        }
+    }
+
+    @FXML
+    void deleteRow(ActionEvent event) {
+        if(pane_Center.getCenter() ==frm_admin){
+            System.out.println("delete admin");
+        }
+    }
+
+    @FXML
+    void newRow(ActionEvent event) {
+        if(pane_Center.getCenter() ==frm_admin){
+            System.out.println("add admin");
+        }
+    }
 
     @FXML
     void load_frm_history(ActionEvent event) {
@@ -158,8 +190,17 @@ public class ct_Main implements Initializable,Runnable {
 
     }
 
+
+
     public void Login_info(TaikhoanEntity taikhoan ){
-        System.out.println(taikhoan.getMaQuyen());
+        if (taikhoan.getMaQuyen()==1){
+            adminDao adminDao= new adminDao();
+            admin = adminDao.infoAdmin(taikhoan.getUsername());
+            txt_login_name.setText(admin.getTenAd());
+            txt_rule.setText("Administrator");
+            setImg_student(admin.getImgAd());
+        }
+
     }
     public void setCurrentDate(){
         while (true) {
@@ -190,22 +231,25 @@ public class ct_Main implements Initializable,Runnable {
 
     @FXML
     void load_frm_admin(ActionEvent event) throws IOException {
-        Pane  frm_admin = FXMLLoader.load(getClass().getResource("/VIEW//Form/frm_Admin.fxml"));
+        frm_admin = FXMLLoader.load(getClass().getResource("/VIEW//Form/frm_Admin.fxml"));
         pane_Center.setCenter(frm_admin);
     }
 
-    public void setImg_student(){
-        Image image = new Image("VIEW/Image/trong.jpg");
+    public void setImg_student(String url){
+        Image image = new Image(url);
         img_student.setFill(new ImagePattern(image));
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        setImg_student();
         Thread thread = new Thread(this::setCurrentDate);
         thread.start();
         border_Menu.setLeft(null);
         pane_Main.setRight(null);
+//        adminDao adminDao= new adminDao();
+//        admin = adminDao.infoAdmin("admin1");
+//        System.out.println(admin.getTenAd());
+
     }
 
     @Override

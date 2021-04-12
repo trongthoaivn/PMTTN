@@ -4,10 +4,9 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.Pane?>
 
-
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="427.0" prefWidth="606.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.ct_Admin">
    <children>
-      <TableView layoutX="14.0" layoutY="14.0" prefHeight="400.0" prefWidth="578.0">
+      <TableView fx:id="tbv_Admin" layoutX="14.0" layoutY="14.0" prefHeight="400.0" prefWidth="578.0">
          <columns>
             <TableColumn prefWidth="75.0" text="Mã Admin" />
             <TableColumn prefWidth="150.39993286132812" text="Tên Admin" />

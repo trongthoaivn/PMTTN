@@ -67,7 +67,6 @@ public class taikhoanDao implements DaoInterface<TaikhoanEntity>{
         }
         return Taikhoan;
 
-
     }
 
 

@@ -1,16 +1,15 @@
 package DAO;
 
 import MODEL.AdminEntity;
+import MODEL.TaikhoanEntity;
 import UTILITY.hibernateUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.Tuple;
+import javax.persistence.criteria.*;
 import java.util.List;
-import java.util.Observable;
 
 public class adminDao  implements  DaoInterface<AdminEntity>{
 
@@ -30,6 +29,18 @@ public class adminDao  implements  DaoInterface<AdminEntity>{
         return 0;
     }
 
+    public ObservableList<AdminEntity> getAdmin(){
+        Session session = hibernateUtil.getSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery query =builder.createQuery(AdminEntity.class);
+        Root<AdminEntity> Admin = query.from(AdminEntity.class);
+        Join<AdminEntity,TaikhoanEntity> join = Admin.join("username",JoinType.INNER);
+        query.where(join.isNotNull());
+        List list = session.createQuery(query).getResultList();
+        session.close();
+        return FXCollections.observableArrayList(list);
+    }
+
     @Override
     public ObservableList<AdminEntity> getAll() {
 
@@ -41,6 +52,19 @@ public class adminDao  implements  DaoInterface<AdminEntity>{
         s.close();
 
         return FXCollections.observableArrayList(list);
+    }
+
+
+    public AdminEntity infoAdmin(String user){
+        Session session = hibernateUtil.getSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(AdminEntity.class);
+        Root<AdminEntity > root = query.from(AdminEntity.class);
+        Predicate p = builder.equal(root.get("username"),user);
+        AdminEntity admin= (AdminEntity) session.createQuery(query.where(p)).getSingleResult();
+        session.close();
+
+        return admin;
     }
 
 }

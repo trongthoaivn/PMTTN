@@ -71,17 +71,17 @@
                   <Font name="Calibri Bold" size="15.0" />
                </font>
             </Label>
-            <Text fx:id="txt_login_name" layoutX="91.0" layoutY="213.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your name">
+            <Text fx:id="txt_login_name" layoutX="18.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your name" textAlignment="CENTER" wrappingWidth="250.0">
                <font>
                   <Font name="Arial Bold" size="20.0" />
                </font>
             </Text>
-            <Text fx:id="txt_rule" fill="#080071" layoutX="116.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your rule">
+            <Text fx:id="txt_rule" fill="#080071" layoutX="43.0" layoutY="283.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Your rule" textAlignment="CENTER" wrappingWidth="200.0">
                <font>
-                  <Font name="Chiller" size="20.0" />
+                  <Font name="Berlin Sans FB" size="20.0" />
                </font>
             </Text>
-            <Pane layoutX="16.0" layoutY="267.0" prefHeight="300.0" prefWidth="254.0" styleClass="border_notify">
+            <Pane layoutX="16.0" layoutY="306.0" prefHeight="261.0" prefWidth="254.0" styleClass="border_notify">
                <children>
                   <ImageView fitHeight="44.0" fitWidth="49.0" layoutX="23.0" layoutY="-22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -220,7 +220,7 @@
                      <children>
                         <VBox alignment="TOP_CENTER" layoutX="16.0" layoutY="50.0" prefHeight="499.0" prefWidth="159.0" spacing="10.0">
                            <children>
-                              <Button fx:id="btn_Add" alignment="CENTER_RIGHT" lineSpacing="10.0" mnemonicParsing="false" onAction="#btn_menu_click" prefHeight="39.0" prefWidth="160.0" text="New Rows " textAlignment="RIGHT">
+                              <Button fx:id="btn_Add" alignment="CENTER_RIGHT" lineSpacing="10.0" mnemonicParsing="false" onAction="#newRow" prefHeight="39.0" prefWidth="160.0" text="New Rows " textAlignment="RIGHT">
                                  <font>
                                     <Font name="Calibri" size="20.0" />
                                  </font>
@@ -229,7 +229,7 @@
                                     <String fx:value="btn_new" />
                                  </styleClass>
                               </Button>
-                              <Button fx:id="btn_edit" alignment="CENTER" layoutX="10.0" layoutY="10.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#btn_menu_click" prefHeight="39.0" prefWidth="160.0" text="Delete" textAlignment="RIGHT">
+                              <Button fx:id="btn_edit" alignment="CENTER" layoutX="10.0" layoutY="10.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#deleteRow" prefHeight="39.0" prefWidth="160.0" text="Delete" textAlignment="RIGHT">
                                  <font>
                                     <Font name="Calibri" size="20.0" />
                                  </font>
@@ -238,7 +238,7 @@
                                     <String fx:value="btn_delete" />
                                  </styleClass>
                               </Button>
-                              <Button fx:id="btn_delete" alignment="CENTER" layoutX="10.0" layoutY="49.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#btn_menu_click" prefHeight="39.0" prefWidth="160.0" text="Edit    " textAlignment="RIGHT">
+                              <Button fx:id="btn_delete" alignment="CENTER" layoutX="10.0" layoutY="49.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#editRow" prefHeight="39.0" prefWidth="160.0" text="Edit    " textAlignment="RIGHT">
                                  <font>
                                     <Font name="Calibri" size="20.0" />
                                  </font>
@@ -247,7 +247,7 @@
                                     <String fx:value="btn_edit" />
                                  </styleClass>
                               </Button>
-                              <Button fx:id="btn_refresh" alignment="CENTER" layoutX="10.0" layoutY="88.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#btn_menu_click" prefHeight="39.0" prefWidth="160.0" text="Search" textAlignment="RIGHT">
+                              <Button fx:id="btn_refresh" alignment="CENTER" layoutX="10.0" layoutY="88.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#searchRow" prefHeight="39.0" prefWidth="160.0" text="Search" textAlignment="RIGHT">
                                  <font>
                                     <Font name="Calibri" size="20.0" />
                                  </font>

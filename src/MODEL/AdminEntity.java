@@ -8,6 +8,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "Admin", schema = "dbo", catalog = "TTN")
 public class AdminEntity implements Serializable {
+
     private String maAd;
     private String tenAd;
     private Timestamp ngaysinh;
@@ -58,6 +59,7 @@ public class AdminEntity implements Serializable {
         this.imgAd = imgAd;
     }
 
+
     @Basic
     @Column(name = "username")
     public String getUsername() {
@@ -80,4 +82,5 @@ public class AdminEntity implements Serializable {
     public int hashCode() {
         return Objects.hash(maAd, tenAd, ngaysinh, imgAd, username);
     }
+
 }
