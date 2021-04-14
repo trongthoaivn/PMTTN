@@ -7,24 +7,24 @@ import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
-import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.paint.Color;
 import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Circle;
 import javafx.fxml.FXML;
 import javafx.scene.text.Text;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
-import java.nio.file.OpenOption;
 import java.util.Date;
-import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -120,6 +120,7 @@ public class ct_Main implements Initializable,Runnable {
         if(option.get()==ButtonType.OK)
             Platform.exit();
 
+
     }
 
     @FXML
@@ -144,9 +145,16 @@ public class ct_Main implements Initializable,Runnable {
     }
 
     @FXML
-    void newRow(ActionEvent event) {
+    void newRow(ActionEvent event) throws IOException {
         if(pane_Center.getCenter() ==frm_admin){
-            System.out.println("add admin");
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../VIEW/Form/fadd_edit_Admin.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initStyle(StageStyle.TRANSPARENT);
+            if(stage.isShowing()==false){
+                stage.show();
+            }
         }
     }
 
@@ -187,18 +195,20 @@ public class ct_Main implements Initializable,Runnable {
 
     @FXML
     void logout(ActionEvent event) {
-
+        System.out.println();
     }
 
 
 
     public void Login_info(TaikhoanEntity taikhoan ){
-        if (taikhoan.getMaQuyen()==1){
+        if (taikhoan.getQuyenByMaQuyen().getMaQuyen()==1){
+//            System.out.println(taikhoan.getAdminsByUsername().getTenAd());
             adminDao adminDao= new adminDao();
             admin = adminDao.infoAdmin(taikhoan.getUsername());
             txt_login_name.setText(admin.getTenAd());
             txt_rule.setText("Administrator");
             setImg_student(admin.getImgAd());
+
         }
 
     }
@@ -236,8 +246,10 @@ public class ct_Main implements Initializable,Runnable {
     }
 
     public void setImg_student(String url){
-        Image image = new Image(url);
-        img_student.setFill(new ImagePattern(image));
+        if (url.equals("")==false) {
+            Image image = new Image(url);
+            img_student.setFill(new ImagePattern(image));
+        }
     }
 
     @Override
@@ -246,8 +258,8 @@ public class ct_Main implements Initializable,Runnable {
         thread.start();
         border_Menu.setLeft(null);
         pane_Main.setRight(null);
-//        adminDao adminDao= new adminDao();
-//        admin = adminDao.infoAdmin("admin1");
+        adminDao adminDao= new adminDao();
+        admin = adminDao.infoAdmin("admin1");
 //        System.out.println(admin.getTenAd());
 
     }

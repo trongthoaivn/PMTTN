@@ -1,27 +1,26 @@
 package MODEL;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Made", schema = "dbo", catalog = "TTN")
-public class MadeEntity implements Serializable {
-    private Long id;
+public class MadeEntity {
+//    private Long id;
     private String maDe;
     private String tenMade;
     private String maCHde;
-    private String maBode;
+    private BodeEntity bodeByMaBode;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    @Id
+//    @GeneratedValue
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     @Id
     @Column(name = "ma_De")
@@ -53,26 +52,26 @@ public class MadeEntity implements Serializable {
         this.maCHde = maCHde;
     }
 
-    @Basic
-    @Column(name = "ma_Bode")
-    public String getMaBode() {
-        return maBode;
-    }
-
-    public void setMaBode(String maBode) {
-        this.maBode = maBode;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MadeEntity that = (MadeEntity) o;
-        return Objects.equals(maDe, that.maDe) && Objects.equals(tenMade, that.tenMade) && Objects.equals(maCHde, that.maCHde) && Objects.equals(maBode, that.maBode);
+        return Objects.equals(maDe, that.maDe) && Objects.equals(tenMade, that.tenMade) && Objects.equals(maCHde, that.maCHde);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(maDe, tenMade, maCHde, maBode);
+        return Objects.hash(maDe, tenMade, maCHde);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "ma_Bode", referencedColumnName = "ma_Bode")
+    public BodeEntity getBodeByMaBode() {
+        return bodeByMaBode;
+    }
+
+    public void setBodeByMaBode(BodeEntity bodeByMaBode) {
+        this.bodeByMaBode = bodeByMaBode;
     }
 }

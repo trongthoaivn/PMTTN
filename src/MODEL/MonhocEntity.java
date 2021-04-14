@@ -1,25 +1,27 @@
 package MODEL;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Monhoc", schema = "dbo", catalog = "TTN")
-public class MonhocEntity implements Serializable {
-    private Long id;
+public class MonhocEntity {
+//    private Long id;
     private String maMh;
     private String tenMh;
+    private Collection<BodeEntity> bodesByMaMh;
+    private Collection<KythiEntity> kythisByMaMh;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    @Id
+//    @GeneratedValue
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     @Id
     @Column(name = "ma_MH")
@@ -52,5 +54,23 @@ public class MonhocEntity implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(maMh, tenMh);
+    }
+
+    @OneToMany(mappedBy = "monhocByMaMh")
+    public Collection<BodeEntity> getBodesByMaMh() {
+        return bodesByMaMh;
+    }
+
+    public void setBodesByMaMh(Collection<BodeEntity> bodesByMaMh) {
+        this.bodesByMaMh = bodesByMaMh;
+    }
+
+    @OneToMany(mappedBy = "monhocByMaMh")
+    public Collection<KythiEntity> getKythisByMaMh() {
+        return kythisByMaMh;
+    }
+
+    public void setKythisByMaMh(Collection<KythiEntity> kythisByMaMh) {
+        this.kythisByMaMh = kythisByMaMh;
     }
 }

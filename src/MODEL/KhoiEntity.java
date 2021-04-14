@@ -1,25 +1,26 @@
 package MODEL;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Khoi", schema = "dbo", catalog = "TTN")
-public class KhoiEntity implements Serializable {
-    private Long id;
+public class KhoiEntity {
+//    private Long id;
     private String maKhoi;
     private String tenKhoi;
+    private Collection<LopEntity> lopsByMaKhoi;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    @Id
+//    @GeneratedValue
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     @Id
     @Column(name = "ma_Khoi")
@@ -52,5 +53,14 @@ public class KhoiEntity implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(maKhoi, tenKhoi);
+    }
+
+    @OneToMany(mappedBy = "khoiByMaKhoi")
+    public Collection<LopEntity> getLopsByMaKhoi() {
+        return lopsByMaKhoi;
+    }
+
+    public void setLopsByMaKhoi(Collection<LopEntity> lopsByMaKhoi) {
+        this.lopsByMaKhoi = lopsByMaKhoi;
     }
 }

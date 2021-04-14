@@ -1,22 +1,15 @@
 package DAO;
 
 import MODEL.TaikhoanEntity;
-import REF.USPW;
 import UTILITY.hibernateUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import org.hibernate.Criteria;
 import org.hibernate.Hibernate;
 import org.hibernate.Session;
-import org.hibernate.criterion.Criterion;
-import org.hibernate.criterion.Restrictions;
 
-import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
-import javax.persistence.Entity;
-import java.util.Observable;
 
 public class taikhoanDao implements DaoInterface<TaikhoanEntity>{
 

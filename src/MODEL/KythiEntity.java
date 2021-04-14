@@ -1,35 +1,37 @@
 package MODEL;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Time;
 import java.sql.Timestamp;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Kythi", schema = "dbo", catalog = "TTN")
-public class KythiEntity implements Serializable {
-    private Long id;
+public class KythiEntity {
+//    private Long id;
     private String maKt;
     private String tenKt;
     private Timestamp ngaythi;
     private Integer tgLambai;
-    private Object tgBatdau;
-    private Object tgKetthuc;
+    private Time tgBatdau;
+    private Time tgKetthuc;
     private Integer slCh;
-    private String maMh;
-    private String maGv;
-    private String maHs;
+    private Collection<BodeEntity> bodesByMaKt;
+    private Collection<KetquaEntity> ketquasByMaKt;
+    private MonhocEntity monhocByMaMh;
+    private GiaovienEntity giaovienByMaGv;
+    private HocsinhEntity hocsinhByMaHs;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    @Id
+//    @GeneratedValue
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     @Id
     @Column(name = "ma_KT")
@@ -74,7 +76,7 @@ public class KythiEntity implements Serializable {
     @Basic
     @Column(name = "tg_Batdau")
     public Time getTgBatdau() {
-        return (Time) tgBatdau;
+        return tgBatdau;
     }
 
     public void setTgBatdau(Time tgBatdau) {
@@ -84,7 +86,7 @@ public class KythiEntity implements Serializable {
     @Basic
     @Column(name = "tg_Ketthuc")
     public Time getTgKetthuc() {
-        return (Time) tgKetthuc;
+        return tgKetthuc;
     }
 
     public void setTgKetthuc(Time tgKetthuc) {
@@ -101,46 +103,64 @@ public class KythiEntity implements Serializable {
         this.slCh = slCh;
     }
 
-    @Basic
-    @Column(name = "ma_MH")
-    public String getMaMh() {
-        return maMh;
-    }
-
-    public void setMaMh(String maMh) {
-        this.maMh = maMh;
-    }
-
-    @Basic
-    @Column(name = "ma_GV")
-    public String getMaGv() {
-        return maGv;
-    }
-
-    public void setMaGv(String maGv) {
-        this.maGv = maGv;
-    }
-
-    @Basic
-    @Column(name = "ma_HS")
-    public String getMaHs() {
-        return maHs;
-    }
-
-    public void setMaHs(String maHs) {
-        this.maHs = maHs;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         KythiEntity that = (KythiEntity) o;
-        return Objects.equals(maKt, that.maKt) && Objects.equals(tenKt, that.tenKt) && Objects.equals(ngaythi, that.ngaythi) && Objects.equals(tgLambai, that.tgLambai) && Objects.equals(tgBatdau, that.tgBatdau) && Objects.equals(tgKetthuc, that.tgKetthuc) && Objects.equals(slCh, that.slCh) && Objects.equals(maMh, that.maMh) && Objects.equals(maGv, that.maGv) && Objects.equals(maHs, that.maHs);
+        return Objects.equals(maKt, that.maKt) && Objects.equals(tenKt, that.tenKt) && Objects.equals(ngaythi, that.ngaythi) && Objects.equals(tgLambai, that.tgLambai) && Objects.equals(tgBatdau, that.tgBatdau) && Objects.equals(tgKetthuc, that.tgKetthuc) && Objects.equals(slCh, that.slCh);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(maKt, tenKt, ngaythi, tgLambai, tgBatdau, tgKetthuc, slCh, maMh, maGv, maHs);
+        return Objects.hash(maKt, tenKt, ngaythi, tgLambai, tgBatdau, tgKetthuc, slCh);
+    }
+
+    @OneToMany(mappedBy = "kythiByMaKt")
+    public Collection<BodeEntity> getBodesByMaKt() {
+        return bodesByMaKt;
+    }
+
+    public void setBodesByMaKt(Collection<BodeEntity> bodesByMaKt) {
+        this.bodesByMaKt = bodesByMaKt;
+    }
+
+    @OneToMany(mappedBy = "kythiByMaKt")
+    public Collection<KetquaEntity> getKetquasByMaKt() {
+        return ketquasByMaKt;
+    }
+
+    public void setKetquasByMaKt(Collection<KetquaEntity> ketquasByMaKt) {
+        this.ketquasByMaKt = ketquasByMaKt;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "ma_MH", referencedColumnName = "ma_MH")
+    public MonhocEntity getMonhocByMaMh() {
+        return monhocByMaMh;
+    }
+
+    public void setMonhocByMaMh(MonhocEntity monhocByMaMh) {
+        this.monhocByMaMh = monhocByMaMh;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "ma_GV", referencedColumnName = "ma_GV")
+    public GiaovienEntity getGiaovienByMaGv() {
+        return giaovienByMaGv;
+    }
+
+    public void setGiaovienByMaGv(GiaovienEntity giaovienByMaGv) {
+        this.giaovienByMaGv = giaovienByMaGv;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "ma_HS", referencedColumnName = "ma_HS")
+    public HocsinhEntity getHocsinhByMaHs() {
+        return hocsinhByMaHs;
+    }
+
+    public void setHocsinhByMaHs(HocsinhEntity hocsinhByMaHs) {
+        this.hocsinhByMaHs = hocsinhByMaHs;
     }
 }

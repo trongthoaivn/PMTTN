@@ -1,28 +1,29 @@
 package MODEL;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Bode", schema = "dbo", catalog = "TTN")
-public class BodeEntity  implements Serializable {
-    private Long id;
+public class BodeEntity {
+//    private Long id;
     private String maBode;
     private String tenBode;
-    private Integer maCh;
-    private String maMh;
-    private String maKt;
+    private CauhoiEntity cauhoiByMaCh;
+    private MonhocEntity monhocByMaMh;
+    private KythiEntity kythiByMaKt;
+    private Collection<MadeEntity> madesByMaBode;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    @Id
+//    @GeneratedValue
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     @Id
     @Column(name = "ma_Bode")
@@ -44,46 +45,55 @@ public class BodeEntity  implements Serializable {
         this.tenBode = tenBode;
     }
 
-    @Basic
-    @Column(name = "ma_CH")
-    public Integer getMaCh() {
-        return maCh;
-    }
-
-    public void setMaCh(Integer maCh) {
-        this.maCh = maCh;
-    }
-
-    @Basic
-    @Column(name = "ma_MH")
-    public String getMaMh() {
-        return maMh;
-    }
-
-    public void setMaMh(String maMh) {
-        this.maMh = maMh;
-    }
-
-    @Basic
-    @Column(name = "ma_KT")
-    public String getMaKt() {
-        return maKt;
-    }
-
-    public void setMaKt(String maKt) {
-        this.maKt = maKt;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         BodeEntity that = (BodeEntity) o;
-        return Objects.equals(maBode, that.maBode) && Objects.equals(tenBode, that.tenBode) && Objects.equals(maCh, that.maCh) && Objects.equals(maMh, that.maMh) && Objects.equals(maKt, that.maKt);
+        return Objects.equals(maBode, that.maBode) && Objects.equals(tenBode, that.tenBode);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(maBode, tenBode, maCh, maMh, maKt);
+        return Objects.hash(maBode, tenBode);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "ma_CH", referencedColumnName = "ma_CH")
+    public CauhoiEntity getCauhoiByMaCh() {
+        return cauhoiByMaCh;
+    }
+
+    public void setCauhoiByMaCh(CauhoiEntity cauhoiByMaCh) {
+        this.cauhoiByMaCh = cauhoiByMaCh;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "ma_MH", referencedColumnName = "ma_MH")
+    public MonhocEntity getMonhocByMaMh() {
+        return monhocByMaMh;
+    }
+
+    public void setMonhocByMaMh(MonhocEntity monhocByMaMh) {
+        this.monhocByMaMh = monhocByMaMh;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "ma_KT", referencedColumnName = "ma_KT")
+    public KythiEntity getKythiByMaKt() {
+        return kythiByMaKt;
+    }
+
+    public void setKythiByMaKt(KythiEntity kythiByMaKt) {
+        this.kythiByMaKt = kythiByMaKt;
+    }
+
+    @OneToMany(mappedBy = "bodeByMaBode")
+    public Collection<MadeEntity> getMadesByMaBode() {
+        return madesByMaBode;
+    }
+
+    public void setMadesByMaBode(Collection<MadeEntity> madesByMaBode) {
+        this.madesByMaBode = madesByMaBode;
     }
 }

@@ -1,10 +1,8 @@
 package DAO;
 
 import MODEL.QuyenEntity;
-import MODEL.TaikhoanEntity;
 import UTILITY.hibernateUtil;
 import org.hibernate.Session;
-import org.hibernate.criterion.Criterion;
 
 import java.util.List;
 

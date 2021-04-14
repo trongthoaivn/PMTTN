@@ -1,18 +1,18 @@
 package MODEL;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Baithi", schema = "dbo", catalog = "TTN")
 @IdClass(BaithiEntityPK.class)
-public class BaithiEntity implements Serializable {
+public class BaithiEntity {
     private Long id;
     private String maBaithi;
     private Integer maCh;
     private String da;
     private String maKq;
+    private KetquaEntity ketquaByMaKq;
 
     @Id
     @GeneratedValue
@@ -55,7 +55,7 @@ public class BaithiEntity implements Serializable {
     }
 
     @Id
-    @Column(name = "ma_KQ")
+    @Column(name = "ma_KQ" )
     public String getMaKq() {
         return maKq;
     }
@@ -75,5 +75,15 @@ public class BaithiEntity implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(maBaithi, maCh, da, maKq);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "ma_KQ", referencedColumnName = "ma_KQ", nullable = false, insertable = false,updatable = false)
+    public KetquaEntity getKetquaByMaKq() {
+        return ketquaByMaKq;
+    }
+
+    public void setKetquaByMaKq(KetquaEntity ketquaByMaKq) {
+        this.ketquaByMaKq = ketquaByMaKq;
     }
 }

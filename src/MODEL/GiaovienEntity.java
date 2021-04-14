@@ -1,29 +1,30 @@
 package MODEL;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Date;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Giaovien", schema = "dbo", catalog = "TTN")
-public class GiaovienEntity implements Serializable {
-    private Long id;
+public class GiaovienEntity {
+//    private Long id;
     private String maGv;
     private String tenGv;
     private Date ngaysinh;
     private String imgGv;
-    private String username;
+    private TaikhoanEntity taikhoanByUsername;
+    private Collection<KythiEntity> kythisByMaGv;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    @Id
+//    @GeneratedValue
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     @Id
     @Column(name = "ma_GV")
@@ -65,26 +66,35 @@ public class GiaovienEntity implements Serializable {
         this.imgGv = imgGv;
     }
 
-    @Basic
-    @Column(name = "username")
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         GiaovienEntity that = (GiaovienEntity) o;
-        return Objects.equals(maGv, that.maGv) && Objects.equals(tenGv, that.tenGv) && Objects.equals(ngaysinh, that.ngaysinh) && Objects.equals(imgGv, that.imgGv) && Objects.equals(username, that.username);
+        return Objects.equals(maGv, that.maGv) && Objects.equals(tenGv, that.tenGv) && Objects.equals(ngaysinh, that.ngaysinh) && Objects.equals(imgGv, that.imgGv);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(maGv, tenGv, ngaysinh, imgGv, username);
+        return Objects.hash(maGv, tenGv, ngaysinh, imgGv);
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "username", referencedColumnName = "username", nullable = false)
+    public TaikhoanEntity getTaikhoanByUsername() {
+        return taikhoanByUsername;
+    }
+
+    public void setTaikhoanByUsername(TaikhoanEntity taikhoanByUsername) {
+        this.taikhoanByUsername = taikhoanByUsername;
+    }
+
+    @OneToMany(mappedBy = "giaovienByMaGv")
+    public Collection<KythiEntity> getKythisByMaGv() {
+        return kythisByMaGv;
+    }
+
+    public void setKythisByMaGv(Collection<KythiEntity> kythisByMaGv) {
+        this.kythisByMaGv = kythisByMaGv;
     }
 }

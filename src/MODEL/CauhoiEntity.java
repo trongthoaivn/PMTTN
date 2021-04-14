@@ -1,13 +1,13 @@
 package MODEL;
 
 import javax.persistence.*;
-import java.io.Serializable;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Cauhoi", schema = "dbo", catalog = "TTN")
-public class CauhoiEntity implements Serializable {
-    private Long id;
+public class CauhoiEntity {
+//    private Long id;
     private int maCh;
     private Boolean loai;
     private String ndCh;
@@ -19,16 +19,17 @@ public class CauhoiEntity implements Serializable {
     private String tl4;
     private String da;
     private Integer dokho;
+    private Collection<BodeEntity> bodesByMaCh;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    @Id
+//    @GeneratedValue
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     @Id
     @Column(name = "ma_CH")
@@ -151,5 +152,14 @@ public class CauhoiEntity implements Serializable {
     @Override
     public int hashCode() {
         return Objects.hash(maCh, loai, ndCh, imgCh, audCh, tl1, tl2, tl3, tl4, da, dokho);
+    }
+
+    @OneToMany(mappedBy = "cauhoiByMaCh")
+    public Collection<BodeEntity> getBodesByMaCh() {
+        return bodesByMaCh;
+    }
+
+    public void setBodesByMaCh(Collection<BodeEntity> bodesByMaCh) {
+        this.bodesByMaCh = bodesByMaCh;
     }
 }

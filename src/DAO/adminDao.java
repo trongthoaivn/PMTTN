@@ -7,7 +7,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Session;
 
-import javax.persistence.Tuple;
 import javax.persistence.criteria.*;
 import java.util.List;
 
@@ -29,13 +28,9 @@ public class adminDao  implements  DaoInterface<AdminEntity>{
         return 0;
     }
 
-    public ObservableList<AdminEntity> getAdmin(){
+    public ObservableList getAdmin(){
         Session session = hibernateUtil.getSession();
-        CriteriaBuilder builder = session.getCriteriaBuilder();
-        CriteriaQuery query =builder.createQuery(AdminEntity.class);
-        Root<AdminEntity> Admin = query.from(AdminEntity.class);
-        Join<AdminEntity,TaikhoanEntity> join = Admin.join("username",JoinType.INNER);
-        query.where(join.isNotNull());
+        String query ="select A,T from AdminEntity A,TaikhoanEntity T where A.taikhoanByUsername.username= T.username";
         List list = session.createQuery(query).getResultList();
         session.close();
         return FXCollections.observableArrayList(list);
@@ -60,11 +55,12 @@ public class adminDao  implements  DaoInterface<AdminEntity>{
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery query = builder.createQuery(AdminEntity.class);
         Root<AdminEntity > root = query.from(AdminEntity.class);
-        Predicate p = builder.equal(root.get("username"),user);
-        AdminEntity admin= (AdminEntity) session.createQuery(query.where(p)).getSingleResult();
+        Join<AdminEntity,TaikhoanEntity> join = root.join("taikhoanByUsername",JoinType.INNER);
+        Predicate p = builder.equal(join.get("username"), user);
+        List<AdminEntity> admin=  session.createQuery(query.where(p)).getResultList();
         session.close();
 
-        return admin;
+        return admin.get(0);
     }
 
 }

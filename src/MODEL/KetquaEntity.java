@@ -1,32 +1,31 @@
 package MODEL;
 
-import com.sun.org.apache.xml.internal.serializer.SerializerTrace;
-
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Timestamp;
+import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Ketqua", schema = "dbo", catalog = "TTN")
-public class KetquaEntity  implements Serializable {
-    private Long id;
+public class KetquaEntity {
+//    private Long id;
     private String maKq;
     private Timestamp ngaythi;
     private Double diem;
     private Boolean xeploai;
-    private String maKt;
-    private String maHs;
-
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private Collection<BaithiEntity> baithisByMaKq;
+    private KythiEntity kythiByMaKt;
+    private HocsinhEntity hocsinhByMaHs;
+//
+//    @Id
+//    @GeneratedValue
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     @Id
     @Column(name = "ma_KQ")
@@ -68,36 +67,45 @@ public class KetquaEntity  implements Serializable {
         this.xeploai = xeploai;
     }
 
-    @Basic
-    @Column(name = "ma_KT")
-    public String getMaKt() {
-        return maKt;
-    }
-
-    public void setMaKt(String maKt) {
-        this.maKt = maKt;
-    }
-
-    @Basic
-    @Column(name = "ma_HS")
-    public String getMaHs() {
-        return maHs;
-    }
-
-    public void setMaHs(String maHs) {
-        this.maHs = maHs;
-    }
-
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         KetquaEntity that = (KetquaEntity) o;
-        return Objects.equals(maKq, that.maKq) && Objects.equals(ngaythi, that.ngaythi) && Objects.equals(diem, that.diem) && Objects.equals(xeploai, that.xeploai) && Objects.equals(maKt, that.maKt) && Objects.equals(maHs, that.maHs);
+        return Objects.equals(maKq, that.maKq) && Objects.equals(ngaythi, that.ngaythi) && Objects.equals(diem, that.diem) && Objects.equals(xeploai, that.xeploai);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(maKq, ngaythi, diem, xeploai, maKt, maHs);
+        return Objects.hash(maKq, ngaythi, diem, xeploai);
+    }
+
+    @OneToMany(mappedBy = "ketquaByMaKq")
+    public Collection<BaithiEntity> getBaithisByMaKq() {
+        return baithisByMaKq;
+    }
+
+    public void setBaithisByMaKq(Collection<BaithiEntity> baithisByMaKq) {
+        this.baithisByMaKq = baithisByMaKq;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "ma_KT", referencedColumnName = "ma_KT")
+    public KythiEntity getKythiByMaKt() {
+        return kythiByMaKt;
+    }
+
+    public void setKythiByMaKt(KythiEntity kythiByMaKt) {
+        this.kythiByMaKt = kythiByMaKt;
+    }
+
+    @ManyToOne
+    @JoinColumn(name = "ma_HS", referencedColumnName = "ma_HS")
+    public HocsinhEntity getHocsinhByMaHs() {
+        return hocsinhByMaHs;
+    }
+
+    public void setHocsinhByMaHs(HocsinhEntity hocsinhByMaHs) {
+        this.hocsinhByMaHs = hocsinhByMaHs;
     }
 }

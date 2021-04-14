@@ -1,10 +1,7 @@
 package CONTROLLER;
-import DAO.adminDao;
 import DAO.taikhoanDao;
-import MODEL.AdminEntity;
 import MODEL.TaikhoanEntity;
 import javafx.application.Platform;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -48,7 +45,7 @@ public class ct_Login implements Initializable {
         TaikhoanEntity taikhoan =taikhoanDao.getUser_Pass(txt_US.getText());
         if(taikhoan !=  null && taikhoan.getPasswords().equals(txt_PW.getText())){
             lb_error.setVisible(false);
-            if(taikhoan.getMaQuyen() == 1){
+            if(taikhoan.getQuyenByMaQuyen().getMaQuyen() == 1){
                 try{
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("../VIEW/Form/frm_Main.fxml"));
                     Parent root = loader.load();
@@ -56,7 +53,6 @@ public class ct_Login implements Initializable {
                     main.Login_info(taikhoan);
                     Stage stage = new Stage();
                     stage.setScene(new Scene(root));
-//                stage.setTitle("Main");
                     stage.initStyle(StageStyle.UTILITY);
                     stage.show();
                     ((Node)(event.getSource())).getScene().getWindow().hide();
