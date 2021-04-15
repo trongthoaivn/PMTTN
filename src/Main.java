@@ -9,7 +9,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        Parent root = FXMLLoader.load(getClass().getResource("VIEW/Form/frm_Login.fxml"));
+        Parent root = FXMLLoader.load(getClass().getResource("VIEW/Form/fadd_edit_Admin.fxml"));
         primaryStage.initStyle(StageStyle.TRANSPARENT);
         primaryStage.setScene(new Scene(root));
         primaryStage.show();

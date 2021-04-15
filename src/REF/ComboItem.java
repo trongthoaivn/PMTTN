@@ -2,9 +2,9 @@ package REF;
 
 public class ComboItem {
         private String key;
-        private String value;
+        private Integer value;
 
-        public ComboItem(String key, String value)
+        public ComboItem(String key, Integer value)
         {
             this.key = key;
             this.value = value;
@@ -21,7 +21,7 @@ public class ComboItem {
             return key;
         }
 
-        public String getValue()
+        public Integer getValue()
         {
             return value;
         }

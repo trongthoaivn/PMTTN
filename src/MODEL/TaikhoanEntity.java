@@ -17,7 +17,18 @@ public class TaikhoanEntity implements Serializable {
     private Collection<HocsinhEntity> hocsinhsByUsername;
     private QuyenEntity quyenByMaQuyen;
 
-//    @Id
+    public TaikhoanEntity(String username, String passwords, Boolean trangthai, QuyenEntity quyenByMaQuyen) {
+        this.username = username;
+        this.passwords = passwords;
+        this.trangthai = trangthai;
+        this.quyenByMaQuyen = quyenByMaQuyen;
+    }
+
+    public TaikhoanEntity() {
+
+    }
+
+    //    @Id
 //    @GeneratedValue
 //    public Long getId() {
 //        return id;

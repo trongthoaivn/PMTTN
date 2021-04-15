@@ -6,6 +6,7 @@ import UTILITY.hibernateUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Session;
+import org.hibernate.Transaction;
 
 import javax.persistence.criteria.*;
 import java.util.List;
@@ -15,7 +16,17 @@ public class adminDao  implements  DaoInterface<AdminEntity>{
 
     @Override
     public int addData(AdminEntity Data) {
-        return 0;
+        try {
+            Session session =hibernateUtil.getSession();
+            Transaction transaction =session.beginTransaction();
+            session.save(Data);
+            transaction.commit();
+            session.close();
+            return 1;
+        }catch (Exception exception) {
+            System.out.println(exception);
+            return 0;
+        }
     }
 
     @Override
@@ -27,6 +38,7 @@ public class adminDao  implements  DaoInterface<AdminEntity>{
     public int updateData(AdminEntity Data) {
         return 0;
     }
+
 
     public ObservableList getAdmin(){
         Session session = hibernateUtil.getSession();

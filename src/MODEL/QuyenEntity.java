@@ -12,6 +12,14 @@ public class QuyenEntity {
     private String tenQuyen;
     private Collection<TaikhoanEntity> taikhoansByMaQuyen;
 
+    public QuyenEntity(int maQuyen, String tenQuyen) {
+        this.maQuyen = maQuyen;
+        this.tenQuyen = tenQuyen;
+    }
+
+    public QuyenEntity() {
+
+    }
 //    @Id
 //    @GeneratedValue
 //    public Long getId() {

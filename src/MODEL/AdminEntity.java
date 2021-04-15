@@ -15,6 +15,17 @@ public class AdminEntity implements Serializable {
     private String imgAd;
     private TaikhoanEntity taikhoanByUsername;
 
+    public AdminEntity(String maAd, String tenAd, Timestamp ngaysinh, String imgAd, TaikhoanEntity taikhoanByUsername) {
+        this.maAd = maAd;
+        this.tenAd = tenAd;
+        this.ngaysinh = ngaysinh;
+        this.imgAd = imgAd;
+        this.taikhoanByUsername = taikhoanByUsername;
+    }
+
+    public AdminEntity() {
+
+    }
 //    @Id
 //    @GeneratedValue
 //    public Long getId() {
