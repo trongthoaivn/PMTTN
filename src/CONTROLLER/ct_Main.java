@@ -151,7 +151,7 @@ public class ct_Main implements Initializable,Runnable {
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
-            stage.initStyle(StageStyle.TRANSPARENT);
+            stage.initStyle(StageStyle.UTILITY);
             if(stage.isShowing()==false){
                 stage.show();
             }
