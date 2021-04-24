@@ -32,7 +32,7 @@ import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
-public class ct_addeditAdmin implements Initializable {
+public class ct_addeditAdmin implements Initializable{
 
     @FXML
     private ComboBox<ComboItem> cbo_rule;
@@ -82,9 +82,14 @@ public class ct_addeditAdmin implements Initializable {
         return true;
     }
     public Boolean check_Empty(){
-        if(txt_maAd.getText()=="") System.out.println("Code is empty");
-        if(txt_tenAd.getText()=="") System.out.println("Name is empty");
-        return true;
+        if(txt_maAd.getText()!=""
+                && txt_tenAd.getText()!=""
+                && txt_ngaysinh.getText()!=""
+                && txt_pw.getText()!=""
+                && txt_us.getText()!="")
+            return true;
+        else
+            return false;
     }
 
     @FXML
@@ -115,21 +120,23 @@ public class ct_addeditAdmin implements Initializable {
 
     @FXML
     void save_Ad(ActionEvent event) throws ParseException, IOException {
-        QuyenEntity quyenEntity = new QuyenEntity(
-                cbo_rule.getValue().getValue(),
-                cbo_rule.getValue().getKey());
+        System.out.println(check_Empty().toString());
+        if (check_Empty()==true){
+            QuyenEntity quyenEntity = new QuyenEntity(
+                    cbo_rule.getValue().getValue(),
+                    cbo_rule.getValue().getKey());
 
-        if(rdb_active.isSelected()) status= Boolean.TRUE;
-        else status=Boolean.FALSE;
-        TaikhoanEntity taikhoanEntity = new TaikhoanEntity(
-                txt_us.getText(),
-                txt_pw.getText(),
-                status,
-                quyenEntity);
+            if(rdb_active.isSelected()) status= Boolean.TRUE;
+            else status=Boolean.FALSE;
+            TaikhoanEntity taikhoanEntity = new TaikhoanEntity(
+                    txt_us.getText(),
+                    txt_pw.getText(),
+                    status,
+                    quyenEntity);
 
-        File fileAd= new File("src/DataSet/"+txt_maAd.getText()+".jpg");
-        if (fileAd.exists() )
-        {
+            File fileAd= new File("src/DataSet/"+txt_maAd.getText()+".jpg");
+            if (fileAd.exists() )
+            {
 
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setHeaderText(fileAd.getName()+ "this file is existing !" +
@@ -141,19 +148,25 @@ public class ct_addeditAdmin implements Initializable {
                 }
 
 
+            }
+
+            AdminEntity adminEntity = new AdminEntity(
+                    txt_maAd.getText(),
+                    txt_tenAd.getText(),
+                    convertStringToTimestamp(txt_ngaysinh.getText()),
+                    url,
+                    taikhoanEntity
+            );
+            try{
+                if(taikhoanDao.addData(taikhoanEntity)==1 && adminDao.addData(adminEntity)==1 ){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText("Add new Admin complete!");
+                    alert.show();
+                }
+            }catch (Exception e){
+                System.out.println(e);
+            }
         }
-
-        AdminEntity adminEntity = new AdminEntity(
-                txt_maAd.getText(),
-                txt_tenAd.getText(),
-                convertStringToTimestamp(txt_ngaysinh.getText()),
-                url,
-                taikhoanEntity
-        );
-
-        System.out.println( "taikhoan "+ taikhoanDao.addData(taikhoanEntity));
-        System.out.println("admin " +  adminDao.addData(adminEntity));
-
     }
 
 
@@ -187,6 +200,7 @@ public class ct_addeditAdmin implements Initializable {
                 new ComboItem("Teacher",2),
                 new ComboItem("Student",3)
         ));
+        cbo_rule.getSelectionModel().selectFirst();
     }
 
     @FXML
@@ -209,6 +223,8 @@ public class ct_addeditAdmin implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         addComboboxItem();
+        rdb_active.setSelected(true);
+
 //        setImg(new Image("file:/Users/trong/Pictures/Saved Pictures/1.jpg"));
     }
 }

@@ -1,10 +1,12 @@
 package CONTROLLER;
 
 import DAO.adminDao;
+import DAO.taikhoanDao;
 import MODEL.AdminEntity;
 import MODEL.TaikhoanEntity;
 import REF.CustomImage;
 import javafx.animation.PauseTransition;
+import javafx.application.Platform;
 import javafx.beans.property.ReadOnlyStringWrapper;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -14,6 +16,8 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -24,10 +28,12 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 import javafx.util.Duration;
 
+import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.util.List;
+import java.util.Optional;
 import java.util.ResourceBundle;
 import java.util.stream.Collectors;
 
@@ -46,10 +52,43 @@ public class ct_Admin implements Initializable {
     @FXML
     private TableColumn<AdminEntity, String> passwords;
 
+    AdminEntity SelectedAd = new AdminEntity();
+    TaikhoanEntity SelectedAdacc = new TaikhoanEntity();
+
+    public void DeleteAdmin(){
+        adminDao adminDao = new adminDao();
+        taikhoanDao taikhoanDao = new taikhoanDao();
+        System.out.println(SelectedAd.getTenAd());
+
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Delete Admin");
+        alert.setHeaderText("Are you sure you want delete "+ SelectedAd.getTenAd());
+        Optional<ButtonType> option = alert.showAndWait();
+        if(option.get()==ButtonType.OK) {
+            SelectedAdacc = taikhoanDao.getUser_Pass(SelectedAd.getTaikhoanByUsername().getUsername());
+            System.out.println(SelectedAdacc.getUsername());
+            File image = new File("src/"+SelectedAd.getImgAd());
+            if (image.exists()&& image.delete()){
+                System.out.println("image delete :"+image.getName());
+            }else {
+                System.out.println("image delete fail" +image.getPath());
+            }
+            System.out.println("admin delete: "+adminDao.delData(SelectedAd));
+            System.out.println("account delete:"+taikhoanDao.delData(SelectedAdacc));
+        }else if(option.get()==ButtonType.CANCEL){
+            alert.close();
+        }else
+            alert.close();
+
+
+    }
+
+
     @FXML
     void SelectAdmin(MouseEvent event) throws IOException {
         AdminEntity adminEntity = tbv_Admin.getSelectionModel().getSelectedItem();
         if(adminEntity!=null){
+            SelectedAd = adminEntity;
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../VIEW/Form/popup_Admin.fxml"));
             Parent root = loader.load();
             popup_Admin main = loader.getController();
@@ -74,6 +113,7 @@ public class ct_Admin implements Initializable {
     ObservableList<AdminEntity> adminEntities ;
 
     public void getAdmintoTable(){
+        tbv_Admin.getItems().clear();
         adminDao dao = new adminDao();
         adminEntities= dao.getAll();
 

@@ -33,7 +33,18 @@ public class taikhoanDao implements DaoInterface<TaikhoanEntity>{
 
     @Override
     public int delData(TaikhoanEntity Data) {
-        return 0;
+
+        try {
+            Session session =hibernateUtil.getSession();
+            Transaction transaction =session.beginTransaction();
+            session.delete(Data);
+            transaction.commit();
+            session.close();
+            return 1;
+        }catch (Exception exception){
+            System.out.println(exception);
+            return 0;
+        }
     }
 
     @Override

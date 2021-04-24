@@ -141,6 +141,12 @@
     -fx-background-position: left 5px center;
     -fx-background-repeat: no-repeat;
 }
+.btn_refresh{
+    -fx-background-image: url("../Icon/refresh.png");
+    -fx-background-size: 35 35;
+    -fx-background-position: left 5px center;
+    -fx-background-repeat: no-repeat;
+}
 .left_toolbox_btn_history{
     -fx-background-color: white;
     -fx-min-width: 40px;

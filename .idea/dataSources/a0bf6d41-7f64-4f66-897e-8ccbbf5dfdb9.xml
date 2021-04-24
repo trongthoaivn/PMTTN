@@ -51,7 +51,17 @@
     </database>
     <database id="3" parent="1" name="master">
       <ObjectId>1</ObjectId>
+      <PermissionsCheckSum>7998723517</PermissionsCheckSum>
+      <Grants>1|database||0|view any column encryption key definition|G
+1|database||0|view any column master key definition|G
+1|database||1|connect|G
+1|database||2|connect|G
+1|database||5|connect|G
+1|database||6|connect|G
+1|database||6|execute|G
+</Grants>
       <Collation>Latin1_General_CI_AS</Collation>
+      <Fingerprint>1.37717/00000000-0000-0000-0000-000000000000@TRONGTHOAI\SQLEXPRESS</Fingerprint>
     </database>
     <database id="4" parent="1" name="model">
       <ObjectId>3</ObjectId>
@@ -249,7 +259,7 @@
 1429580131|||0|execute|G
 1429580131|||2|execute|D
 </Grants>
-      <IntrospectionTimestamp>2021-04-12.16:08:16.610</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2021-04-23.15:15:04.377</IntrospectionTimestamp>
       <Current>1</Current>
       <DescriptionsCheckSum>13489306982</DescriptionsCheckSum>
     </schema>

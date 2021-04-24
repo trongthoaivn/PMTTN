@@ -23,6 +23,10 @@ public class AdminEntity implements Serializable {
         this.taikhoanByUsername = taikhoanByUsername;
     }
 
+    public AdminEntity(String maAd) {
+        this.maAd = maAd;
+    }
+
     public AdminEntity() {
 
     }

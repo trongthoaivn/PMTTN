@@ -24,6 +24,10 @@ public class TaikhoanEntity implements Serializable {
         this.quyenByMaQuyen = quyenByMaQuyen;
     }
 
+    public TaikhoanEntity(String username) {
+        this.username = username;
+    }
+
     public TaikhoanEntity() {
 
     }

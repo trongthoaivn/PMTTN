@@ -108,17 +108,28 @@ public class ct_Main implements Initializable,Runnable {
     @FXML
     private Button btn_refresh;
 
+    @FXML
+    private Button btn_search;
+
+
     AdminEntity admin = new AdminEntity();
     Pane  frm_admin = null;
+    Thread thread;
+    private ct_Admin ControllerAdmin;
 
     @FXML
     void exit(ActionEvent event) {
-        Alert alert = new Alert(Alert.AlertType.WARNING);
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Warning");
         alert.setHeaderText("Are you sure you want to logout ?");
         Optional<ButtonType> option = alert.showAndWait();
-        if(option.get()==ButtonType.OK)
+        if(option.get()==ButtonType.OK) {
             Platform.exit();
+            thread.interrupt();
+        }else if(option.get()==ButtonType.CANCEL){
+            alert.close();
+        }else
+            alert.close();
 
 
     }
@@ -138,9 +149,11 @@ public class ct_Main implements Initializable,Runnable {
     }
 
     @FXML
-    void deleteRow(ActionEvent event) {
+    void deleteRow(ActionEvent event) throws IOException {
         if(pane_Center.getCenter() ==frm_admin){
-            System.out.println("delete admin");
+            ControllerAdmin.DeleteAdmin();
+            btn_refresh.fire();
+            btn_refresh.fire();
         }
     }
 
@@ -154,6 +167,19 @@ public class ct_Main implements Initializable,Runnable {
             stage.initStyle(StageStyle.UTILITY);
             if(stage.isShowing()==false){
                 stage.show();
+            }
+        }
+    }
+
+    @FXML
+    void refresh(ActionEvent event) throws IOException {
+        if(pane_Center.getCenter() ==frm_admin){
+            try {
+                btn_admin.fire();
+                btn_admin.fire();
+
+            }catch (Exception e){
+                System.out.println(e);
             }
         }
     }
@@ -241,8 +267,16 @@ public class ct_Main implements Initializable,Runnable {
 
     @FXML
     void load_frm_admin(ActionEvent event) throws IOException {
-        frm_admin = FXMLLoader.load(getClass().getResource("/VIEW//Form/frm_Admin.fxml"));
-        pane_Center.setCenter(frm_admin);
+        if (pane_Center.getCenter()!= frm_admin || pane_Center.getCenter()==null){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/VIEW//Form/frm_Admin.fxml"));
+            frm_admin = (Pane) loader.load();
+
+            ControllerAdmin =loader.getController();
+            pane_Center.setCenter(frm_admin);
+        }else{
+            pane_Center.setCenter(null);
+        }
+
     }
 
     public void setImg_student(String url){
@@ -254,7 +288,7 @@ public class ct_Main implements Initializable,Runnable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        Thread thread = new Thread(this::setCurrentDate);
+        thread = new Thread(this::setCurrentDate);
         thread.start();
         border_Menu.setLeft(null);
         pane_Main.setRight(null);

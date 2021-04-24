@@ -247,7 +247,16 @@
                                     <String fx:value="btn_edit" />
                                  </styleClass>
                               </Button>
-                              <Button fx:id="btn_refresh" alignment="CENTER" layoutX="10.0" layoutY="88.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#searchRow" prefHeight="39.0" prefWidth="160.0" text="Search" textAlignment="RIGHT">
+                              <Button fx:id="btn_refresh" alignment="CENTER" layoutX="10.0" layoutY="88.0" lineSpacing="10.0" mnemonicParsing="false" onAction="#refresh" prefHeight="39.0" prefWidth="160.0" text="  Refresh" textAlignment="RIGHT">
+                                 <font>
+                                    <Font name="Calibri" size="20.0" />
+                                 </font>
+                                 <styleClass>
+                                    <String fx:value="menu_btn" />
+                                    <String fx:value="btn_refresh" />
+                                 </styleClass>
+                              </Button>
+                              <Button fx:id="btn_search" alignment="CENTER" lineSpacing="10.0" mnemonicParsing="false" onAction="#searchRow" prefHeight="39.0" prefWidth="160.0" text="Search" textAlignment="RIGHT">
                                  <font>
                                     <Font name="Calibri" size="20.0" />
                                  </font>
