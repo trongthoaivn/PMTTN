@@ -48,7 +48,8 @@ public class popup_Admin implements Initializable {
             txt_ngaysinh.setText(date.toString());
             txt_us.setText(adminEntity.getTaikhoanByUsername().getUsername());
             txt_pw.setText(adminEntity.getTaikhoanByUsername().getPasswords());
-            setImg(adminEntity.getImgAd());
+            if(adminEntity.getImgAd().equals("")==false)
+                setImg(adminEntity.getImgAd());
         }
         recent = adminEntity;
     }

@@ -51,7 +51,7 @@ public class adminDao  implements  DaoInterface<AdminEntity>{
         try {
             Session session  = hibernateUtil.getSession();
             Transaction transaction = session.beginTransaction();
-            session.saveOrUpdate(Data);
+            session.update(Data);
             transaction.commit();
             session.close();
             return 1;

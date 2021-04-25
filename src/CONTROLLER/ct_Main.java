@@ -24,6 +24,7 @@ import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -142,9 +143,11 @@ public class ct_Main implements Initializable,Runnable {
     }
 
     @FXML
-    void editRow(ActionEvent event) {
+    void editRow(ActionEvent event) throws IOException, ParseException {
         if(pane_Center.getCenter() ==frm_admin){
-            System.out.println("edit admin");
+            ControllerAdmin.EditAdmin();
+            btn_refresh.fire();
+            btn_refresh.fire();
         }
     }
 

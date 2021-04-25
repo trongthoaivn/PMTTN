@@ -5,7 +5,9 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 
 <AnchorPane prefHeight="403.0" prefWidth="682.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.ct_addeditAdmin">
@@ -23,10 +25,18 @@
       <TextField fx:id="txt_us" layoutX="193.0" layoutY="257.0" prefHeight="26.0" prefWidth="242.0" />
       <Label layoutX="97.0" layoutY="299.0" text="Mật khẩu :" />
       <TextField fx:id="txt_pw" layoutX="193.0" layoutY="295.0" prefHeight="26.0" prefWidth="242.0" />
-      <RadioButton fx:id="rdb_active" layoutX="468.0" layoutY="262.0" mnemonicParsing="false" text="Active" />
-      <RadioButton fx:id="rdb_disable" layoutX="550.0" layoutY="261.0" mnemonicParsing="false" text="Disable" />
       <ComboBox fx:id="cbo_rule" layoutX="468.0" layoutY="295.0" prefWidth="150.0" />
       <Button fx:id="btn_save" layoutX="475.0" layoutY="351.0" mnemonicParsing="false" onAction="#save_Ad" text="Save" />
       <Button fx:id="btn_cancel" layoutX="559.0" layoutY="351.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
+      <Pane layoutX="443.0" layoutY="246.0" prefHeight="47.0" prefWidth="200.0">
+         <children>
+            <RadioButton fx:id="rdb_active" layoutX="26.0" layoutY="15.0" mnemonicParsing="false" text="Active">
+               <toggleGroup>
+                  <ToggleGroup fx:id="radiobutton" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rdb_disable" layoutX="111.0" layoutY="15.0" mnemonicParsing="false" text="Disable" toggleGroup="$radiobutton" />
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

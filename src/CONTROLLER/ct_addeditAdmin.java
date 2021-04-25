@@ -71,11 +71,12 @@ public class ct_addeditAdmin implements Initializable{
     @FXML
     private Button btn_cancel;
 
-    String   url;
+    String   url="";
     Boolean status ;
     taikhoanDao taikhoanDao = new taikhoanDao();
     adminDao adminDao = new adminDao();
     File source, dest;
+    int flag =0;
 
 
     public Boolean check_Admin(){
@@ -110,12 +111,19 @@ public class ct_addeditAdmin implements Initializable{
             return null;
         }
     }
-
+    public static String convertTimeStamptoDate(Timestamp timestamp) throws ParseException {
+        Timestamp ts = new Timestamp(timestamp.getTime());
+        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        Date date = format.parse(ts.toString());
+        format = new SimpleDateFormat("dd/MM/yyyy");
+        return format.format(date);
+    }
 
 
     @FXML
     void cancel(ActionEvent event) {
         System.out.println("Cancel");
+        System.out.println(flag);
     }
 
     @FXML
@@ -158,13 +166,26 @@ public class ct_addeditAdmin implements Initializable{
                     taikhoanEntity
             );
             try{
-                if(taikhoanDao.addData(taikhoanEntity)==1 && adminDao.addData(adminEntity)==1 ){
-                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setHeaderText("Add new Admin complete!");
-                    alert.show();
+                if (flag == 0){
+                    if(taikhoanDao.addData(taikhoanEntity)==1 && adminDao.addData(adminEntity)==1 ) {
+                        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                        alert.setHeaderText("Add new Admin complete!");
+                        alert.show();
+                    }
                 }
+
+                else{
+                        if(taikhoanDao.updateData(taikhoanEntity)==1 && adminDao.updateData(adminEntity)==1 ) {
+                            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                            alert.setHeaderText("Update Admin complete!");
+                            alert.show();
+                        }
+                    }
+
             }catch (Exception e){
-                System.out.println(e);
+                Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                alert.setHeaderText(e.toString());
+                alert.show();
             }
         }
     }
@@ -219,6 +240,24 @@ public class ct_addeditAdmin implements Initializable{
         }
     }
 
+    void setInformation_Admin(AdminEntity admin) throws ParseException {
+        txt_maAd.setText(admin.getMaAd());
+        txt_tenAd.setText(admin.getTenAd());
+        txt_ngaysinh.setText(convertTimeStamptoDate(admin.getNgaysinh()));
+        txt_us.setText(admin.getTaikhoanByUsername().getUsername());
+        txt_pw.setText(admin.getTaikhoanByUsername().getPasswords());
+        if(admin.getTaikhoanByUsername().getTrangthai()==true){
+            rdb_active.setSelected(true);
+        }else{
+            rdb_disable.setSelected(true);
+        }
+        cbo_rule.getSelectionModel().select(0);
+
+
+        if (admin.getImgAd().equals("")==false)
+            setImg(new Image(admin.getImgAd()));
+        flag =1;
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
