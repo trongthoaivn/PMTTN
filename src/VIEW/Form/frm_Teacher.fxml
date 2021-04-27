@@ -7,12 +7,12 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="562.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.ct_Admin">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="562.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.ct_Teacher">
    <children>
-      <TableView fx:id="tbv_Admin" layoutX="11.0" layoutY="90.0" onMouseClicked="#SelectAdmin" prefHeight="458.0" prefWidth="658.0" stylesheets="@../CSS/Admin.css">
+      <TableView fx:id="tbv_Teacher" layoutX="11.0" layoutY="90.0" onMouseClicked="#SelectTeacher" prefHeight="458.0" prefWidth="658.0" stylesheets="@../CSS/Admin.css">
          <columns>
-            <TableColumn prefWidth="110.4000244140625" text="Mã Admin" />
-            <TableColumn prefWidth="211.20001220703125" text="Tên Admin" />
+            <TableColumn prefWidth="110.4000244140625" text="Mã giáo viên" />
+            <TableColumn prefWidth="211.20001220703125" text="Tên giáo viên" />
             <TableColumn prefWidth="92.79998779296875" text="Ngày Sinh" />
             <TableColumn fx:id="image" prefWidth="64.79998779296875" text="Hình ảnh" />
             <TableColumn fx:id="username" prefWidth="95.199951171875" text="Tài khoản" />
@@ -22,7 +22,7 @@
             <Tooltip text="Empty Tooltip" />
          </tooltip>
       </TableView>
-      <Label layoutX="165.0" layoutY="23.0" text="DANH SÁCH ADMIN" textFill="#5c079c">
+      <Label layoutX="134.0" layoutY="22.0" text="DANH SÁCH Giáo viên" textFill="#5c079c">
          <font>
             <Font name="Felix Titling" size="36.0" />
          </font>

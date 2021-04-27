@@ -115,8 +115,10 @@ public class ct_Main implements Initializable,Runnable {
 
     AdminEntity admin = new AdminEntity();
     Pane  frm_admin = null;
+    Pane  frm_teacher = null;
     Thread thread;
     private ct_Admin ControllerAdmin;
+    private ct_Teacher ControllerTeacher;
 
     @FXML
     void exit(ActionEvent event) {
@@ -146,15 +148,22 @@ public class ct_Main implements Initializable,Runnable {
     void editRow(ActionEvent event) throws IOException, ParseException {
         if(pane_Center.getCenter() ==frm_admin){
             ControllerAdmin.EditAdmin();
-            btn_refresh.fire();
-            btn_refresh.fire();
         }
+        if(pane_Center.getCenter() ==frm_teacher){
+            ControllerTeacher.EditTeacher();
+        }
+
     }
 
     @FXML
     void deleteRow(ActionEvent event) throws IOException {
         if(pane_Center.getCenter() ==frm_admin){
             ControllerAdmin.DeleteAdmin();
+            btn_refresh.fire();
+            btn_refresh.fire();
+        }
+        if(pane_Center.getCenter() ==frm_teacher){
+            ControllerTeacher.DeleteTeacher();
             btn_refresh.fire();
             btn_refresh.fire();
         }
@@ -172,6 +181,17 @@ public class ct_Main implements Initializable,Runnable {
                 stage.show();
             }
         }
+        if(pane_Center.getCenter() ==frm_teacher){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../VIEW/Form/fadd_edit_Teacher.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initStyle(StageStyle.UTILITY);
+            if(stage.isShowing()==false){
+                stage.show();
+            }
+        }
+
     }
 
     @FXML
@@ -185,6 +205,16 @@ public class ct_Main implements Initializable,Runnable {
                 System.out.println(e);
             }
         }
+        if(pane_Center.getCenter() ==frm_teacher){
+            try {
+                btn_teacher.fire();
+                btn_teacher.fire();
+
+            }catch (Exception e){
+                System.out.println(e);
+            }
+        }
+
     }
 
     @FXML
@@ -213,7 +243,16 @@ public class ct_Main implements Initializable,Runnable {
     }
 
     @FXML
-    void load_frm_teacher(ActionEvent event) {
+    void load_frm_teacher(ActionEvent event) throws IOException {
+        if (pane_Center.getCenter()!= frm_teacher || pane_Center.getCenter()==null){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/VIEW//Form/frm_Teacher.fxml"));
+            frm_teacher = (Pane) loader.load();
+
+            ControllerTeacher =loader.getController();
+            pane_Center.setCenter(frm_teacher);
+        }else{
+            pane_Center.setCenter(null);
+        }
 
     }
 

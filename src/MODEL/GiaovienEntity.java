@@ -2,6 +2,7 @@ package MODEL;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Timestamp;
 import java.util.Collection;
 import java.util.Objects;
 
@@ -11,7 +12,7 @@ public class GiaovienEntity {
 //    private Long id;
     private String maGv;
     private String tenGv;
-    private Date ngaysinh;
+    private Timestamp ngaysinh;
     private String imgGv;
     private TaikhoanEntity taikhoanByUsername;
     private Collection<KythiEntity> kythisByMaGv;
@@ -25,6 +26,19 @@ public class GiaovienEntity {
 //    public void setId(Long id) {
 //        this.id = id;
 //    }
+
+
+    public GiaovienEntity() {
+    }
+
+    public GiaovienEntity(String maGv, String tenGv, Timestamp ngaysinh, String imgGv, TaikhoanEntity taikhoanByUsername) {
+        this.maGv = maGv;
+        this.tenGv = tenGv;
+        this.ngaysinh = ngaysinh;
+        this.imgGv = imgGv;
+        this.taikhoanByUsername = taikhoanByUsername;
+
+    }
 
     @Id
     @Column(name = "ma_GV")
@@ -48,11 +62,11 @@ public class GiaovienEntity {
 
     @Basic
     @Column(name = "ngaysinh")
-    public Date getNgaysinh() {
+    public Timestamp getNgaysinh() {
         return ngaysinh;
     }
 
-    public void setNgaysinh(Date ngaysinh) {
+    public void setNgaysinh(Timestamp ngaysinh) {
         this.ngaysinh = ngaysinh;
     }
 

@@ -102,7 +102,7 @@
             </Button>
          </children>
          <effect>
-            <DropShadow />
+            <DropShadow blurType="ONE_PASS_BOX" />
          </effect>
       </Pane>
    </right>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="258.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.popup_Teacher">
+   <children>
+      <ImageView fx:id="img_T" fitHeight="184.0" fitWidth="203.0" layoutX="23.0" layoutY="28.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../Icon/student.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="227.0" layoutY="36.0" text="Mã giáo viên :" />
+      <Label layoutX="225.0" layoutY="72.0" text="Tên giáo viên :" />
+      <Label layoutX="225.0" layoutY="108.0" text="Ngày sinh :" />
+      <Label layoutX="225.0" layoutY="142.0" text="Tài khoản :" />
+      <Label layoutX="225.0" layoutY="173.0" text="Mật khẩu :" />
+      <Label fx:id="txt_maT" layoutX="334.0" layoutY="36.0" prefHeight="18.0" prefWidth="244.0" text="Label" />
+      <Label fx:id="txt_tenT" layoutX="334.0" layoutY="72.0" prefHeight="18.0" prefWidth="244.0" text="Label" />
+      <Label fx:id="txt_ngaysinh" layoutX="335.0" layoutY="108.0" prefHeight="18.0" prefWidth="244.0" text="Label" />
+      <Label fx:id="txt_us" layoutX="335.0" layoutY="142.0" prefHeight="18.0" prefWidth="244.0" text="Label" />
+      <Label fx:id="txt_pw" layoutX="335.0" layoutY="173.0" prefHeight="18.0" prefWidth="244.0" text="Label" />
+   </children>
+</AnchorPane>

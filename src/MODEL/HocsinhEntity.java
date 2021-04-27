@@ -2,6 +2,8 @@ package MODEL;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.sql.Time;
+import java.sql.Timestamp;
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
@@ -12,8 +14,8 @@ public class HocsinhEntity {
 //    private Long id;
     private String maHs;
     private String tenHs;
-    private Date ngaysinh;
-    private byte[] imgHs;
+    private Timestamp ngaysinh;
+    private String imgHs;
     private LopEntity lopByMaLop;
     private TaikhoanEntity taikhoanByUsername;
     private Collection<KetquaEntity> ketquasByMaHs;
@@ -51,21 +53,21 @@ public class HocsinhEntity {
 
     @Basic
     @Column(name = "ngaysinh")
-    public Date getNgaysinh() {
+    public Timestamp getNgaysinh() {
         return ngaysinh;
     }
 
-    public void setNgaysinh(Date ngaysinh) {
+    public void setNgaysinh(Timestamp ngaysinh) {
         this.ngaysinh = ngaysinh;
     }
 
     @Basic
     @Column(name = "img_HS")
-    public byte[] getImgHs() {
+    public String getImgHs() {
         return imgHs;
     }
 
-    public void setImgHs(byte[] imgHs) {
+    public void setImgHs(String imgHs) {
         this.imgHs = imgHs;
     }
 
@@ -74,14 +76,12 @@ public class HocsinhEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         HocsinhEntity that = (HocsinhEntity) o;
-        return Objects.equals(maHs, that.maHs) && Objects.equals(tenHs, that.tenHs) && Objects.equals(ngaysinh, that.ngaysinh) && Arrays.equals(imgHs, that.imgHs);
+        return Objects.equals(maHs, that.maHs) && Objects.equals(tenHs, that.tenHs) && Objects.equals(ngaysinh, that.ngaysinh) && Objects.equals(imgHs, that.imgHs);
     }
 
     @Override
     public int hashCode() {
-        int result = Objects.hash(maHs, tenHs, ngaysinh);
-        result = 31 * result + Arrays.hashCode(imgHs);
-        return result;
+        return Objects.hash(maHs, tenHs, ngaysinh, imgHs);
     }
 
     @ManyToOne
