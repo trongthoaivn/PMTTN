@@ -31,6 +31,18 @@ public class HocsinhEntity {
 //        this.id = id;
 //    }
 
+
+    public HocsinhEntity(String maHs, String tenHs, Timestamp ngaysinh, String imgHs, TaikhoanEntity taikhoanByUsername) {
+        this.maHs = maHs;
+        this.tenHs = tenHs;
+        this.ngaysinh = ngaysinh;
+        this.imgHs = imgHs;
+        this.taikhoanByUsername = taikhoanByUsername;
+    }
+
+    public HocsinhEntity() {
+    }
+
     @Id
     @Column(name = "ma_HS")
     public String getMaHs() {

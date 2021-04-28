@@ -259,7 +259,7 @@
 1429580131|||0|execute|G
 1429580131|||2|execute|D
 </Grants>
-      <IntrospectionTimestamp>2021-04-28.05:32:06.593</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2021-04-28.16:33:46.607</IntrospectionTimestamp>
       <Current>1</Current>
       <DescriptionsCheckSum>13489306982</DescriptionsCheckSum>
     </schema>
@@ -373,14 +373,14 @@
       <ModifiedTimestamp>2021-04-28.05:30:13.563</ModifiedTimestamp>
     </table>
     <table id="64" parent="42" name="Hocsinh">
-      <ObjectId>1893581784</ObjectId>
-      <CreatedTimestamp>2021-04-02.19:45:53.040</CreatedTimestamp>
-      <ModifiedTimestamp>2021-04-28.05:30:30.753</ModifiedTimestamp>
+      <ObjectId>978102525</ObjectId>
+      <CreatedTimestamp>2021-04-28.05:36:33.537</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-28.05:36:34.050</ModifiedTimestamp>
     </table>
     <table id="65" parent="42" name="Ketqua">
       <ObjectId>725577623</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:03.897</CreatedTimestamp>
-      <ModifiedTimestamp>2021-04-02.19:45:53.243</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-04-28.05:36:34.053</ModifiedTimestamp>
     </table>
     <table id="66" parent="42" name="Khoi">
       <ObjectId>789577851</ObjectId>
@@ -390,12 +390,12 @@
     <table id="67" parent="42" name="Kythi">
       <ObjectId>693577509</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:03.887</CreatedTimestamp>
-      <ModifiedTimestamp>2021-04-12.15:43:36.970</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-04-28.05:36:33.960</ModifiedTimestamp>
     </table>
     <table id="68" parent="42" name="Lop">
       <ObjectId>821577965</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:03.917</CreatedTimestamp>
-      <ModifiedTimestamp>2021-04-02.19:45:53.063</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-04-28.05:36:33.657</ModifiedTimestamp>
     </table>
     <table id="69" parent="42" name="Made">
       <ObjectId>629577281</ObjectId>
@@ -414,9 +414,8 @@
     </table>
     <table id="72" parent="42" name="Taikhoan">
       <ObjectId>1845581613</ObjectId>
-      <Outdated>1</Outdated>
       <CreatedTimestamp>2021-04-02.19:45:52.433</CreatedTimestamp>
-      <ModifiedTimestamp>2021-04-02.19:45:53.860</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-04-28.05:36:33.657</ModifiedTimestamp>
     </table>
     <table id="73" parent="42" name="sysdiagrams">
       <ObjectId>1285579618</ObjectId>
@@ -801,7 +800,7 @@ ma_KQ</ColNames>
     </column>
     <column id="136" parent="64" name="img_HS">
       <Position>4</Position>
-      <DataType>image|0s</DataType>
+      <DataType>varchar(200 char)|0s</DataType>
     </column>
     <column id="137" parent="64" name="ma_Lop">
       <Position>5</Position>
@@ -827,17 +826,17 @@ ma_KQ</ColNames>
       <ColNames>username</ColNames>
     </index>
     <key id="142" parent="64" name="PK_Hocsinh">
-      <ObjectId>1909581841</ObjectId>
-      <CreatedTimestamp>2021-04-02.19:45:53.063</CreatedTimestamp>
-      <ModifiedTimestamp>2021-04-02.19:45:53.063</ModifiedTimestamp>
+      <ObjectId>994102582</ObjectId>
+      <CreatedTimestamp>2021-04-28.05:36:33.653</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-28.05:36:33.653</ModifiedTimestamp>
       <ColNames>ma_HS</ColNames>
       <UnderlyingIndexName>PK_Hocsinh</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="143" parent="64" name="HS_Lop">
-      <ObjectId>1925581898</ObjectId>
-      <CreatedTimestamp>2021-04-02.19:45:53.063</CreatedTimestamp>
-      <ModifiedTimestamp>2021-04-02.19:45:53.063</ModifiedTimestamp>
+      <ObjectId>1010102639</ObjectId>
+      <CreatedTimestamp>2021-04-28.05:36:33.657</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-28.05:36:33.657</ModifiedTimestamp>
       <ColNames>ma_Lop</ColNames>
       <RefTableId>821577965</RefTableId>
       <RefTableName>Lop</RefTableName>
@@ -845,9 +844,9 @@ ma_KQ</ColNames>
       <RefColNames>ma_Lop</RefColNames>
     </foreign-key>
     <foreign-key id="144" parent="64" name="HS_TK">
-      <ObjectId>1941581955</ObjectId>
-      <CreatedTimestamp>2021-04-02.19:45:53.063</CreatedTimestamp>
-      <ModifiedTimestamp>2021-04-02.19:45:53.063</ModifiedTimestamp>
+      <ObjectId>1026102696</ObjectId>
+      <CreatedTimestamp>2021-04-28.05:36:33.657</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-28.05:36:33.657</ModifiedTimestamp>
       <ColNames>username</ColNames>
       <RefTableId>1845581613</RefTableId>
       <RefTableName>Taikhoan</RefTableName>
@@ -912,11 +911,11 @@ ma_KQ</ColNames>
       <RefColNames>ma_KT</RefColNames>
     </foreign-key>
     <foreign-key id="156" parent="65" name="KQ_HS">
-      <ObjectId>1957582012</ObjectId>
-      <CreatedTimestamp>2021-04-02.19:45:53.240</CreatedTimestamp>
-      <ModifiedTimestamp>2021-04-02.19:45:53.240</ModifiedTimestamp>
+      <ObjectId>1058102810</ObjectId>
+      <CreatedTimestamp>2021-04-28.05:36:34.050</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-28.05:36:34.050</ModifiedTimestamp>
       <ColNames>ma_HS</ColNames>
-      <RefTableId>1893581784</RefTableId>
+      <RefTableId>978102525</RefTableId>
       <RefTableName>Hocsinh</RefTableName>
       <RefKeyName>PK_Hocsinh</RefKeyName>
       <RefColNames>ma_HS</RefColNames>
@@ -1032,11 +1031,11 @@ ma_KQ</ColNames>
       <RefColNames>ma_GV</RefColNames>
     </foreign-key>
     <foreign-key id="178" parent="67" name="KT_HS">
-      <ObjectId>2037582297</ObjectId>
-      <CreatedTimestamp>2021-04-02.19:45:53.623</CreatedTimestamp>
-      <ModifiedTimestamp>2021-04-02.19:45:53.623</ModifiedTimestamp>
+      <ObjectId>1042102753</ObjectId>
+      <CreatedTimestamp>2021-04-28.05:36:33.957</CreatedTimestamp>
+      <ModifiedTimestamp>2021-04-28.05:36:33.957</ModifiedTimestamp>
       <ColNames>ma_HS</ColNames>
-      <RefTableId>1893581784</RefTableId>
+      <RefTableId>978102525</RefTableId>
       <RefTableName>Hocsinh</RefTableName>
       <RefKeyName>PK_Hocsinh</RefKeyName>
       <RefColNames>ma_HS</RefColNames>

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.Tooltip?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="562.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.ct_Student">
+   <children>
+      <TableView fx:id="tbv_Student" layoutX="11.0" layoutY="90.0" onMouseClicked="#SelectStudent" prefHeight="458.0" prefWidth="658.0" stylesheets="@../CSS/Admin.css">
+         <columns>
+            <TableColumn prefWidth="110.4000244140625" text="Mã học sinh" />
+            <TableColumn prefWidth="211.20001220703125" text="Tên học sinh" />
+            <TableColumn prefWidth="92.79998779296875" text="Ngày Sinh" />
+            <TableColumn fx:id="image" prefWidth="64.79998779296875" text="Hình ảnh" />
+            <TableColumn fx:id="username" prefWidth="95.199951171875" text="Tài khoản" />
+            <TableColumn fx:id="passwords" prefWidth="85.60009765625" text="Mật khẩu" />
+         </columns>
+         <tooltip>
+            <Tooltip text="Empty Tooltip" />
+         </tooltip>
+      </TableView>
+      <Label layoutX="140.0" layoutY="23.0" text="DANH SÁCH HỌC SINH" textFill="#5c079c">
+         <font>
+            <Font name="Felix Titling" size="36.0" />
+         </font>
+      </Label>
+   </children>
+</Pane>

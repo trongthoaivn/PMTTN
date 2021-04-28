@@ -116,9 +116,11 @@ public class ct_Main implements Initializable,Runnable {
     AdminEntity admin = new AdminEntity();
     Pane  frm_admin = null;
     Pane  frm_teacher = null;
+    Pane  frm_student = null;
     Thread thread;
     private ct_Admin ControllerAdmin;
     private ct_Teacher ControllerTeacher;
+    private ct_Student ControllerStudent;
 
     @FXML
     void exit(ActionEvent event) {
@@ -152,6 +154,9 @@ public class ct_Main implements Initializable,Runnable {
         if(pane_Center.getCenter() ==frm_teacher){
             ControllerTeacher.EditTeacher();
         }
+        if(pane_Center.getCenter() ==frm_student){
+            ControllerStudent.EditStudent();
+        }
 
     }
 
@@ -164,6 +169,11 @@ public class ct_Main implements Initializable,Runnable {
         }
         if(pane_Center.getCenter() ==frm_teacher){
             ControllerTeacher.DeleteTeacher();
+            btn_refresh.fire();
+            btn_refresh.fire();
+        }
+        if(pane_Center.getCenter() ==frm_student){
+            ControllerStudent.DeleteStudent();
             btn_refresh.fire();
             btn_refresh.fire();
         }
@@ -183,6 +193,16 @@ public class ct_Main implements Initializable,Runnable {
         }
         if(pane_Center.getCenter() ==frm_teacher){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../VIEW/Form/fadd_edit_Teacher.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initStyle(StageStyle.UTILITY);
+            if(stage.isShowing()==false){
+                stage.show();
+            }
+        }
+        if(pane_Center.getCenter() ==frm_student){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../VIEW/Form/fadd_edit_Student.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -214,6 +234,15 @@ public class ct_Main implements Initializable,Runnable {
                 System.out.println(e);
             }
         }
+        if(pane_Center.getCenter() ==frm_student){
+            try {
+                btn_student.fire();
+                btn_student.fire();
+
+            }catch (Exception e){
+                System.out.println(e);
+            }
+        }
 
     }
 
@@ -238,7 +267,17 @@ public class ct_Main implements Initializable,Runnable {
     }
 
     @FXML
-    void load_frm_student(ActionEvent event) {
+    void load_frm_student(ActionEvent event) throws IOException {
+
+        if (pane_Center.getCenter()!= frm_student || pane_Center.getCenter()==null){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/VIEW//Form/frm_Student.fxml"));
+            frm_student = (Pane) loader.load();
+
+            ControllerStudent =loader.getController();
+            pane_Center.setCenter(frm_student);
+        }else{
+            pane_Center.setCenter(null);
+        }
 
     }
 

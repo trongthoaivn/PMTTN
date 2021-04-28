@@ -55,6 +55,7 @@ public class ct_Admin implements Initializable {
 
     AdminEntity SelectedAd = new AdminEntity();
     TaikhoanEntity SelectedAdacc = new TaikhoanEntity();
+    ObservableList<AdminEntity> adminEntities ;
 
 
     public void EditAdmin() throws IOException, ParseException {
@@ -130,7 +131,7 @@ public class ct_Admin implements Initializable {
     }
 
 
-    ObservableList<AdminEntity> adminEntities ;
+
 
     public void getAdmintoTable(){
         tbv_Admin.getItems().clear();
