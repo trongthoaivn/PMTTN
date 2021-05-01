@@ -1,6 +1,5 @@
 package DAO;
 
-import MODEL.GiaovienEntity;
 import MODEL.HocsinhEntity;
 import UTILITY.hibernateUtil;
 import javafx.collections.FXCollections;

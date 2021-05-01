@@ -117,10 +117,13 @@ public class ct_Main implements Initializable,Runnable {
     Pane  frm_admin = null;
     Pane  frm_teacher = null;
     Pane  frm_student = null;
+    Pane  frm_Exam = null;
     Thread thread;
     private ct_Admin ControllerAdmin;
     private ct_Teacher ControllerTeacher;
     private ct_Student ControllerStudent;
+    private ct_Exam ControllerExam;
+
 
     @FXML
     void exit(ActionEvent event) {
@@ -156,6 +159,9 @@ public class ct_Main implements Initializable,Runnable {
         }
         if(pane_Center.getCenter() ==frm_student){
             ControllerStudent.EditStudent();
+        }
+        if(pane_Center.getCenter() ==frm_Exam){
+            ControllerExam.EditExam();
         }
 
     }
@@ -203,6 +209,16 @@ public class ct_Main implements Initializable,Runnable {
         }
         if(pane_Center.getCenter() ==frm_student){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../VIEW/Form/fadd_edit_Student.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initStyle(StageStyle.UTILITY);
+            if(stage.isShowing()==false){
+                stage.show();
+            }
+        }
+        if(pane_Center.getCenter() ==frm_Exam){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../VIEW/Form/fadd_edit_Exam.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
@@ -271,6 +287,7 @@ public class ct_Main implements Initializable,Runnable {
 
         if (pane_Center.getCenter()!= frm_student || pane_Center.getCenter()==null){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/VIEW//Form/frm_Student.fxml"));
+
             frm_student = (Pane) loader.load();
 
             ControllerStudent =loader.getController();
@@ -296,8 +313,15 @@ public class ct_Main implements Initializable,Runnable {
     }
 
     @FXML
-    void load_frm_test(ActionEvent event) {
-
+    void load_frm_test(ActionEvent event) throws IOException {
+        if (pane_Center.getCenter()!= frm_Exam || pane_Center.getCenter()==null){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/VIEW//Form/frm_Exam.fxml"));
+            frm_Exam = (Pane) loader.load();
+            ControllerExam =loader.getController();
+            pane_Center.setCenter(frm_Exam);
+        }else{
+            pane_Center.setCenter(null);
+        }
     }
 
     @FXML
@@ -371,8 +395,8 @@ public class ct_Main implements Initializable,Runnable {
     public void initialize(URL location, ResourceBundle resources) {
         thread = new Thread(this::setCurrentDate);
         thread.start();
-        border_Menu.setLeft(null);
-        pane_Main.setRight(null);
+//        border_Menu.setLeft(null);
+//        pane_Main.setRight(null);
         adminDao adminDao= new adminDao();
         admin = adminDao.infoAdmin("admin1");
 //        System.out.println(admin.getTenAd());

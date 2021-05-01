@@ -259,7 +259,7 @@
 1429580131|||0|execute|G
 1429580131|||2|execute|D
 </Grants>
-      <IntrospectionTimestamp>2021-04-28.16:33:46.607</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2021-05-02.00:28:32.073</IntrospectionTimestamp>
       <Current>1</Current>
       <DescriptionsCheckSum>13489306982</DescriptionsCheckSum>
     </schema>
@@ -360,12 +360,12 @@
     <table id="61" parent="42" name="Bode">
       <ObjectId>597577167</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:03.860</CreatedTimestamp>
-      <ModifiedTimestamp>2021-03-26.03:20:09.233</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-05-02.00:28:31.713</ModifiedTimestamp>
     </table>
     <table id="62" parent="42" name="Cauhoi">
-      <ObjectId>565577053</ObjectId>
-      <CreatedTimestamp>2021-03-26.03:20:03.850</CreatedTimestamp>
-      <ModifiedTimestamp>2021-03-26.03:20:09.053</ModifiedTimestamp>
+      <ObjectId>1298103665</ObjectId>
+      <CreatedTimestamp>2021-05-01.23:05:01.830</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-01.23:05:02.133</ModifiedTimestamp>
     </table>
     <table id="63" parent="42" name="Giaovien">
       <ObjectId>1973582069</ObjectId>
@@ -606,39 +606,31 @@ ma_KQ</ColNames>
     </column>
     <column id="99" parent="61" name="ten_Bode">
       <Position>2</Position>
-      <DataType>varchar(40 char)|0s</DataType>
+      <DataType>nvarchar(40 char)|0s</DataType>
     </column>
-    <column id="100" parent="61" name="ma_CH">
-      <Position>3</Position>
-      <DataType>int|0s</DataType>
-    </column>
-    <column id="101" parent="61" name="ma_MH">
+    <column id="100" parent="61" name="ma_MH">
       <Position>4</Position>
       <DataType>varchar(10 char)|0s</DataType>
     </column>
-    <column id="102" parent="61" name="ma_KT">
+    <column id="101" parent="61" name="ma_KT">
       <Position>5</Position>
       <DataType>char(10 char)|0s</DataType>
     </column>
-    <index id="103" parent="61" name="PK_Bode">
+    <index id="102" parent="61" name="PK_Bode">
       <Position>1</Position>
       <ColNames>ma_Bode</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <index id="104" parent="61" name="IX_Relationship1">
-      <Position>2</Position>
-      <ColNames>ma_CH</ColNames>
-    </index>
-    <index id="105" parent="61" name="IX_Relationship4">
+    <index id="103" parent="61" name="IX_Relationship4">
       <Position>3</Position>
       <ColNames>ma_MH</ColNames>
     </index>
-    <index id="106" parent="61" name="IX_Relationship26">
+    <index id="104" parent="61" name="IX_Relationship26">
       <Position>4</Position>
       <ColNames>ma_KT</ColNames>
     </index>
-    <key id="107" parent="61" name="PK_Bode">
+    <key id="105" parent="61" name="PK_Bode">
       <ObjectId>613577224</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:03.873</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-26.03:20:03.873</ModifiedTimestamp>
@@ -646,17 +638,7 @@ ma_KQ</ColNames>
       <UnderlyingIndexName>PK_Bode</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="108" parent="61" name="Bode_CH">
-      <ObjectId>1013578649</ObjectId>
-      <CreatedTimestamp>2021-03-26.03:20:09.053</CreatedTimestamp>
-      <ModifiedTimestamp>2021-03-26.03:20:09.053</ModifiedTimestamp>
-      <ColNames>ma_CH</ColNames>
-      <RefTableId>565577053</RefTableId>
-      <RefTableName>Cauhoi</RefTableName>
-      <RefKeyName>PK_Cauhoi</RefKeyName>
-      <RefColNames>ma_CH</RefColNames>
-    </foreign-key>
-    <foreign-key id="109" parent="61" name="NH_Bode">
+    <foreign-key id="106" parent="61" name="NH_Bode">
       <ObjectId>1045578763</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:09.220</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-26.03:20:09.220</ModifiedTimestamp>
@@ -666,7 +648,7 @@ ma_KQ</ColNames>
       <RefKeyName>PK_Monhoc</RefKeyName>
       <RefColNames>ma_MH</RefColNames>
     </foreign-key>
-    <foreign-key id="110" parent="61" name="Bode_KT">
+    <foreign-key id="107" parent="61" name="Bode_KT">
       <ObjectId>1173579219</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:09.233</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-26.03:20:09.233</ModifiedTimestamp>
@@ -676,98 +658,112 @@ ma_KQ</ColNames>
       <RefKeyName>PK_Kythi</RefKeyName>
       <RefColNames>ma_KT</RefColNames>
     </foreign-key>
-    <column id="111" parent="62" name="ma_CH">
+    <column id="108" parent="62" name="ma_CH">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="112" parent="62" name="loai">
+    <column id="109" parent="62" name="ma_Bode">
       <Position>2</Position>
+      <DataType>char(7 char)|0s</DataType>
+    </column>
+    <column id="110" parent="62" name="loai">
+      <Position>3</Position>
       <DataType>bit|0s</DataType>
     </column>
-    <column id="113" parent="62" name="nd_CH">
-      <Position>3</Position>
+    <column id="111" parent="62" name="nd_CH">
+      <Position>4</Position>
       <DataType>nvarchar(200 char)|0s</DataType>
     </column>
-    <column id="114" parent="62" name="img_CH">
-      <Position>4</Position>
-      <DataType>varchar(200 char)|0s</DataType>
-    </column>
-    <column id="115" parent="62" name="aud_CH">
+    <column id="112" parent="62" name="img_CH">
       <Position>5</Position>
       <DataType>varchar(200 char)|0s</DataType>
     </column>
-    <column id="116" parent="62" name="TL_1">
+    <column id="113" parent="62" name="aud_CH">
       <Position>6</Position>
-      <DataType>nvarchar(200 char)|0s</DataType>
+      <DataType>varchar(200 char)|0s</DataType>
     </column>
-    <column id="117" parent="62" name="TL_2">
+    <column id="114" parent="62" name="TL_1">
       <Position>7</Position>
       <DataType>nvarchar(200 char)|0s</DataType>
     </column>
-    <column id="118" parent="62" name="TL_3">
+    <column id="115" parent="62" name="TL_2">
       <Position>8</Position>
       <DataType>nvarchar(200 char)|0s</DataType>
     </column>
-    <column id="119" parent="62" name="TL_4">
+    <column id="116" parent="62" name="TL_3">
       <Position>9</Position>
       <DataType>nvarchar(200 char)|0s</DataType>
     </column>
-    <column id="120" parent="62" name="DA">
+    <column id="117" parent="62" name="TL_4">
       <Position>10</Position>
       <DataType>nvarchar(200 char)|0s</DataType>
     </column>
-    <column id="121" parent="62" name="dokho">
+    <column id="118" parent="62" name="DA">
       <Position>11</Position>
+      <DataType>nvarchar(200 char)|0s</DataType>
+    </column>
+    <column id="119" parent="62" name="dokho">
+      <Position>12</Position>
       <DataType>int|0s</DataType>
     </column>
-    <index id="122" parent="62" name="PK_Cauhoi">
+    <index id="120" parent="62" name="PK_Cauhoi">
       <Position>1</Position>
       <ColNames>ma_CH</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="123" parent="62" name="PK_Cauhoi">
-      <ObjectId>581577110</ObjectId>
-      <CreatedTimestamp>2021-03-26.03:20:03.857</CreatedTimestamp>
-      <ModifiedTimestamp>2021-03-26.03:20:03.857</ModifiedTimestamp>
+    <key id="121" parent="62" name="PK_Cauhoi">
+      <ObjectId>1314103722</ObjectId>
+      <CreatedTimestamp>2021-05-01.23:05:01.960</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-01.23:05:01.960</ModifiedTimestamp>
       <ColNames>ma_CH</ColNames>
       <UnderlyingIndexName>PK_Cauhoi</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="124" parent="63" name="ma_GV">
+    <foreign-key id="122" parent="62" name="FK_Cauhoi_Bode">
+      <ObjectId>1330103779</ObjectId>
+      <CreatedTimestamp>2021-05-01.23:05:02.133</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-01.23:05:02.133</ModifiedTimestamp>
+      <ColNames>ma_Bode</ColNames>
+      <RefTableId>597577167</RefTableId>
+      <RefTableName>Bode</RefTableName>
+      <RefKeyName>PK_Bode</RefKeyName>
+      <RefColNames>ma_Bode</RefColNames>
+    </foreign-key>
+    <column id="123" parent="63" name="ma_GV">
       <Position>1</Position>
       <DataType>char(10 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="125" parent="63" name="ten_GV">
+    <column id="124" parent="63" name="ten_GV">
       <Position>2</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="126" parent="63" name="ngaysinh">
+    <column id="125" parent="63" name="ngaysinh">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="127" parent="63" name="img_GV">
+    <column id="126" parent="63" name="img_GV">
       <Position>4</Position>
       <DataType>varchar(200 char)|0s</DataType>
     </column>
-    <column id="128" parent="63" name="username">
+    <column id="127" parent="63" name="username">
       <Position>5</Position>
       <DataType>varchar(10 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="129" parent="63" name="PK_Giaovien">
+    <index id="128" parent="63" name="PK_Giaovien">
       <Position>1</Position>
       <ColNames>ma_GV</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <index id="130" parent="63" name="IX_Relationship8">
+    <index id="129" parent="63" name="IX_Relationship8">
       <Position>2</Position>
       <ColNames>username</ColNames>
     </index>
-    <key id="131" parent="63" name="PK_Giaovien">
+    <key id="130" parent="63" name="PK_Giaovien">
       <ObjectId>18099105</ObjectId>
       <CreatedTimestamp>2021-04-12.15:42:29.583</CreatedTimestamp>
       <ModifiedTimestamp>2021-04-12.15:42:29.583</ModifiedTimestamp>
@@ -775,7 +771,7 @@ ma_KQ</ColNames>
       <UnderlyingIndexName>PK_Giaovien</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="132" parent="63" name="GV_TK">
+    <foreign-key id="131" parent="63" name="GV_TK">
       <ObjectId>2005582183</ObjectId>
       <CreatedTimestamp>2021-04-02.19:45:53.457</CreatedTimestamp>
       <ModifiedTimestamp>2021-04-02.19:45:53.457</ModifiedTimestamp>
@@ -785,47 +781,47 @@ ma_KQ</ColNames>
       <RefKeyName>PK_Taikhoan</RefKeyName>
       <RefColNames>username</RefColNames>
     </foreign-key>
-    <column id="133" parent="64" name="ma_HS">
+    <column id="132" parent="64" name="ma_HS">
       <Position>1</Position>
       <DataType>char(10 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="134" parent="64" name="ten_HS">
+    <column id="133" parent="64" name="ten_HS">
       <Position>2</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="135" parent="64" name="ngaysinh">
+    <column id="134" parent="64" name="ngaysinh">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="136" parent="64" name="img_HS">
+    <column id="135" parent="64" name="img_HS">
       <Position>4</Position>
       <DataType>varchar(200 char)|0s</DataType>
     </column>
-    <column id="137" parent="64" name="ma_Lop">
+    <column id="136" parent="64" name="ma_Lop">
       <Position>5</Position>
       <DataType>varchar(10 char)|0s</DataType>
     </column>
-    <column id="138" parent="64" name="username">
+    <column id="137" parent="64" name="username">
       <Position>6</Position>
       <DataType>varchar(10 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="139" parent="64" name="PK_Hocsinh">
+    <index id="138" parent="64" name="PK_Hocsinh">
       <Position>1</Position>
       <ColNames>ma_HS</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <index id="140" parent="64" name="IX_Relationship10">
+    <index id="139" parent="64" name="IX_Relationship10">
       <Position>2</Position>
       <ColNames>ma_Lop</ColNames>
     </index>
-    <index id="141" parent="64" name="IX_Relationship7">
+    <index id="140" parent="64" name="IX_Relationship7">
       <Position>3</Position>
       <ColNames>username</ColNames>
     </index>
-    <key id="142" parent="64" name="PK_Hocsinh">
+    <key id="141" parent="64" name="PK_Hocsinh">
       <ObjectId>994102582</ObjectId>
       <CreatedTimestamp>2021-04-28.05:36:33.653</CreatedTimestamp>
       <ModifiedTimestamp>2021-04-28.05:36:33.653</ModifiedTimestamp>
@@ -833,7 +829,7 @@ ma_KQ</ColNames>
       <UnderlyingIndexName>PK_Hocsinh</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="143" parent="64" name="HS_Lop">
+    <foreign-key id="142" parent="64" name="HS_Lop">
       <ObjectId>1010102639</ObjectId>
       <CreatedTimestamp>2021-04-28.05:36:33.657</CreatedTimestamp>
       <ModifiedTimestamp>2021-04-28.05:36:33.657</ModifiedTimestamp>
@@ -843,7 +839,7 @@ ma_KQ</ColNames>
       <RefKeyName>PK_Lop</RefKeyName>
       <RefColNames>ma_Lop</RefColNames>
     </foreign-key>
-    <foreign-key id="144" parent="64" name="HS_TK">
+    <foreign-key id="143" parent="64" name="HS_TK">
       <ObjectId>1026102696</ObjectId>
       <CreatedTimestamp>2021-04-28.05:36:33.657</CreatedTimestamp>
       <ModifiedTimestamp>2021-04-28.05:36:33.657</ModifiedTimestamp>
@@ -853,46 +849,46 @@ ma_KQ</ColNames>
       <RefKeyName>PK_Taikhoan</RefKeyName>
       <RefColNames>username</RefColNames>
     </foreign-key>
-    <column id="145" parent="65" name="ma_KQ">
+    <column id="144" parent="65" name="ma_KQ">
       <Position>1</Position>
       <DataType>char(10 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="146" parent="65" name="ngaythi">
+    <column id="145" parent="65" name="ngaythi">
       <Position>2</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="147" parent="65" name="diem">
+    <column id="146" parent="65" name="diem">
       <Position>3</Position>
       <DataType>float|0s</DataType>
     </column>
-    <column id="148" parent="65" name="xeploai">
+    <column id="147" parent="65" name="xeploai">
       <Position>4</Position>
       <DataType>bit|0s</DataType>
     </column>
-    <column id="149" parent="65" name="ma_KT">
+    <column id="148" parent="65" name="ma_KT">
       <Position>5</Position>
       <DataType>char(10 char)|0s</DataType>
     </column>
-    <column id="150" parent="65" name="ma_HS">
+    <column id="149" parent="65" name="ma_HS">
       <Position>6</Position>
       <DataType>char(10 char)|0s</DataType>
     </column>
-    <index id="151" parent="65" name="PK_Ketqua">
+    <index id="150" parent="65" name="PK_Ketqua">
       <Position>1</Position>
       <ColNames>ma_KQ</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <index id="152" parent="65" name="IX_Relationship7">
+    <index id="151" parent="65" name="IX_Relationship7">
       <Position>2</Position>
       <ColNames>ma_KT</ColNames>
     </index>
-    <index id="153" parent="65" name="IX_Relationship27">
+    <index id="152" parent="65" name="IX_Relationship27">
       <Position>3</Position>
       <ColNames>ma_HS</ColNames>
     </index>
-    <key id="154" parent="65" name="PK_Ketqua">
+    <key id="153" parent="65" name="PK_Ketqua">
       <ObjectId>741577680</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:03.900</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-26.03:20:03.900</ModifiedTimestamp>
@@ -900,7 +896,7 @@ ma_KQ</ColNames>
       <UnderlyingIndexName>PK_Ketqua</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="155" parent="65" name="KQ_KT">
+    <foreign-key id="154" parent="65" name="KQ_KT">
       <ObjectId>1093578934</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:09.227</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-26.03:20:09.227</ModifiedTimestamp>
@@ -910,7 +906,7 @@ ma_KQ</ColNames>
       <RefKeyName>PK_Kythi</RefKeyName>
       <RefColNames>ma_KT</RefColNames>
     </foreign-key>
-    <foreign-key id="156" parent="65" name="KQ_HS">
+    <foreign-key id="155" parent="65" name="KQ_HS">
       <ObjectId>1058102810</ObjectId>
       <CreatedTimestamp>2021-04-28.05:36:34.050</CreatedTimestamp>
       <ModifiedTimestamp>2021-04-28.05:36:34.050</ModifiedTimestamp>
@@ -920,22 +916,22 @@ ma_KQ</ColNames>
       <RefKeyName>PK_Hocsinh</RefKeyName>
       <RefColNames>ma_HS</RefColNames>
     </foreign-key>
-    <column id="157" parent="66" name="ma_Khoi">
+    <column id="156" parent="66" name="ma_Khoi">
       <Position>1</Position>
       <DataType>varchar(10 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="158" parent="66" name="ten_Khoi">
+    <column id="157" parent="66" name="ten_Khoi">
       <Position>2</Position>
       <DataType>varchar(5 char)|0s</DataType>
     </column>
-    <index id="159" parent="66" name="PK_Khoi">
+    <index id="158" parent="66" name="PK_Khoi">
       <Position>1</Position>
       <ColNames>ma_Khoi</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="160" parent="66" name="PK_Khoi">
+    <key id="159" parent="66" name="PK_Khoi">
       <ObjectId>805577908</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:03.913</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-26.03:20:03.913</ModifiedTimestamp>
@@ -943,66 +939,66 @@ ma_KQ</ColNames>
       <UnderlyingIndexName>PK_Khoi</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="161" parent="67" name="ma_KT">
+    <column id="160" parent="67" name="ma_KT">
       <Position>1</Position>
       <DataType>char(10 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="162" parent="67" name="ten_KT">
+    <column id="161" parent="67" name="ten_KT">
       <Position>2</Position>
       <DataType>nvarchar(50 char)|0s</DataType>
     </column>
-    <column id="163" parent="67" name="ngaythi">
+    <column id="162" parent="67" name="ngaythi">
       <Position>3</Position>
       <DataType>datetime|0s</DataType>
     </column>
-    <column id="164" parent="67" name="tg_Lambai">
+    <column id="163" parent="67" name="tg_Lambai">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="165" parent="67" name="tg_Batdau">
+    <column id="164" parent="67" name="tg_Batdau">
       <Position>5</Position>
       <DataType>time|0s</DataType>
     </column>
-    <column id="166" parent="67" name="tg_Ketthuc">
+    <column id="165" parent="67" name="tg_Ketthuc">
       <Position>6</Position>
       <DataType>time|0s</DataType>
     </column>
-    <column id="167" parent="67" name="sl_CH">
+    <column id="166" parent="67" name="sl_CH">
       <Position>7</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="168" parent="67" name="ma_MH">
+    <column id="167" parent="67" name="ma_MH">
       <Position>8</Position>
       <DataType>varchar(10 char)|0s</DataType>
     </column>
-    <column id="169" parent="67" name="ma_GV">
+    <column id="168" parent="67" name="ma_GV">
       <Position>9</Position>
       <DataType>char(10 char)|0s</DataType>
     </column>
-    <column id="170" parent="67" name="ma_HS">
+    <column id="169" parent="67" name="ma_HS">
       <Position>10</Position>
       <DataType>char(10 char)|0s</DataType>
     </column>
-    <index id="171" parent="67" name="PK_Kythi">
+    <index id="170" parent="67" name="PK_Kythi">
       <Position>1</Position>
       <ColNames>ma_KT</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <index id="172" parent="67" name="IX_Relationship5">
+    <index id="171" parent="67" name="IX_Relationship5">
       <Position>2</Position>
       <ColNames>ma_MH</ColNames>
     </index>
-    <index id="173" parent="67" name="IX_Relationship6">
+    <index id="172" parent="67" name="IX_Relationship6">
       <Position>3</Position>
       <ColNames>ma_GV</ColNames>
     </index>
-    <index id="174" parent="67" name="IX_Relationship8">
+    <index id="173" parent="67" name="IX_Relationship8">
       <Position>4</Position>
       <ColNames>ma_HS</ColNames>
     </index>
-    <key id="175" parent="67" name="PK_Kythi">
+    <key id="174" parent="67" name="PK_Kythi">
       <ObjectId>709577566</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:03.890</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-26.03:20:03.890</ModifiedTimestamp>
@@ -1010,7 +1006,7 @@ ma_KQ</ColNames>
       <UnderlyingIndexName>PK_Kythi</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="176" parent="67" name="MH_KT">
+    <foreign-key id="175" parent="67" name="MH_KT">
       <ObjectId>1061578820</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:09.220</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-26.03:20:09.220</ModifiedTimestamp>
@@ -1020,7 +1016,7 @@ ma_KQ</ColNames>
       <RefKeyName>PK_Monhoc</RefKeyName>
       <RefColNames>ma_MH</RefColNames>
     </foreign-key>
-    <foreign-key id="177" parent="67" name="FK_Kythi_Giaovien">
+    <foreign-key id="176" parent="67" name="FK_Kythi_Giaovien">
       <ObjectId>34099162</ObjectId>
       <CreatedTimestamp>2021-04-12.15:43:36.967</CreatedTimestamp>
       <ModifiedTimestamp>2021-04-12.15:43:36.967</ModifiedTimestamp>
@@ -1030,7 +1026,7 @@ ma_KQ</ColNames>
       <RefKeyName>PK_Giaovien</RefKeyName>
       <RefColNames>ma_GV</RefColNames>
     </foreign-key>
-    <foreign-key id="178" parent="67" name="KT_HS">
+    <foreign-key id="177" parent="67" name="KT_HS">
       <ObjectId>1042102753</ObjectId>
       <CreatedTimestamp>2021-04-28.05:36:33.957</CreatedTimestamp>
       <ModifiedTimestamp>2021-04-28.05:36:33.957</ModifiedTimestamp>
@@ -1040,30 +1036,30 @@ ma_KQ</ColNames>
       <RefKeyName>PK_Hocsinh</RefKeyName>
       <RefColNames>ma_HS</RefColNames>
     </foreign-key>
-    <column id="179" parent="68" name="ma_Lop">
+    <column id="178" parent="68" name="ma_Lop">
       <Position>1</Position>
       <DataType>varchar(10 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="180" parent="68" name="ten_Lop">
+    <column id="179" parent="68" name="ten_Lop">
       <Position>2</Position>
       <DataType>varchar(5 char)|0s</DataType>
     </column>
-    <column id="181" parent="68" name="ma_Khoi">
+    <column id="180" parent="68" name="ma_Khoi">
       <Position>3</Position>
       <DataType>varchar(10 char)|0s</DataType>
     </column>
-    <index id="182" parent="68" name="PK_Lop">
+    <index id="181" parent="68" name="PK_Lop">
       <Position>1</Position>
       <ColNames>ma_Lop</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <index id="183" parent="68" name="IX_Relationship9">
+    <index id="182" parent="68" name="IX_Relationship9">
       <Position>2</Position>
       <ColNames>ma_Khoi</ColNames>
     </index>
-    <key id="184" parent="68" name="PK_Lop">
+    <key id="183" parent="68" name="PK_Lop">
       <ObjectId>837578022</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:03.920</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-26.03:20:03.920</ModifiedTimestamp>
@@ -1071,7 +1067,7 @@ ma_KQ</ColNames>
       <UnderlyingIndexName>PK_Lop</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="185" parent="68" name="Khoi_Lop">
+    <foreign-key id="184" parent="68" name="Khoi_Lop">
       <ObjectId>1125579048</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:09.230</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-26.03:20:09.230</ModifiedTimestamp>
@@ -1081,34 +1077,34 @@ ma_KQ</ColNames>
       <RefKeyName>PK_Khoi</RefKeyName>
       <RefColNames>ma_Khoi</RefColNames>
     </foreign-key>
-    <column id="186" parent="69" name="ma_De">
+    <column id="185" parent="69" name="ma_De">
       <Position>1</Position>
       <DataType>char(3 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="187" parent="69" name="ten_Made">
+    <column id="186" parent="69" name="ten_Made">
       <Position>2</Position>
       <DataType>char(3 char)|0s</DataType>
     </column>
-    <column id="188" parent="69" name="ma_CHde">
+    <column id="187" parent="69" name="ma_CHde">
       <Position>3</Position>
       <DataType>varchar(300 char)|0s</DataType>
     </column>
-    <column id="189" parent="69" name="ma_Bode">
+    <column id="188" parent="69" name="ma_Bode">
       <Position>4</Position>
       <DataType>char(7 char)|0s</DataType>
     </column>
-    <index id="190" parent="69" name="PK_Made">
+    <index id="189" parent="69" name="PK_Made">
       <Position>1</Position>
       <ColNames>ma_De</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <index id="191" parent="69" name="IX_Relationship3">
+    <index id="190" parent="69" name="IX_Relationship3">
       <Position>2</Position>
       <ColNames>ma_Bode</ColNames>
     </index>
-    <key id="192" parent="69" name="PK_Made">
+    <key id="191" parent="69" name="PK_Made">
       <ObjectId>645577338</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:03.880</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-26.03:20:03.880</ModifiedTimestamp>
@@ -1116,7 +1112,7 @@ ma_KQ</ColNames>
       <UnderlyingIndexName>PK_Made</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="193" parent="69" name="MH_Made">
+    <foreign-key id="192" parent="69" name="MH_Made">
       <ObjectId>1029578706</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:09.217</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-26.03:20:09.217</ModifiedTimestamp>
@@ -1126,22 +1122,22 @@ ma_KQ</ColNames>
       <RefKeyName>PK_Bode</RefKeyName>
       <RefColNames>ma_Bode</RefColNames>
     </foreign-key>
-    <column id="194" parent="70" name="ma_MH">
+    <column id="193" parent="70" name="ma_MH">
       <Position>1</Position>
       <DataType>varchar(10 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="195" parent="70" name="ten_MH">
+    <column id="194" parent="70" name="ten_MH">
       <Position>2</Position>
       <DataType>nvarchar(40 char)|0s</DataType>
     </column>
-    <index id="196" parent="70" name="PK_Monhoc">
+    <index id="195" parent="70" name="PK_Monhoc">
       <Position>1</Position>
       <ColNames>ma_MH</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="197" parent="70" name="PK_Monhoc">
+    <key id="196" parent="70" name="PK_Monhoc">
       <ObjectId>677577452</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:03.883</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-26.03:20:03.883</ModifiedTimestamp>
@@ -1149,22 +1145,22 @@ ma_KQ</ColNames>
       <UnderlyingIndexName>PK_Monhoc</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="198" parent="71" name="ma_Quyen">
+    <column id="197" parent="71" name="ma_Quyen">
       <Position>1</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="199" parent="71" name="ten_Quyen">
+    <column id="198" parent="71" name="ten_Quyen">
       <Position>2</Position>
       <DataType>char(10 char)|0s</DataType>
     </column>
-    <index id="200" parent="71" name="PK_Quyen">
+    <index id="199" parent="71" name="PK_Quyen">
       <Position>1</Position>
       <ColNames>ma_Quyen</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <key id="201" parent="71" name="PK_Quyen">
+    <key id="200" parent="71" name="PK_Quyen">
       <ObjectId>1541580530</ObjectId>
       <CreatedTimestamp>2021-03-26.04:21:30.267</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-26.04:21:30.267</ModifiedTimestamp>
@@ -1172,35 +1168,35 @@ ma_KQ</ColNames>
       <UnderlyingIndexName>PK_Quyen</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <column id="202" parent="72" name="username">
+    <column id="201" parent="72" name="username">
       <Position>1</Position>
       <DataType>varchar(10 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="203" parent="72" name="passwords">
+    <column id="202" parent="72" name="passwords">
       <Position>2</Position>
       <DataType>varchar(50 char)|0s</DataType>
     </column>
-    <column id="204" parent="72" name="trangthai">
+    <column id="203" parent="72" name="trangthai">
       <Position>3</Position>
       <DataType>bit|0s</DataType>
     </column>
-    <column id="205" parent="72" name="ma_Quyen">
+    <column id="204" parent="72" name="ma_Quyen">
       <Position>4</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <index id="206" parent="72" name="PK_Taikhoan">
+    <index id="205" parent="72" name="PK_Taikhoan">
       <Position>1</Position>
       <ColNames>username</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <index id="207" parent="72" name="IX_Relationship6">
+    <index id="206" parent="72" name="IX_Relationship6">
       <Position>2</Position>
       <ColNames>ma_Quyen</ColNames>
     </index>
-    <key id="208" parent="72" name="PK_Taikhoan">
+    <key id="207" parent="72" name="PK_Taikhoan">
       <ObjectId>1861581670</ObjectId>
       <CreatedTimestamp>2021-04-02.19:45:52.610</CreatedTimestamp>
       <ModifiedTimestamp>2021-04-02.19:45:52.610</ModifiedTimestamp>
@@ -1208,7 +1204,7 @@ ma_KQ</ColNames>
       <UnderlyingIndexName>PK_Taikhoan</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <foreign-key id="209" parent="72" name="TK_ Quyen">
+    <foreign-key id="208" parent="72" name="TK_ Quyen">
       <ObjectId>1877581727</ObjectId>
       <CreatedTimestamp>2021-04-02.19:45:52.613</CreatedTimestamp>
       <ModifiedTimestamp>2021-04-02.19:45:52.613</ModifiedTimestamp>
@@ -1218,44 +1214,44 @@ ma_KQ</ColNames>
       <RefKeyName>PK_Quyen</RefKeyName>
       <RefColNames>ma_Quyen</RefColNames>
     </foreign-key>
-    <column id="210" parent="73" name="name">
+    <column id="209" parent="73" name="name">
       <Position>1</Position>
       <DataType>sysname|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="211" parent="73" name="principal_id">
+    <column id="210" parent="73" name="principal_id">
       <Position>2</Position>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="212" parent="73" name="diagram_id">
+    <column id="211" parent="73" name="diagram_id">
       <Position>3</Position>
       <SequenceIdentity>1</SequenceIdentity>
       <DataType>int|0s</DataType>
       <NotNull>1</NotNull>
     </column>
-    <column id="213" parent="73" name="version">
+    <column id="212" parent="73" name="version">
       <Position>4</Position>
       <DataType>int|0s</DataType>
     </column>
-    <column id="214" parent="73" name="definition">
+    <column id="213" parent="73" name="definition">
       <Position>5</Position>
       <DataType>varbinary(max)|0s</DataType>
     </column>
-    <index id="215" parent="73" name="PK__sysdiagr__C2B05B614CE21473">
+    <index id="214" parent="73" name="PK__sysdiagr__C2B05B614CE21473">
       <Position>1</Position>
       <NameSurrogate>1</NameSurrogate>
       <ColNames>diagram_id</ColNames>
       <Clustering>1</Clustering>
       <Unique>1</Unique>
     </index>
-    <index id="216" parent="73" name="UK_principal_name">
+    <index id="215" parent="73" name="UK_principal_name">
       <Position>2</Position>
       <ColNames>principal_id
 name</ColNames>
       <Unique>1</Unique>
     </index>
-    <key id="217" parent="73" name="PK__sysdiagr__C2B05B614CE21473">
+    <key id="216" parent="73" name="PK__sysdiagr__C2B05B614CE21473">
       <ObjectId>1301579675</ObjectId>
       <NameSurrogate>1</NameSurrogate>
       <CreatedTimestamp>2021-03-26.03:20:47.773</CreatedTimestamp>
@@ -1264,7 +1260,7 @@ name</ColNames>
       <UnderlyingIndexName>PK__sysdiagr__C2B05B614CE21473</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
-    <key id="218" parent="73" name="UK_principal_name">
+    <key id="217" parent="73" name="UK_principal_name">
       <ObjectId>1317579732</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:47.773</CreatedTimestamp>
       <ModifiedTimestamp>2021-03-26.03:20:47.773</ModifiedTimestamp>
@@ -1272,75 +1268,75 @@ name</ColNames>
 name</ColNames>
       <UnderlyingIndexName>UK_principal_name</UnderlyingIndexName>
     </key>
-    <argument id="219" parent="74">
+    <argument id="218" parent="74">
       <ArgumentDirection>R</ArgumentDirection>
       <DataType>int|0s</DataType>
     </argument>
-    <argument id="220" parent="75" name="@diagramname">
+    <argument id="219" parent="75" name="@diagramname">
       <Position>1</Position>
       <DataType>sysname|0s</DataType>
     </argument>
-    <argument id="221" parent="75" name="@owner_id">
+    <argument id="220" parent="75" name="@owner_id">
       <Position>2</Position>
       <DataType>int|0s</DataType>
     </argument>
-    <argument id="222" parent="75" name="@version">
+    <argument id="221" parent="75" name="@version">
       <Position>3</Position>
       <DataType>int|0s</DataType>
     </argument>
-    <argument id="223" parent="75" name="@definition">
+    <argument id="222" parent="75" name="@definition">
       <Position>4</Position>
       <DataType>varbinary(max)|0s</DataType>
     </argument>
-    <argument id="224" parent="76" name="@diagramname">
+    <argument id="223" parent="76" name="@diagramname">
       <Position>1</Position>
       <DataType>sysname|0s</DataType>
     </argument>
-    <argument id="225" parent="76" name="@owner_id">
+    <argument id="224" parent="76" name="@owner_id">
       <Position>2</Position>
       <DataType>int|0s</DataType>
     </argument>
-    <argument id="226" parent="76" name="@version">
+    <argument id="225" parent="76" name="@version">
       <Position>3</Position>
       <DataType>int|0s</DataType>
     </argument>
-    <argument id="227" parent="76" name="@definition">
+    <argument id="226" parent="76" name="@definition">
       <Position>4</Position>
       <DataType>varbinary(max)|0s</DataType>
     </argument>
-    <argument id="228" parent="77" name="@diagramname">
+    <argument id="227" parent="77" name="@diagramname">
       <Position>1</Position>
       <DataType>sysname|0s</DataType>
     </argument>
-    <argument id="229" parent="77" name="@owner_id">
+    <argument id="228" parent="77" name="@owner_id">
       <Position>2</Position>
       <DataType>int|0s</DataType>
     </argument>
-    <argument id="230" parent="78" name="@diagramname">
+    <argument id="229" parent="78" name="@diagramname">
       <Position>1</Position>
       <DataType>sysname|0s</DataType>
     </argument>
-    <argument id="231" parent="78" name="@owner_id">
+    <argument id="230" parent="78" name="@owner_id">
       <Position>2</Position>
       <DataType>int|0s</DataType>
     </argument>
-    <argument id="232" parent="79" name="@diagramname">
+    <argument id="231" parent="79" name="@diagramname">
       <Position>1</Position>
       <DataType>sysname|0s</DataType>
     </argument>
-    <argument id="233" parent="79" name="@owner_id">
+    <argument id="232" parent="79" name="@owner_id">
       <Position>2</Position>
       <DataType>int|0s</DataType>
     </argument>
-    <argument id="234" parent="80" name="@diagramname">
+    <argument id="233" parent="80" name="@diagramname">
       <Position>1</Position>
       <DataType>sysname|0s</DataType>
     </argument>
-    <argument id="235" parent="80" name="@owner_id">
+    <argument id="234" parent="80" name="@owner_id">
       <Position>2</Position>
       <DataType>int|0s</DataType>
     </argument>
-    <argument id="236" parent="80" name="@new_diagramname">
+    <argument id="235" parent="80" name="@new_diagramname">
       <Position>3</Position>
       <DataType>sysname|0s</DataType>
     </argument>

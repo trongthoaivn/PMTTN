@@ -7,15 +7,24 @@ import java.util.Objects;
 @Entity
 @Table(name = "Bode", schema = "dbo", catalog = "TTN")
 public class BodeEntity {
-//    private Long id;
+    private Long id;
     private String maBode;
     private String tenBode;
-    private CauhoiEntity cauhoiByMaCh;
     private MonhocEntity monhocByMaMh;
     private KythiEntity kythiByMaKt;
+    private Collection<CauhoiEntity> cauhoisByMaBode;
     private Collection<MadeEntity> madesByMaBode;
 
-//    @Id
+    public BodeEntity(String maBode, String tenBode, MonhocEntity monhocByMaMh) {
+        this.maBode = maBode;
+        this.tenBode = tenBode;
+        this.monhocByMaMh = monhocByMaMh;
+    }
+
+    public BodeEntity() {
+    }
+
+    //    @Id
 //    @GeneratedValue
 //    public Long getId() {
 //        return id;
@@ -59,16 +68,6 @@ public class BodeEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "ma_CH", referencedColumnName = "ma_CH")
-    public CauhoiEntity getCauhoiByMaCh() {
-        return cauhoiByMaCh;
-    }
-
-    public void setCauhoiByMaCh(CauhoiEntity cauhoiByMaCh) {
-        this.cauhoiByMaCh = cauhoiByMaCh;
-    }
-
-    @ManyToOne
     @JoinColumn(name = "ma_MH", referencedColumnName = "ma_MH")
     public MonhocEntity getMonhocByMaMh() {
         return monhocByMaMh;
@@ -86,6 +85,15 @@ public class BodeEntity {
 
     public void setKythiByMaKt(KythiEntity kythiByMaKt) {
         this.kythiByMaKt = kythiByMaKt;
+    }
+
+    @OneToMany(mappedBy = "bodeByMaBode")
+    public Collection<CauhoiEntity> getCauhoisByMaBode() {
+        return cauhoisByMaBode;
+    }
+
+    public void setCauhoisByMaBode(Collection<CauhoiEntity> cauhoisByMaBode) {
+        this.cauhoisByMaBode = cauhoisByMaBode;
     }
 
     @OneToMany(mappedBy = "bodeByMaBode")

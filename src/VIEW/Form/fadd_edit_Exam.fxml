@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="237.0" prefWidth="424.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.ct_addeditExam">
+   <children>
+      <Label layoutX="35.0" layoutY="37.0" prefHeight="18.0" prefWidth="94.0" text="Mã bộ đề :" />
+      <TextField fx:id="txt_ListTestID" layoutX="148.0" layoutY="33.0" prefHeight="26.0" prefWidth="212.0" />
+      <Label layoutX="35.0" layoutY="85.0" prefHeight="18.0" prefWidth="94.0" text="Tên bộ đề :" />
+      <TextField fx:id="txt_ListTestname" layoutX="148.0" layoutY="83.0" prefHeight="26.0" prefWidth="212.0" />
+      <Button fx:id="btn_Save_list" layoutX="254.0" layoutY="187.0" mnemonicParsing="false" onAction="#Save_ListTest" text="Save" />
+      <Button layoutX="306.0" layoutY="187.0" mnemonicParsing="false" text="Cancel" />
+      <ComboBox fx:id="cbo_Subject" layoutX="146.0" layoutY="131.0" prefHeight="26.0" prefWidth="212.0" />
+      <Label layoutX="35.0" layoutY="136.0" prefHeight="18.0" prefWidth="94.0" text="Môn học :" />
+   </children>
+</AnchorPane>

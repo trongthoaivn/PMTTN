@@ -1,6 +1,5 @@
 package CONTROLLER;
 
-import DAO.adminDao;
 import DAO.giaovienDao;
 import DAO.taikhoanDao;
 import MODEL.AdminEntity;

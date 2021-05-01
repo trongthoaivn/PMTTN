@@ -7,7 +7,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "Quyen", schema = "dbo", catalog = "TTN")
 public class QuyenEntity {
-//    private Long id;
+    private Long id;
     private int maQuyen;
     private String tenQuyen;
     private Collection<TaikhoanEntity> taikhoansByMaQuyen;
@@ -18,8 +18,8 @@ public class QuyenEntity {
     }
 
     public QuyenEntity() {
-
     }
+
 //    @Id
 //    @GeneratedValue
 //    public Long getId() {

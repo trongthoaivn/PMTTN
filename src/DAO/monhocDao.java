@@ -1,6 +1,6 @@
 package DAO;
 
-import MODEL.GiaovienEntity;
+import MODEL.MonhocEntity;
 import UTILITY.hibernateUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,7 +11,7 @@ import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
-public class giaovienDao implements DaoInterface{
+public class monhocDao implements DaoInterface{
     @Override
     public int addData(Object Data) {
         try {
@@ -58,12 +58,12 @@ public class giaovienDao implements DaoInterface{
     }
 
     @Override
-    public ObservableList<GiaovienEntity> getAll() {
+    public ObservableList<MonhocEntity> getAll() {
         Session s = hibernateUtil.getSession();
         CriteriaBuilder builder = s.getCriteriaBuilder();
-        CriteriaQuery query = builder.createQuery(GiaovienEntity.class);
-        query.from(GiaovienEntity.class);
-        List<GiaovienEntity>  list=  s.createQuery(query).getResultList();
+        CriteriaQuery query = builder.createQuery(MonhocEntity.class);
+        query.from(MonhocEntity.class);
+        List<MonhocEntity>  list=  s.createQuery(query).getResultList();
         s.close();
 
         return FXCollections.observableArrayList(list);

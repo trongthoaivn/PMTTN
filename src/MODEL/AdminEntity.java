@@ -1,14 +1,13 @@
 package MODEL;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.sql.Timestamp;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Admin", schema = "dbo", catalog = "TTN")
-public class AdminEntity implements Serializable {
-//    private Long id;
+public class AdminEntity {
+    private Long id;
     private String maAd;
     private String tenAd;
     private Timestamp ngaysinh;
@@ -23,13 +22,9 @@ public class AdminEntity implements Serializable {
         this.taikhoanByUsername = taikhoanByUsername;
     }
 
-    public AdminEntity(String maAd) {
-        this.maAd = maAd;
-    }
-
     public AdminEntity() {
-
     }
+
 //    @Id
 //    @GeneratedValue
 //    public Long getId() {

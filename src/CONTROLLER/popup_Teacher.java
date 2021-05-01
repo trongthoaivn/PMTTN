@@ -1,6 +1,5 @@
 package CONTROLLER;
 
-import MODEL.AdminEntity;
 import MODEL.GiaovienEntity;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

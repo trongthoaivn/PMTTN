@@ -6,7 +6,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "Made", schema = "dbo", catalog = "TTN")
 public class MadeEntity {
-//    private Long id;
+    private Long id;
     private String maDe;
     private String tenMade;
     private String maCHde;

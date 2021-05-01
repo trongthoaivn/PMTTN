@@ -1,9 +1,7 @@
 package CONTROLLER;
 
-import DAO.adminDao;
 import DAO.hocsinhDao;
 import DAO.taikhoanDao;
-import MODEL.AdminEntity;
 import MODEL.HocsinhEntity;
 import MODEL.TaikhoanEntity;
 import REF.CustomImage;

@@ -7,7 +7,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "Khoi", schema = "dbo", catalog = "TTN")
 public class KhoiEntity {
-//    private Long id;
+    private Long id;
     private String maKhoi;
     private String tenKhoi;
     private Collection<LopEntity> lopsByMaKhoi;

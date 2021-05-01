@@ -1,17 +1,14 @@
 package MODEL;
 
 import javax.persistence.*;
-import java.sql.Date;
-import java.sql.Time;
 import java.sql.Timestamp;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Hocsinh", schema = "dbo", catalog = "TTN")
 public class HocsinhEntity {
-//    private Long id;
+    private Long id;
     private String maHs;
     private String tenHs;
     private Timestamp ngaysinh;
@@ -20,17 +17,6 @@ public class HocsinhEntity {
     private TaikhoanEntity taikhoanByUsername;
     private Collection<KetquaEntity> ketquasByMaHs;
     private Collection<KythiEntity> kythisByMaHs;
-
-//    @Id
-//    @GeneratedValue
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-
 
     public HocsinhEntity(String maHs, String tenHs, Timestamp ngaysinh, String imgHs, TaikhoanEntity taikhoanByUsername) {
         this.maHs = maHs;
@@ -42,6 +28,16 @@ public class HocsinhEntity {
 
     public HocsinhEntity() {
     }
+
+//    @Id
+//    @GeneratedValue
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     @Id
     @Column(name = "ma_HS")

@@ -1,14 +1,13 @@
 package MODEL;
 
 import javax.persistence.*;
-import java.io.Serializable;
 import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Taikhoan", schema = "dbo", catalog = "TTN")
-public class TaikhoanEntity implements Serializable {
-//    private Long id;
+public class TaikhoanEntity {
+    private Long id;
     private String username;
     private String passwords;
     private Boolean trangthai;
@@ -24,15 +23,10 @@ public class TaikhoanEntity implements Serializable {
         this.quyenByMaQuyen = quyenByMaQuyen;
     }
 
-    public TaikhoanEntity(String username) {
-        this.username = username;
-    }
-
     public TaikhoanEntity() {
-
     }
 
-    //    @Id
+//    @Id
 //    @GeneratedValue
 //    public Long getId() {
 //        return id;

@@ -9,7 +9,7 @@ import java.util.Objects;
 @Entity
 @Table(name = "Kythi", schema = "dbo", catalog = "TTN")
 public class KythiEntity {
-//    private Long id;
+    private Long id;
     private String maKt;
     private String tenKt;
     private Timestamp ngaythi;

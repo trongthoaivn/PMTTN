@@ -20,8 +20,6 @@ import javafx.scene.shape.Rectangle;
 import javafx.stage.FileChooser;
 
 
-import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.*;
 import java.io.*;
 import java.net.URL;
 import java.sql.Timestamp;

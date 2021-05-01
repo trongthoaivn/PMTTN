@@ -89,7 +89,7 @@ public class adminDao  implements  DaoInterface<AdminEntity>{
         CriteriaBuilder builder = session.getCriteriaBuilder();
         CriteriaQuery query = builder.createQuery(AdminEntity.class);
         Root<AdminEntity > root = query.from(AdminEntity.class);
-        Join<AdminEntity,TaikhoanEntity> join = root.join("taikhoanByUsername",JoinType.INNER);
+        Join<AdminEntity, TaikhoanEntity> join = root.join("taikhoanByUsername",JoinType.INNER);
         Predicate p = builder.equal(join.get("username"), user);
         List<AdminEntity> admin=  session.createQuery(query.where(p)).getResultList();
         session.close();

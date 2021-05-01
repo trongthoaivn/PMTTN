@@ -1,8 +1,5 @@
 package DAO;
 
-import MODEL.QuyenEntity;
-import MODEL.TaikhoanEntity;
-
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;

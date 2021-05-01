@@ -7,11 +7,20 @@ import java.util.Objects;
 @Entity
 @Table(name = "Monhoc", schema = "dbo", catalog = "TTN")
 public class MonhocEntity {
-//    private Long id;
+    private Long id;
     private String maMh;
     private String tenMh;
     private Collection<BodeEntity> bodesByMaMh;
     private Collection<KythiEntity> kythisByMaMh;
+
+    public MonhocEntity() {
+    }
+
+
+    public MonhocEntity(String maMh, String tenMh) {
+        this.maMh = maMh;
+        this.tenMh = tenMh;
+    }
 
 //    @Id
 //    @GeneratedValue

@@ -2,7 +2,6 @@ package CONTROLLER;
 
 import DAO.giaovienDao;
 import DAO.taikhoanDao;
-import MODEL.AdminEntity;
 import MODEL.GiaovienEntity;
 import MODEL.QuyenEntity;
 import MODEL.TaikhoanEntity;

@@ -1,13 +1,12 @@
 package MODEL;
 
 import javax.persistence.*;
-import java.util.Collection;
 import java.util.Objects;
 
 @Entity
 @Table(name = "Cauhoi", schema = "dbo", catalog = "TTN")
 public class CauhoiEntity {
-//    private Long id;
+    private Long id;
     private int maCh;
     private Boolean loai;
     private String ndCh;
@@ -19,7 +18,7 @@ public class CauhoiEntity {
     private String tl4;
     private String da;
     private Integer dokho;
-    private Collection<BodeEntity> bodesByMaCh;
+    private BodeEntity bodeByMaBode;
 
 //    @Id
 //    @GeneratedValue
@@ -154,12 +153,13 @@ public class CauhoiEntity {
         return Objects.hash(maCh, loai, ndCh, imgCh, audCh, tl1, tl2, tl3, tl4, da, dokho);
     }
 
-    @OneToMany(mappedBy = "cauhoiByMaCh")
-    public Collection<BodeEntity> getBodesByMaCh() {
-        return bodesByMaCh;
+    @ManyToOne
+    @JoinColumn(name = "ma_Bode", referencedColumnName = "ma_Bode")
+    public BodeEntity getBodeByMaBode() {
+        return bodeByMaBode;
     }
 
-    public void setBodesByMaCh(Collection<BodeEntity> bodesByMaCh) {
-        this.bodesByMaCh = bodesByMaCh;
+    public void setBodeByMaBode(BodeEntity bodeByMaBode) {
+        this.bodeByMaBode = bodeByMaBode;
     }
 }

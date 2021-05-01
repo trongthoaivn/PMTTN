@@ -14,15 +14,15 @@ public class BaithiEntity {
     private String maKq;
     private KetquaEntity ketquaByMaKq;
 
-    @Id
-    @GeneratedValue
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+//    @Id
+//    @GeneratedValue
+//    public Long getId() {
+//        return id;
+//    }
+//
+//    public void setId(Long id) {
+//        this.id = id;
+//    }
 
     @Id
     @Column(name = "ma_Baithi")
@@ -55,7 +55,7 @@ public class BaithiEntity {
     }
 
     @Id
-    @Column(name = "ma_KQ" )
+    @Column(name = "ma_KQ")
     public String getMaKq() {
         return maKq;
     }
@@ -78,7 +78,7 @@ public class BaithiEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "ma_KQ", referencedColumnName = "ma_KQ", nullable = false, insertable = false,updatable = false)
+    @JoinColumn(name = "ma_KQ", referencedColumnName = "ma_KQ", nullable = false ,insertable = false,updatable = false)
     public KetquaEntity getKetquaByMaKq() {
         return ketquaByMaKq;
     }
