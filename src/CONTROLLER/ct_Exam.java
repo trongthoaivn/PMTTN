@@ -13,10 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -34,12 +31,32 @@ public class ct_Exam implements Initializable {
     private Button btn_Subject;
 
     @FXML
+    private Button btn_edit_question;
+
+    @FXML
     private ListView<String> lsv_Exam;
 
     BodeEntity recent = new BodeEntity();
     bodeDao dao = new bodeDao();
     ObservableList<BodeEntity> list = dao.getAll();
 
+
+    @FXML
+    void edit_question(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/VIEW/Form/fadd_edit_Question.fxml"));
+        Parent root = loader.load();
+        if(recent.getMaBode()!=null){
+            ct_addeditQuestion addeditQuestion = loader.getController();
+            addeditQuestion.loadQuestion(recent);
+        }
+
+        Stage stage = new Stage();
+        stage.setScene(new Scene(root));
+        stage.initStyle(StageStyle.UTILITY);
+        if(stage.isShowing()==false){
+            stage.show();
+        }
+    }
 
     @FXML
     void selectExam(MouseEvent event) {
@@ -79,7 +96,7 @@ public class ct_Exam implements Initializable {
     }
     public void EditExam() throws IOException {
         System.out.println(recent.getMaBode());
-        if (recent!=null){
+        if (recent.getMaBode()!=null){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../VIEW/Form/fadd_edit_Exam.fxml"));
             Parent root = loader.load();
             ct_addeditExam ct_addeditExam = loader.getController();
@@ -91,14 +108,28 @@ public class ct_Exam implements Initializable {
                 stage.show();
             }
         }
+        loadListTesttoListview();
 
     }
-
+    public void DeleteExam() {
+        if(recent.getMaBode()!= null){
+            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+            alert.setTitle("Delete Test");
+            alert.setHeaderText("Are you sure you want delete "+ recent.getMaBode());
+            Optional<ButtonType> option = alert.showAndWait();
+            if(option.get()==ButtonType.OK && dao.delData(recent)==1) {
+                System.out.println("delete ListTest : 1");
+            }else if (option.get() ==ButtonType.CANCEL){
+                alert.close();
+            }else alert.close();
+        }
+    }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadSubjecttocombobox();
         loadListTesttoListview();
     }
+
 
 
 }

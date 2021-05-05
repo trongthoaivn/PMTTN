@@ -183,6 +183,11 @@ public class ct_Main implements Initializable,Runnable {
             btn_refresh.fire();
             btn_refresh.fire();
         }
+        if(pane_Center.getCenter() ==frm_Exam){
+            ControllerExam.DeleteExam();
+            btn_refresh.fire();
+            btn_refresh.fire();
+        }
     }
 
     @FXML
@@ -254,6 +259,15 @@ public class ct_Main implements Initializable,Runnable {
             try {
                 btn_student.fire();
                 btn_student.fire();
+
+            }catch (Exception e){
+                System.out.println(e);
+            }
+        }
+        if(pane_Center.getCenter() ==frm_Exam){
+            try {
+                btn_test.fire();
+                btn_test.fire();
 
             }catch (Exception e){
                 System.out.println(e);

@@ -30,6 +30,32 @@ public class CauhoiEntity {
 //        this.id = id;
 //    }
 
+
+    public CauhoiEntity(int maCh, Boolean loai, String ndCh, String imgCh, String audCh, String tl1, String tl2, String tl3, String tl4, String da, Integer dokho, BodeEntity bodeByMaBode) {
+        this.maCh = maCh;
+        this.loai = loai;
+        this.ndCh = ndCh;
+        this.imgCh = imgCh;
+        this.audCh = audCh;
+        this.tl1 = tl1;
+        this.tl2 = tl2;
+        this.tl3 = tl3;
+        this.tl4 = tl4;
+        this.da = da;
+        this.dokho = dokho;
+        this.bodeByMaBode = bodeByMaBode;
+    }
+
+    public CauhoiEntity() {
+    }
+
+    @Override
+    public String toString() {
+        return
+                "Câu hỏi : " + maCh ;
+
+    }
+
     @Id
     @Column(name = "ma_CH")
     public int getMaCh() {

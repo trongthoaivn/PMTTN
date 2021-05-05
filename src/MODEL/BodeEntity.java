@@ -21,6 +21,10 @@ public class BodeEntity {
         this.monhocByMaMh = monhocByMaMh;
     }
 
+    public BodeEntity(String maBode) {
+        this.maBode = maBode;
+    }
+
     public BodeEntity() {
     }
 

@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.media.MediaView?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1181.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.ct_addeditQuestion">
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <VBox layoutX="121.0" layoutY="190.0" prefHeight="254.0" prefWidth="507.0">
+               <children>
+                  <HBox fx:id="hbox_A" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <RadioButton mnemonicParsing="false" text="A">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="choice" />
+                           </toggleGroup>
+                        </RadioButton>
+                        <TextArea prefHeight="63.0" prefWidth="438.0" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="hbox_B" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <RadioButton mnemonicParsing="false" text="B" toggleGroup="$choice" />
+                        <TextArea prefHeight="61.0" prefWidth="438.0" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="hbox_C" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <RadioButton mnemonicParsing="false" text="C" toggleGroup="$choice" />
+                        <TextArea prefHeight="61.0" prefWidth="438.0" />
+                     </children>
+                  </HBox>
+                  <HBox fx:id="hbox_D" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
+                     <children>
+                        <RadioButton mnemonicParsing="false" text="D" toggleGroup="$choice" />
+                        <TextArea prefHeight="61.0" prefWidth="438.0" />
+                     </children>
+                  </HBox>
+               </children>
+            </VBox>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="442.0" layoutX="14.0" layoutY="17.0" stroke="BLACK" strokeType="INSIDE" width="959.0" />
+            <TextField editable="false" layoutX="51.0" layoutY="1.0" prefHeight="31.0" prefWidth="82.0" style="-fx-border-color: white;" text="Nội dung">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <TextArea fx:id="txt_Question" layoutX="123.0" layoutY="32.0" prefHeight="135.0" prefWidth="501.0">
+               <font>
+                  <Font size="20.0" />
+               </font></TextArea>
+            <Label layoutX="30.0" layoutY="53.0" prefHeight="21.0" prefWidth="71.0" text="Câu hỏi :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="120.0" fitWidth="200.0" layoutX="744.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true" />
+            <MediaView fitHeight="120.0" fitWidth="200.0" layoutX="744.0" layoutY="165.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="120.0" layoutX="744.0" layoutY="32.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="120.0" layoutX="744.0" layoutY="165.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+            <Label layoutX="645.0" layoutY="54.0" prefHeight="21.0" prefWidth="83.0" text="Hình ảnh :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="645.0" layoutY="176.0" text="Âm thanh :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Label layoutX="29.0" layoutY="213.0" prefHeight="21.0" prefWidth="95.0" text="Câu trả lời :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button layoutX="669.0" layoutY="93.0" mnemonicParsing="false" text="..." />
+            <Button layoutX="669.0" layoutY="213.0" mnemonicParsing="false" text="..." />
+            <VBox fx:id="vbox_answer" alignment="CENTER" layoutX="123.0" layoutY="192.0" prefHeight="243.0" prefWidth="498.0" spacing="10.0" />
+            <ComboBox fx:id="cbo_diff" layoutX="744.0" layoutY="301.0" prefHeight="25.0" prefWidth="200.0" />
+            <Label layoutX="653.0" layoutY="303.0" text="Độ khó :">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </Label>
+            <Button fx:id="btn_clear" layoutX="744.0" layoutY="355.0" mnemonicParsing="false" onAction="#clear" prefHeight="26.0" prefWidth="81.0" text="Clear" />
+            <Button fx:id="btn_new_answers" layoutX="744.0" layoutY="406.0" mnemonicParsing="false" onAction="#new_answers" prefHeight="26.0" prefWidth="81.0" text="New" />
+            <Button fx:id="btn_delete_answers" layoutX="860.0" layoutY="406.0" mnemonicParsing="false" onAction="#delete_answers" prefHeight="26.0" prefWidth="80.0" text="Delete" />
+            <Button layoutX="855.0" layoutY="355.0" mnemonicParsing="false" onAction="#Save_recent" prefHeight="26.0" prefWidth="89.0" text="Save" />
+         </children>
+      </Pane>
+   </center>
+   <bottom>
+      <Pane prefHeight="282.0" prefWidth="1182.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="259.0" layoutX="14.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="890.0" />
+            <TableView fx:id="tbv_Question" layoutX="30.0" layoutY="43.0" onMouseClicked="#select_Question" prefHeight="217.0" prefWidth="858.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="Mã CH" />
+                  <TableColumn prefWidth="266.40003967285156" text="Nội dung CH" />
+                  <TableColumn prefWidth="67.20001220703125" text="Hình ảnh" />
+                  <TableColumn prefWidth="76.79998779296875" text=" Âm thanh" />
+                  <TableColumn minWidth="0.0" prefWidth="60.0" text="PA 1" />
+                  <TableColumn prefWidth="67.199951171875" text="PA 2" />
+                  <TableColumn minWidth="0.0" prefWidth="65.60003662109375" text="PA 3" />
+                  <TableColumn prefWidth="58.4000244140625" text="PA 4" />
+                  <TableColumn minWidth="0.0" prefWidth="56.800048828125" text="Đáp án" />
+                  <TableColumn prefWidth="59.199951171875" text="Độ khó" />
+              </columns>
+            </TableView>
+            <TextField editable="false" layoutX="70.0" prefHeight="31.0" prefWidth="69.0" style="-fx-background-color: white;" text="Câu hỏi">
+               <font>
+                  <Font size="15.0" />
+               </font>
+            </TextField>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="258.0" layoutX="920.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="249.0" />
+         </children>
+      </Pane>
+   </bottom>
+   <right>
+      <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
+         <children>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="443.0" layoutX="8.0" layoutY="17.0" stroke="BLACK" strokeType="INSIDE" width="185.0" />
+            <ListView fx:id="lsv_Recent" layoutX="10.0" layoutY="17.0" prefHeight="442.0" prefWidth="182.0" />
+         </children>
+      </Pane>
+   </right>
+</BorderPane>

@@ -31,6 +31,8 @@ public class ct_addeditExam implements Initializable {
     @FXML
     private Button btn_Save_list;
 
+
+
     @FXML
     private ComboBox<ComboboxString> cbo_Subject;
     bodeDao bodeDao = new bodeDao();
@@ -57,6 +59,13 @@ public class ct_addeditExam implements Initializable {
                     alert.show();
                     System.out.println("add ListTest : 1" );
                 }
+                if (flag ==1 && bodeDao.updateData(bodeEntity)==1){
+                    Alert alert = new Alert(Alert.AlertType.INFORMATION);
+                    alert.setHeaderText("Update Test complete!");
+                    alert.show();
+                    System.out.println("update ListTest : 1" );
+                }
+
 
             }catch (Exception e){
                 e.printStackTrace();
@@ -66,6 +75,8 @@ public class ct_addeditExam implements Initializable {
         System.out.println(cbo_Subject.getValue().getValue());
 
     }
+
+
 
     private  void loadSubjecttocombobox(){
         monhocDao dao = new monhocDao();
@@ -83,8 +94,14 @@ public class ct_addeditExam implements Initializable {
         try {
             txt_ListTestID.setText(bodeEntity.getMaBode());
             txt_ListTestname.setText(bodeEntity.getTenBode());
-            cbo_Subject.getSelectionModel();
-
+            System.out.println(bodeEntity.getMaBode());
+            cbo_Subject.getItems().forEach( e ->{
+                if (e.getValue().equals(bodeEntity.getMonhocByMaMh().getMaMh())){
+                    cbo_Subject.getSelectionModel().select(e);
+                }
+            });
+            flag=1;
+            txt_ListTestID.setEditable(false);
         }catch (Exception e){
             e.printStackTrace();
         }
