@@ -18,8 +18,9 @@
 <?import javafx.scene.media.MediaView?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1181.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.ct_addeditQuestion">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="750.0" prefWidth="1181.0" stylesheets="@../CSS/Question.css" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.ct_addeditQuestion">
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
@@ -61,7 +62,7 @@
                   <Font size="15.0" />
                </font>
             </TextField>
-            <TextArea fx:id="txt_Question" layoutX="123.0" layoutY="32.0" prefHeight="135.0" prefWidth="501.0">
+            <TextArea fx:id="txt_Question" layoutX="123.0" layoutY="32.0" prefHeight="135.0" prefWidth="501.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font></TextArea>
@@ -98,10 +99,15 @@
                   <Font size="15.0" />
                </font>
             </Label>
-            <Button fx:id="btn_clear" layoutX="744.0" layoutY="355.0" mnemonicParsing="false" onAction="#clear" prefHeight="26.0" prefWidth="81.0" text="Clear" />
-            <Button fx:id="btn_new_answers" layoutX="744.0" layoutY="406.0" mnemonicParsing="false" onAction="#new_answers" prefHeight="26.0" prefWidth="81.0" text="New" />
-            <Button fx:id="btn_delete_answers" layoutX="860.0" layoutY="406.0" mnemonicParsing="false" onAction="#delete_answers" prefHeight="26.0" prefWidth="80.0" text="Delete" />
-            <Button layoutX="855.0" layoutY="355.0" mnemonicParsing="false" onAction="#Save_recent" prefHeight="26.0" prefWidth="89.0" text="Save" />
+            <Button fx:id="btn_clear" layoutX="744.0" layoutY="352.0" mnemonicParsing="false" onAction="#clear" prefHeight="26.0" prefWidth="81.0" text="Clear" />
+            <Button layoutX="855.0" layoutY="352.0" mnemonicParsing="false" onAction="#Save_recent" prefHeight="26.0" prefWidth="89.0" text="Save" />
+            <VBox alignment="CENTER" layoutX="43.0" layoutY="267.0" prefHeight="95.0" prefWidth="46.0" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#new_answers" styleClass="btn_add_Answer" />
+                  <Button mnemonicParsing="false" onAction="#delete_answers" styleClass="btn_delete_Answer" />
+               </children>
+            </VBox>
+            <Button fx:id="btn_delete_listview" layoutX="805.0" layoutY="403.0" mnemonicParsing="false" onAction="#delete_listview" prefHeight="25.0" prefWidth="79.0" text="Delete" />
          </children>
       </Pane>
    </center>
@@ -129,6 +135,19 @@
                </font>
             </TextField>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="258.0" layoutX="920.0" layoutY="13.0" stroke="BLACK" strokeType="INSIDE" width="249.0" />
+            <HBox alignment="CENTER" layoutX="929.0" layoutY="210.0" prefHeight="29.0" prefWidth="234.0" spacing="10.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#delete_question" prefHeight="26.0" prefWidth="69.0" text="Delete" />
+                  <Button mnemonicParsing="false" onAction="#save_all" prefHeight="26.0" prefWidth="79.0" text="Save all" />
+                  <Button mnemonicParsing="false" onAction="#cancel" prefHeight="26.0" prefWidth="66.0" text="Cancel" />
+               </children>
+            </HBox>
+            <Text layoutX="929.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Bộ đề :">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </Text>
+            <TextArea fx:id="txt_info" editable="false" layoutX="935.0" layoutY="64.0" prefHeight="129.0" prefWidth="222.0" wrapText="true" />
          </children>
       </Pane>
    </bottom>
@@ -136,7 +155,7 @@
       <Pane prefHeight="200.0" prefWidth="200.0" style="-fx-background-color: white;" BorderPane.alignment="CENTER">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="443.0" layoutX="8.0" layoutY="17.0" stroke="BLACK" strokeType="INSIDE" width="185.0" />
-            <ListView fx:id="lsv_Recent" layoutX="10.0" layoutY="17.0" prefHeight="442.0" prefWidth="182.0" />
+            <ListView fx:id="lsv_Recent" layoutX="10.0" layoutY="17.0" onMouseClicked="#listview_select" prefHeight="442.0" prefWidth="182.0" />
          </children>
       </Pane>
    </right>

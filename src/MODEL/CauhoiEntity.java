@@ -56,6 +56,24 @@ public class CauhoiEntity {
 
     }
 
+    public String toDetail() {
+        return "CauhoiEntity{" +
+                "id=" + id +
+                ", maCh=" + maCh +
+                ", loai=" + loai +
+                ", ndCh='" + ndCh + '\'' +
+                ", imgCh='" + imgCh + '\'' +
+                ", audCh='" + audCh + '\'' +
+                ", tl1='" + tl1 + '\'' +
+                ", tl2='" + tl2 + '\'' +
+                ", tl3='" + tl3 + '\'' +
+                ", tl4='" + tl4 + '\'' +
+                ", da='" + da + '\'' +
+                ", dokho=" + dokho +
+                ", bodeByMaBode=" + bodeByMaBode +
+                '}';
+    }
+
     @Id
     @Column(name = "ma_CH")
     public int getMaCh() {

@@ -15,6 +15,7 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
 
 import java.net.URL;
 import java.util.*;
@@ -22,13 +23,7 @@ import java.util.*;
 public class ct_addeditQuestion implements Initializable {
 
     @FXML
-    private Button btn_new_answers;
-
-    @FXML
     private Button btn_clear;
-
-    @FXML
-    private Button btn_delete_answers;
 
     @FXML
     private TextArea txt_Question;
@@ -60,6 +55,9 @@ public class ct_addeditQuestion implements Initializable {
     @FXML
     private TableView<CauhoiEntity> tbv_Question;
 
+    @FXML
+    private TextArea txt_info;
+
 
     List<HBox> list = new ArrayList<HBox>() ;
     List<String> rdb = new ArrayList<String>();
@@ -67,12 +65,28 @@ public class ct_addeditQuestion implements Initializable {
     List<CauhoiEntity>listview  = new ArrayList<CauhoiEntity>();
     cauhoiDao dao = new cauhoiDao();
     CauhoiEntity recent = null;
+    BodeEntity bodeEntity = null;
     String code;
     int i;
     int index = 0;
+    int flag = 0;
 
     @FXML
     void Save_recent(ActionEvent event) {
+        CauhoiEntity cauhoi = new CauhoiEntity();
+        if (flag== 0){
+            cauhoi =getValuetoCH(i);
+            i++;
+        }
+        if(flag == 1 || flag ==3){
+          cauhoi = getValuetoCH(recent.getMaCh());
+          flag =0;
+          listview.remove(recent);
+        }
+        listview.add(cauhoi);
+        lsv_Recent.setItems(FXCollections.observableArrayList(listview));
+    }
+    private CauhoiEntity getValuetoCH(int Id){
         List<String> str = new ArrayList<String>();
         final String[] DA = new String[1];
         list.forEach(e -> {
@@ -85,7 +99,7 @@ public class ct_addeditQuestion implements Initializable {
                 DA[0] = rdb.get(list.indexOf(e));
         });
         CauhoiEntity cauhoi = new CauhoiEntity(
-                i,
+                Id,
                 true,
                 txt_Question.getText(),
                 "",
@@ -99,17 +113,57 @@ public class ct_addeditQuestion implements Initializable {
                 new BodeEntity(code)
 
         );
-        listview.add(cauhoi);
-        lsv_Recent.setItems(FXCollections.observableArrayList(listview));
-        i++;
-//        System.out.println(cauhoi.toString());
+        return cauhoi;
+    }
 
+    @FXML
+    void cancel(ActionEvent event) {
+        Stage  stage = (Stage) btn_clear.getScene().getWindow();
+        stage.close();
+    }
+
+    @FXML
+    void save_all(ActionEvent event) throws InterruptedException {
+        Thread  thread = new Thread(this::save_all);
+        thread.start();
+        thread.join();
+        this.loadQuestion(bodeEntity);
+        thread.interrupt();
+        listview.clear();
+        lsv_Recent.setItems(FXCollections.observableArrayList(listview));
+    }
+    private void save_all(){
+        cauhoiDao dao = new cauhoiDao();
+        System.out.println("insert or update : "+dao.InsertorUpdate(listview));
+    }
+
+    @FXML
+    void delete_question(ActionEvent event) {
+        cauhoiDao dao = new cauhoiDao();
+        if(flag ==3)
+            System.out.println("delete question: " + dao.delData(recent));
+            this.loadQuestion(bodeEntity);
+    }
+
+    @FXML
+    void delete_listview(ActionEvent event) {
+        listview.remove(recent);
+        lsv_Recent.setItems(FXCollections.observableArrayList(listview));
+    }
+
+    @FXML
+    void listview_select(MouseEvent event) {
+        btn_clear.fire();
+        vbox_answer.getChildren().clear();
+        recent =lsv_Recent.getSelectionModel().getSelectedItem();
+        //System.out.println(recent.toDetail());
+        this.info_Question();
+        flag = 1;
     }
 
     @FXML
     void clear(ActionEvent event) {
         index=0;
-        setDisable(false);
         txt_Question.clear();
         vbox_answer.getChildren().clear();
         list.forEach(e ->{
@@ -118,7 +172,7 @@ public class ct_addeditQuestion implements Initializable {
             textArea.clear();
             radioButton.setSelected(false);
         });
-
+        flag = 0;
     }
 
     @FXML
@@ -137,10 +191,8 @@ public class ct_addeditQuestion implements Initializable {
         }
     }
 
-    @FXML
-    void select_Question(MouseEvent event) {
-        vbox_answer.getChildren().clear();
-        recent =tbv_Question.getSelectionModel().getSelectedItem();
+    public void info_Question(){
+        final int[] count = {0};
         if (recent!=null){
             int i = rdb.indexOf(recent.getDa());
             txt_Question.setText(recent.getNdCh());
@@ -155,19 +207,30 @@ public class ct_addeditQuestion implements Initializable {
                     HBox hBox = (HBox) vbox_answer.getChildren().get(listAnswer.indexOf(A));
                     TextArea Answer = (TextArea) hBox.getChildren().get(1);
                     Answer.setText(A);
-                    index++;
+                    count[0]++;
                     if(listAnswer.indexOf(A) ==i){
                         RadioButton rdbutton  = (RadioButton) hBox.getChildren().get(0);
                         rdbutton.setSelected(true);
                     }
                 }
             });
-            setDisable(true);
+            index = count[0];
         }
     }
 
+    @FXML
+    void select_Question(MouseEvent event) {
+        vbox_answer.getChildren().clear();
+        recent =tbv_Question.getSelectionModel().getSelectedItem();
+        this.info_Question();
+       // System.out.println(recent.toDetail());
+        flag = 3;
+    }
+
     void loadQuestion(BodeEntity bode){
+        bodeEntity =bode;
         cauhoiEntities = dao.getQuestionbyCode(bode);
+        txt_info.setText(bode.getMaBode() +" "+bode.getTenBode());
         if(cauhoiEntities!=null)
         {
             code =bode.getMaBode();
@@ -195,10 +258,7 @@ public class ct_addeditQuestion implements Initializable {
         }
        i= tbv_Question.getItems().size() + 1;
     }
-    public void setDisable(boolean a){
-     btn_delete_answers.setDisable(a);
-     btn_new_answers.setDisable(a);
-    }
+
     private void setValuecbo(){
         cbo_diff.setItems(FXCollections.observableArrayList(
                 new ComboItem("Biết",1),
@@ -220,6 +280,6 @@ public class ct_addeditQuestion implements Initializable {
         rdb.add("C");
         rdb.add("D");
         setValuecbo();
-        loadQuestion( new BodeEntity("BIO2020"));
+//        loadQuestion( new BodeEntity("BIO2020"));
     }
 }

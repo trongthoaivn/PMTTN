@@ -1,0 +1,22 @@
+.btn_add_Answer{
+    -fx-background-color: white;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-background-image: url("../Icon/add_Answer.png");
+    -fx-background-size: cover;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
+.btn_delete_Answer{
+    -fx-background-color: white;
+    -fx-min-width: 40px;
+    -fx-min-height: 40px;
+    -fx-max-width: 40px;
+    -fx-max-height: 40px;
+    -fx-background-image: url("../Icon/minus_Answer.png");
+    -fx-background-size: cover;
+    -fx-border-radius: 10;
+    -fx-background-radius: 10;
+}
