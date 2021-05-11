@@ -12,7 +12,10 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.DragEvent;
+import javafx.scene.input.Dragboard;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.input.TransferMode;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -85,6 +88,7 @@ public class ct_addeditQuestion implements Initializable {
         }
         listview.add(cauhoi);
         lsv_Recent.setItems(FXCollections.observableArrayList(listview));
+        btn_clear.fire();
     }
     private CauhoiEntity getValuetoCH(int Id){
         List<String> str = new ArrayList<String>();
@@ -227,6 +231,26 @@ public class ct_addeditQuestion implements Initializable {
         flag = 3;
     }
 
+    @FXML
+    void Drag_Dropped(DragEvent event) {
+        Dragboard dragboard = event.getDragboard();
+        if (event.getTransferMode() == TransferMode.COPY &&
+                dragboard.hasString()) {
+            TextArea textArea=(TextArea) event.getGestureTarget() ;
+            textArea.setText(dragboard.getString());
+            event.setDropCompleted(true);
+        }
+        event.consume();
+    }
+
+    @FXML
+    void Drag_Over(DragEvent event) {
+        if (event.getDragboard().hasString()) {
+            event.acceptTransferModes(TransferMode.COPY);
+        }
+        event.consume();
+    }
+
     void loadQuestion(BodeEntity bode){
         bodeEntity =bode;
         cauhoiEntities = dao.getQuestionbyCode(bode);
@@ -256,7 +280,7 @@ public class ct_addeditQuestion implements Initializable {
             TableColumn col10 =   tbv_Question.getColumns().get(9);
             col10.setCellValueFactory(new PropertyValueFactory<CauhoiEntity,Integer>("dokho"));
         }
-       i= tbv_Question.getItems().size() + 1;
+       i= dao.getEndindex()+1;
     }
 
     private void setValuecbo(){

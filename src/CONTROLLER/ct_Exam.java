@@ -1,6 +1,7 @@
 package CONTROLLER;
 
 import DAO.bodeDao;
+import DAO.cauhoiDao;
 import DAO.monhocDao;
 import MODEL.BodeEntity;
 import MODEL.MonhocEntity;
@@ -38,24 +39,27 @@ public class ct_Exam implements Initializable {
 
     BodeEntity recent = new BodeEntity();
     bodeDao dao = new bodeDao();
+    cauhoiDao cauhoiDao = new cauhoiDao();
     ObservableList<BodeEntity> list = dao.getAll();
 
 
     @FXML
     void edit_question(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/VIEW/Form/fadd_edit_Question.fxml"));
-        Parent root = loader.load();
+
         if(recent.getMaBode()!=null){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/VIEW/Form/fadd_edit_Question.fxml"));
+            Parent root = loader.load();
             ct_addeditQuestion addeditQuestion = loader.getController();
             addeditQuestion.loadQuestion(recent);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initStyle(StageStyle.UTILITY);
+            if(stage.isShowing()==false){
+                stage.show();
+            }
         }
 
-        Stage stage = new Stage();
-        stage.setScene(new Scene(root));
-        stage.initStyle(StageStyle.UTILITY);
-        if(stage.isShowing()==false){
-            stage.show();
-        }
+
     }
 
     @FXML
@@ -117,7 +121,7 @@ public class ct_Exam implements Initializable {
             alert.setTitle("Delete Test");
             alert.setHeaderText("Are you sure you want delete "+ recent.getMaBode());
             Optional<ButtonType> option = alert.showAndWait();
-            if(option.get()==ButtonType.OK && dao.delData(recent)==1) {
+            if(option.get()==ButtonType.OK && cauhoiDao.DeleteQuestiobymaDe(recent)==1 && dao.delData(recent)==1 ) {
                 System.out.println("delete ListTest : 1");
             }else if (option.get() ==ButtonType.CANCEL){
                 alert.close();

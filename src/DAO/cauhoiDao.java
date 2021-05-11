@@ -7,7 +7,9 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
-
+import javax.persistence.Query;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class cauhoiDao implements DaoInterface{
@@ -39,6 +41,32 @@ public class cauhoiDao implements DaoInterface{
     @Override
     public List getAll() {
         return null;
+    }
+
+    public int getEndindex(){
+        Session s = hibernateUtil.getSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(CauhoiEntity.class);
+        query.from(CauhoiEntity.class);
+        List<CauhoiEntity>  list=  s.createQuery(query).getResultList();
+        s.close();
+        return list.size();
+    }
+
+    public int DeleteQuestiobymaDe(BodeEntity bodeEntity){
+        try {
+            Session session =hibernateUtil.getSession();
+            Transaction transaction =session.beginTransaction();
+            Query query = session.createQuery("delete from CauhoiEntity a where a.bodeByMaBode.maBode= :id");
+            query.setParameter("id",bodeEntity.getMaBode());
+            query.executeUpdate();
+            transaction.commit();
+            session.close();
+            return 1;
+        }catch (Exception exception) {
+            System.out.println(exception);
+            return 0;
+        }
     }
 
     public int InsertorUpdate(List<CauhoiEntity> list){

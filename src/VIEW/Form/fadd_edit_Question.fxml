@@ -33,25 +33,25 @@
                               <ToggleGroup fx:id="choice" />
                            </toggleGroup>
                         </RadioButton>
-                        <TextArea prefHeight="63.0" prefWidth="438.0" />
+                        <TextArea onDragDropped="#Drag_Dropped" onDragOver="#Drag_Over" prefHeight="63.0" prefWidth="438.0" wrapText="true" />
                      </children>
                   </HBox>
                   <HBox fx:id="hbox_B" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <RadioButton mnemonicParsing="false" text="B" toggleGroup="$choice" />
-                        <TextArea prefHeight="61.0" prefWidth="438.0" />
+                        <TextArea onDragDropped="#Drag_Dropped" onDragOver="#Drag_Over" prefHeight="61.0" prefWidth="438.0" wrapText="true" />
                      </children>
                   </HBox>
                   <HBox fx:id="hbox_C" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <RadioButton mnemonicParsing="false" text="C" toggleGroup="$choice" />
-                        <TextArea prefHeight="61.0" prefWidth="438.0" />
+                        <TextArea onDragDropped="#Drag_Dropped" onDragOver="#Drag_Over" prefHeight="61.0" prefWidth="438.0" wrapText="true" />
                      </children>
                   </HBox>
                   <HBox fx:id="hbox_D" prefHeight="100.0" prefWidth="200.0" spacing="20.0">
                      <children>
                         <RadioButton mnemonicParsing="false" text="D" toggleGroup="$choice" />
-                        <TextArea prefHeight="61.0" prefWidth="438.0" />
+                        <TextArea onDragDropped="#Drag_Dropped" onDragOver="#Drag_Over" prefHeight="61.0" prefWidth="438.0" wrapText="true" />
                      </children>
                   </HBox>
                </children>
@@ -62,7 +62,7 @@
                   <Font size="15.0" />
                </font>
             </TextField>
-            <TextArea fx:id="txt_Question" layoutX="123.0" layoutY="32.0" prefHeight="135.0" prefWidth="501.0" wrapText="true">
+            <TextArea fx:id="txt_Question" layoutX="123.0" layoutY="32.0" onDragDropped="#Drag_Dropped" onDragOver="#Drag_Over" prefHeight="135.0" prefWidth="501.0" wrapText="true">
                <font>
                   <Font size="20.0" />
                </font></TextArea>

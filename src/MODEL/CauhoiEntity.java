@@ -31,6 +31,17 @@ public class CauhoiEntity {
 //    }
 
 
+    public CauhoiEntity(int maCh,String ndCh, String tl1, String tl2, String tl3, String tl4, String da,BodeEntity bodeByMaBode) {
+        this.maCh = maCh;
+        this.ndCh = ndCh;
+        this.tl1 = tl1;
+        this.tl2 = tl2;
+        this.tl3 = tl3;
+        this.tl4 = tl4;
+        this.da = da;
+        this.bodeByMaBode = bodeByMaBode;
+    }
+
     public CauhoiEntity(int maCh, Boolean loai, String ndCh, String imgCh, String audCh, String tl1, String tl2, String tl3, String tl4, String da, Integer dokho, BodeEntity bodeByMaBode) {
         this.maCh = maCh;
         this.loai = loai;
