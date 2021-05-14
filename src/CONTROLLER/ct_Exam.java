@@ -98,6 +98,26 @@ public class ct_Exam implements Initializable {
             stage.show();
         }
     }
+
+    @FXML
+    void open_frm_Examcode(ActionEvent event) throws IOException {
+
+        if (recent.getMaBode()!=null){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("../VIEW/Form/frm_generateExcode.fxml"));
+            Parent root = loader.load();
+            ct_genarateExcode ct_genarateExcode = loader.getController();
+//            ct_genarateExcode.loadExamcode(recent);
+            ct_genarateExcode.loadQuestion(recent);
+            Stage stage = new Stage();
+            stage.setScene(new Scene(root));
+            stage.initStyle(StageStyle.UTILITY);
+            if(stage.isShowing()==false){
+                stage.show();
+            }
+        }
+
+    }
+
     public void EditExam() throws IOException {
         System.out.println(recent.getMaBode());
         if (recent.getMaBode()!=null){

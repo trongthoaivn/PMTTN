@@ -69,8 +69,7 @@ public class CauhoiEntity {
 
     public String toDetail() {
         return "CauhoiEntity{" +
-                "id=" + id +
-                ", maCh=" + maCh +
+                " maCh=" + maCh +
                 ", loai=" + loai +
                 ", ndCh='" + ndCh + '\'' +
                 ", imgCh='" + imgCh + '\'' +

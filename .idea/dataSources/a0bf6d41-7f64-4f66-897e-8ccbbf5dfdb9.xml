@@ -259,7 +259,7 @@
 1429580131|||0|execute|G
 1429580131|||2|execute|D
 </Grants>
-      <IntrospectionTimestamp>2021-05-02.00:28:32.073</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2021-05-12.08:15:17.860</IntrospectionTimestamp>
       <Current>1</Current>
       <DescriptionsCheckSum>13489306982</DescriptionsCheckSum>
     </schema>
@@ -360,7 +360,7 @@
     <table id="61" parent="42" name="Bode">
       <ObjectId>597577167</ObjectId>
       <CreatedTimestamp>2021-03-26.03:20:03.860</CreatedTimestamp>
-      <ModifiedTimestamp>2021-05-02.00:28:31.713</ModifiedTimestamp>
+      <ModifiedTimestamp>2021-05-12.08:15:04.393</ModifiedTimestamp>
     </table>
     <table id="62" parent="42" name="Cauhoi">
       <ObjectId>1298103665</ObjectId>
@@ -398,9 +398,9 @@
       <ModifiedTimestamp>2021-04-28.05:36:33.657</ModifiedTimestamp>
     </table>
     <table id="69" parent="42" name="Made">
-      <ObjectId>629577281</ObjectId>
-      <CreatedTimestamp>2021-03-26.03:20:03.877</CreatedTimestamp>
-      <ModifiedTimestamp>2021-03-26.03:20:09.217</ModifiedTimestamp>
+      <ObjectId>1618104805</ObjectId>
+      <CreatedTimestamp>2021-05-12.08:15:04.273</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-12.08:15:04.400</ModifiedTimestamp>
     </table>
     <table id="70" parent="42" name="Monhoc">
       <ObjectId>661577395</ObjectId>
@@ -1079,7 +1079,7 @@ ma_KQ</ColNames>
     </foreign-key>
     <column id="185" parent="69" name="ma_De">
       <Position>1</Position>
-      <DataType>char(3 char)|0s</DataType>
+      <DataType>char(10 char)|0s</DataType>
       <NotNull>1</NotNull>
     </column>
     <column id="186" parent="69" name="ten_Made">
@@ -1105,17 +1105,17 @@ ma_KQ</ColNames>
       <ColNames>ma_Bode</ColNames>
     </index>
     <key id="191" parent="69" name="PK_Made">
-      <ObjectId>645577338</ObjectId>
-      <CreatedTimestamp>2021-03-26.03:20:03.880</CreatedTimestamp>
-      <ModifiedTimestamp>2021-03-26.03:20:03.880</ModifiedTimestamp>
+      <ObjectId>1634104862</ObjectId>
+      <CreatedTimestamp>2021-05-12.08:15:04.390</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-12.08:15:04.390</ModifiedTimestamp>
       <ColNames>ma_De</ColNames>
       <UnderlyingIndexName>PK_Made</UnderlyingIndexName>
       <Primary>1</Primary>
     </key>
     <foreign-key id="192" parent="69" name="MH_Made">
-      <ObjectId>1029578706</ObjectId>
-      <CreatedTimestamp>2021-03-26.03:20:09.217</CreatedTimestamp>
-      <ModifiedTimestamp>2021-03-26.03:20:09.217</ModifiedTimestamp>
+      <ObjectId>1650104919</ObjectId>
+      <CreatedTimestamp>2021-05-12.08:15:04.393</CreatedTimestamp>
+      <ModifiedTimestamp>2021-05-12.08:15:04.393</ModifiedTimestamp>
       <ColNames>ma_Bode</ColNames>
       <RefTableId>597577167</RefTableId>
       <RefTableName>Bode</RefTableName>

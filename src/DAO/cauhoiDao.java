@@ -2,6 +2,7 @@ package DAO;
 
 import MODEL.BodeEntity;
 import MODEL.CauhoiEntity;
+import MODEL.MadeJson;
 import UTILITY.hibernateUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -83,6 +84,15 @@ public class cauhoiDao implements DaoInterface{
             System.out.println(exception);
             return 0;
         }
+    }
+
+    public List<CauhoiEntity> getQuestionbyCodeasList(String code){
+        Session session = hibernateUtil.getSession();
+        Query query = session.createQuery("select a from CauhoiEntity a where a.bodeByMaBode.maBode=:c");
+        query.setParameter("c",code);
+        List<CauhoiEntity> list = (List<CauhoiEntity>) query.getResultList();
+        session.close();
+        return list;
     }
 
     public ObservableList<CauhoiEntity> getQuestionbyCode(BodeEntity bode) {

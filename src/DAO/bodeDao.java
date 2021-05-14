@@ -69,4 +69,14 @@ public class bodeDao implements DaoInterface{
 
         return FXCollections.observableArrayList(list);
     }
+
+    public List<BodeEntity> getAllasList(){
+        Session s = hibernateUtil.getSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(BodeEntity.class);
+        query.from(BodeEntity.class);
+        List<BodeEntity>  list=  s.createQuery(query).getResultList();
+        s.close();
+        return list;
+    }
 }

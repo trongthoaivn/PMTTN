@@ -22,6 +22,17 @@ public class MadeEntity {
 //        this.id = id;
 //    }
 
+
+    public MadeEntity(String maDe, String tenMade, String maCHde, BodeEntity bodeByMaBode) {
+        this.maDe = maDe;
+        this.tenMade = tenMade;
+        this.maCHde = maCHde;
+        this.bodeByMaBode = bodeByMaBode;
+    }
+
+    public MadeEntity() {
+    }
+
     @Id
     @Column(name = "ma_De")
     public String getMaDe() {

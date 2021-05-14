@@ -38,6 +38,15 @@ public class BodeEntity {
 //        this.id = id;
 //    }
 
+
+    @Override
+    public String toString() {
+        return "BodeEntity{" +
+                ", maBode='" + maBode + '\'' +
+                ", tenBode='" + tenBode + '\'' +
+                '}';
+    }
+
     @Id
     @Column(name = "ma_Bode")
     public String getMaBode() {

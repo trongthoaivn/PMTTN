@@ -39,7 +39,7 @@
       <HBox alignment="CENTER" layoutX="306.0" layoutY="148.0" prefHeight="53.0" prefWidth="360.0" spacing="10.0">
          <children>
             <Button fx:id="btn_edit_question" mnemonicParsing="false" onAction="#edit_question" text="Edit" />
-            <Button mnemonicParsing="false" text="Generate Ex_code" />
+            <Button fx:id="btn_Examcode" mnemonicParsing="false" onAction="#open_frm_Examcode" text="Generate Ex_code" />
             <Button mnemonicParsing="false" text="Print" />
          </children>
       </HBox>
