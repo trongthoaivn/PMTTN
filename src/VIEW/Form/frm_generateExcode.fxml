@@ -41,8 +41,7 @@
                   <TextArea fx:id="txt_Exam_info" layoutX="20.0" layoutY="37.0" prefHeight="150.0" prefWidth="350.0" />
                   <HBox alignment="CENTER" layoutX="21.0" layoutY="208.0" prefHeight="44.0" prefWidth="347.0">
                      <children>
-                        <Button mnemonicParsing="false" text="Button" />
-                        <Button mnemonicParsing="false" text="Button" />
+                        <Button mnemonicParsing="false" onAction="#exit" text="Cancel" />
                      </children>
                   </HBox>
                </children>
@@ -53,20 +52,29 @@
    <center>
       <Pane prefHeight="350.0" prefWidth="1073.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox fx:id="V_box" alignment="CENTER" layoutX="14.0" layoutY="22.0" prefHeight="306.0" prefWidth="100.0">
+            <VBox fx:id="V_box" alignment="CENTER" layoutX="14.0" layoutY="22.0" prefHeight="306.0" prefWidth="100.0" spacing="10.0">
                <children>
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" text="Button" />
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="104.0" text="Button" />
-                  <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="101.0" text="Button" />
+                  <Button mnemonicParsing="false" onAction="#New_Excode" prefHeight="26.0" prefWidth="101.0" text="New" />
+                  <Button mnemonicParsing="false" onAction="#Save" prefHeight="26.0" prefWidth="98.0" text="Save" />
+                  <Button mnemonicParsing="false" onAction="#Delete" prefHeight="26.0" prefWidth="104.0" text="Delete" />
+                  <Button mnemonicParsing="false" onAction="#Refresh" prefHeight="26.0" prefWidth="104.0" text="Refresh" />
                </children>
             </VBox>
             <SplitPane dividerPositions="0.4579831932773109" layoutX="129.0" layoutY="20.0" prefHeight="356.0" prefWidth="984.0">
               <items>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="308.0" prefWidth="412.0">
                      <children>
-                        <VBox layoutX="7.0" layoutY="8.0" prefHeight="338.0" prefWidth="434.0">
+                        <VBox fx:id="V_Box_Excode" alignment="CENTER" layoutX="7.0" layoutY="8.0" prefHeight="338.0" prefWidth="434.0" spacing="10.0">
                            <children>
-                              <TableView fx:id="tbv_Exam_code" onMouseClicked="#select_Examcode" prefHeight="338.0" prefWidth="434.0">
+                              <Pane fx:id="Pane" prefHeight="99.0" prefWidth="434.0">
+                                 <children>
+                                    <TextField fx:id="txt_maDe" layoutX="112.0" layoutY="14.0" prefHeight="26.0" prefWidth="291.0" />
+                                    <TextField fx:id="txt_tenMade" layoutX="112.0" layoutY="62.0" prefHeight="26.0" prefWidth="291.0" />
+                                    <Label layoutX="23.0" layoutY="18.0" prefHeight="18.0" prefWidth="56.0" text="Mã đề :" />
+                                    <Label layoutX="23.0" layoutY="67.0" text="Tên mã đề :" />
+                                 </children>
+                              </Pane>
+                              <TableView fx:id="tbv_Exam_code" onMouseClicked="#select_Examcode" prefHeight="238.0" prefWidth="434.0">
                                 <columns>
                                   <TableColumn prefWidth="133.60001850128174" text="Mã đề" />
                                   <TableColumn prefWidth="109.59999084472656" text="Tên mã đề" />
@@ -75,19 +83,11 @@
                               </TableView>
                            </children>
                         </VBox>
-                        <Pane layoutX="10.0" layoutY="46.0" prefHeight="101.0" prefWidth="426.0" visible="false">
-                           <children>
-                              <TextField fx:id="txt_maDe" layoutX="98.0" layoutY="14.0" prefHeight="26.0" prefWidth="305.0" />
-                              <TextField fx:id="txt_tenMade" layoutX="98.0" layoutY="62.0" prefHeight="26.0" prefWidth="305.0" />
-                              <Label layoutX="23.0" layoutY="18.0" prefHeight="18.0" prefWidth="56.0" text="Mã đề :" />
-                              <Label layoutX="23.0" layoutY="67.0" text="Tên mã đề :" />
-                           </children>
-                        </Pane>
                      </children>
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="308.0" prefWidth="565.0">
                      <children>
-                        <TableView fx:id="tbv_jsonView" layoutX="14.0" layoutY="8.0" prefHeight="338.0" prefWidth="506.0">
+                        <TableView fx:id="tbv_jsonView" layoutX="14.0" layoutY="8.0" onMouseClicked="#Select_ExQuestion" prefHeight="338.0" prefWidth="506.0">
                           <columns>
                             <TableColumn prefWidth="75.0" text="Mã câu hỏi" />
                             <TableColumn prefWidth="428.79988861083984" text="Nội dung câu hỏi" />
@@ -103,7 +103,12 @@
    <right>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ListView layoutX="11.0" layoutY="8.0" prefHeight="331.0" prefWidth="181.0" />
+            <ListView fx:id="lsv_Questions" layoutX="11.0" layoutY="22.0" onMouseClicked="#Select_Questions" prefHeight="283.0" prefWidth="181.0" />
+            <HBox alignment="CENTER" layoutY="305.0" prefHeight="82.0" prefWidth="200.0" spacing="20.0">
+               <children>
+                  <Button mnemonicParsing="false" onAction="#Save_Questions" text="Save Questions" />
+               </children>
+            </HBox>
          </children>
       </Pane>
    </right>
