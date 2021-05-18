@@ -90,8 +90,8 @@
                      <children>
                         <TableView fx:id="tbv_jsonView" layoutX="84.0" layoutY="8.0" onMouseClicked="#Select_ExQuestion" prefHeight="338.0" prefWidth="436.0">
                           <columns>
-                            <TableColumn prefWidth="125.60003089904785" text="Mã câu hỏi" />
-                            <TableColumn prefWidth="376.7998962402344" text="Nội dung câu hỏi" />
+                            <TableColumn prefWidth="107.99993133544922" text="Mã câu hỏi" />
+                            <TableColumn prefWidth="395.2000427246094" text="Nội dung câu hỏi" />
                           </columns>
                         </TableView>
                         <Label layoutX="18.0" layoutY="148.0" text="Số câu ">
