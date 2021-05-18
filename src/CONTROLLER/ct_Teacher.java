@@ -49,6 +49,7 @@ public class ct_Teacher implements Initializable {
     ObservableList<GiaovienEntity> giaovienEntities;
     GiaovienEntity SelectedGv = new GiaovienEntity();
     TaikhoanEntity SelectedAdacc = new TaikhoanEntity();
+    Thread thread = new Thread();
 
     public void EditTeacher() throws IOException, ParseException {
         if(SelectedGv.getTenGv()!=null){
@@ -133,10 +134,12 @@ public class ct_Teacher implements Initializable {
         col4.setCellValueFactory(new PropertyValueFactory<CustomImage, ImageView>("imgGv"));
         username.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getTaikhoanByUsername().getUsername()));
         passwords.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getTaikhoanByUsername().getPasswords()));
+        thread.interrupt();
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        getTeachertoTable();
+        thread = new Thread(this::getTeachertoTable);
+        thread.start();
     }
 }

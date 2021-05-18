@@ -48,7 +48,7 @@ public class ct_Student implements Initializable {
 
     HocsinhEntity SelectedS = new HocsinhEntity();
     TaikhoanEntity SelectedAdacc = new TaikhoanEntity();
-
+    Thread thread = new Thread();
     ObservableList<HocsinhEntity> hocsinhEntities;
 
     public void EditStudent() throws IOException, ParseException {
@@ -114,6 +114,7 @@ public class ct_Student implements Initializable {
         col4.setCellValueFactory(new PropertyValueFactory<CustomImage, ImageView>("imgHs"));
         username.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getTaikhoanByUsername().getUsername()));
         passwords.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getTaikhoanByUsername().getPasswords()));
+        thread.interrupt();
     }
     public void SelectStudent(MouseEvent event) throws IOException {
         HocsinhEntity hocsinhEntity = tbv_Student.getSelectionModel().getSelectedItem();
@@ -139,7 +140,8 @@ public class ct_Student implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        getStudenttoTable();
+        thread = new Thread(this::getStudenttoTable);
+        thread.start();
     }
 
 

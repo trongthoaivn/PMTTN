@@ -41,7 +41,7 @@ public class ct_Exam implements Initializable {
     bodeDao dao = new bodeDao();
     cauhoiDao cauhoiDao = new cauhoiDao();
     ObservableList<BodeEntity> list = dao.getAll();
-
+    Thread thread = new Thread();
 
     @FXML
     void edit_question(ActionEvent event) throws IOException {
@@ -85,6 +85,7 @@ public class ct_Exam implements Initializable {
             listitem.add(e.getMaBode()+"\n"+e.getTenBode());
         });
         lsv_Exam.setItems(FXCollections.observableArrayList(listitem));
+        thread.interrupt();
     }
 
     @FXML
@@ -151,7 +152,8 @@ public class ct_Exam implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadSubjecttocombobox();
-        loadListTesttoListview();
+        thread = new Thread(this::loadListTesttoListview);
+        thread.start();
     }
 
 

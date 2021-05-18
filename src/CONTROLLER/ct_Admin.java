@@ -50,7 +50,7 @@ public class ct_Admin implements Initializable {
     AdminEntity SelectedAd = new AdminEntity();
     TaikhoanEntity SelectedAdacc = new TaikhoanEntity();
     ObservableList<AdminEntity> adminEntities ;
-
+    Thread thread = new Thread();
 
     public void EditAdmin() throws IOException, ParseException {
         if(SelectedAd.getTenAd()!=null){
@@ -144,11 +144,12 @@ public class ct_Admin implements Initializable {
         col4.setCellValueFactory(new PropertyValueFactory<CustomImage, ImageView>("imgAd"));
         username.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getTaikhoanByUsername().getUsername()));
         passwords.setCellValueFactory(cell -> new ReadOnlyStringWrapper(cell.getValue().getTaikhoanByUsername().getPasswords()));
+        thread.interrupt();
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
-        getAdmintoTable();
+        thread = new Thread(this::getAdmintoTable);
+        thread.start();
     }
 
 }

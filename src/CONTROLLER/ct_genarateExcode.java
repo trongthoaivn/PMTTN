@@ -7,8 +7,10 @@ import MODEL.CauhoiEntity;
 import MODEL.MadeEntity;
 import REF.Excel;
 import javafx.collections.FXCollections;
+import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
+import javafx.event.Event;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -92,6 +94,7 @@ public class ct_genarateExcode implements Initializable {
             if (madeDao.delData(madeEntity)==1){
                 System.out.println("delete +1");
                 File excel = new File(madeEntity.getMaCHde());
+                if (excel.exists())
                 excel.delete();
                 flag=0;
             }
@@ -112,6 +115,7 @@ public class ct_genarateExcode implements Initializable {
             flag1=0;
         }
         this.Refresh(event);
+        countitem();
     }
 
     @FXML
@@ -169,6 +173,7 @@ public class ct_genarateExcode implements Initializable {
         lsv_Questions.setItems(FXCollections.observableArrayList(LvQuestions));
         cauhoi.clear();
         tbv_jsonView.getItems().clear();
+        txt_STT.setText("");
     }
 
     @FXML
@@ -199,11 +204,13 @@ public class ct_genarateExcode implements Initializable {
         } catch (Exception ex) {
             ex.printStackTrace();
         }
+        countitem();
     }
 
     @FXML
     void Select_ExQuestion(MouseEvent event) {
         recent=tbv_jsonView.getSelectionModel().getSelectedItem();
+        countitem();
         flag1=1;
     }
 
@@ -216,6 +223,7 @@ public class ct_genarateExcode implements Initializable {
         col2.setCellValueFactory(new PropertyValueFactory<CauhoiEntity,String>("ndCh"));
         recentCH=lsv_Questions.getSelectionModel().getSelectedItem();
         flag1=2;
+        countitem();
     }
 
     @FXML
@@ -230,7 +238,7 @@ public class ct_genarateExcode implements Initializable {
             TableColumn col2 =   tbv_jsonView.getColumns().get(1);
             col2.setCellValueFactory(new PropertyValueFactory<CauhoiEntity,String>("ndCh"));
         }
-
+        countitem();
     }
     @FXML
     void exit(ActionEvent event) {
@@ -282,9 +290,13 @@ public class ct_genarateExcode implements Initializable {
         loadExamcode();
     }
 
+    private void countitem(){
+        txt_STT.setText(String.valueOf(tbv_jsonView.getItems().size()));
+    }
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         V_Box_Excode.getChildren().remove(0);
-        txt_STT.setText("");
+
     }
 }
