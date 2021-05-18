@@ -50,6 +50,8 @@ public class popup_Student {
             Date date = new Date(hocsinhEntity.getNgaysinh().getTime());
             txt_ngaysinh.setText(date.toString());
             txt_us.setText(hocsinhEntity.getTaikhoanByUsername().getUsername());
+            txt_class.setText(hocsinhEntity.getLopByMaLop().getTenLop());
+            txt_grade.setText(hocsinhEntity.getLopByMaLop().getKhoiByMaKhoi().getTenKhoi());
             txt_pw.setText(hocsinhEntity.getTaikhoanByUsername().getPasswords());
             System.out.println(hocsinhEntity.getImgHs());
             if(hocsinhEntity.getImgHs().equals("")==false)

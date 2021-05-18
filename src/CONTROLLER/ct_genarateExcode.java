@@ -5,31 +5,21 @@ import DAO.madeDao;
 import MODEL.BodeEntity;
 import MODEL.CauhoiEntity;
 import MODEL.MadeEntity;
-import MODEL.MadeJson;
 import REF.Excel;
-import com.google.gson.Gson;
-import com.google.gson.reflect.TypeToken;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import javafx.stage.StageStyle;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Workbook;
 
 import java.io.*;
 import java.net.URL;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
@@ -47,6 +37,9 @@ public class ct_genarateExcode implements Initializable {
 
     @FXML
     private VBox V_Box_Excode;
+
+    @FXML
+    private TextField txt_STT;
 
     @FXML
     private javafx.scene.layout.Pane Pane;
@@ -104,6 +97,7 @@ public class ct_genarateExcode implements Initializable {
             }
         }
         if(recent!=null&&flag1==1){
+            System.out.println(recent.toDetail());
             cauhoi.remove(cauhoi.indexOf(recent));
             tbv_jsonView.setItems(FXCollections.observableArrayList(cauhoi));
             TableColumn col1 =   tbv_jsonView.getColumns().get(0);
@@ -291,5 +285,6 @@ public class ct_genarateExcode implements Initializable {
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         V_Box_Excode.getChildren().remove(0);
+        txt_STT.setText("");
     }
 }

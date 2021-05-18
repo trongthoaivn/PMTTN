@@ -4,7 +4,9 @@
 <?import javafx.scene.control.Hyperlink?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.RadioButton?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -14,7 +16,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="934.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.ct_Login">
    <left>
-      <AnchorPane prefHeight="566.0" prefWidth="393.0" styleClass="anchorpane_left" stylesheets="@../CSS/Login.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="566.0" prefWidth="391.0" styleClass="anchorpane_left" stylesheets="@../CSS/Login.css" BorderPane.alignment="CENTER">
          <children>
             <Text fontSmoothingType="LCD" layoutX="25.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Welcome">
                <font>
@@ -35,7 +37,7 @@
                   <Font name="Calibri Bold" size="18.0" />
                </font></PasswordField>
             <Button fx:id="btn_login" layoutX="240.0" layoutY="370.0" mnemonicParsing="false" onAction="#btn_login_click" prefHeight="26.0" prefWidth="62.0" stylesheets="@../CSS/Login.css" />
-            <Label layoutX="70.0" layoutY="392.0" text="Login">
+            <Label layoutX="96.0" layoutY="392.0" text="Login">
                <font>
                   <Font name="Gill Sans MT" size="30.0" />
                </font></Label>
@@ -59,10 +61,23 @@
                   <Font size="14.0" />
                </font>
             </Hyperlink>
+            <RadioButton fx:id="rdb_Teacher" layoutX="88.0" layoutY="333.0" mnemonicParsing="false" text="Teacher">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+               <toggleGroup>
+                  <ToggleGroup fx:id="login" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton fx:id="rdb_Student" layoutX="237.0" layoutY="333.0" mnemonicParsing="false" text="Student" toggleGroup="$login">
+               <font>
+                  <Font name="System Bold" size="15.0" />
+               </font>
+            </RadioButton>
          </children></AnchorPane>
    </left>
    <center>
-      <AnchorPane prefHeight="489.0" prefWidth="383.0" styleClass="anchorpane" stylesheets="@../CSS/Login.css" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="566.0" prefWidth="595.0" styleClass="anchorpane" stylesheets="@../CSS/Login.css" BorderPane.alignment="CENTER">
          <children>
             <ImageView fx:id="btn_close" fitHeight="28.0" fitWidth="29.0" layoutX="499.0" layoutY="14.0" onMouseClicked="#close" pickOnBounds="true" preserveRatio="true">
                <image>

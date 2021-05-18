@@ -1,5 +1,6 @@
 package DAO;
 
+import MODEL.AdminEntity;
 import MODEL.GiaovienEntity;
 import UTILITY.hibernateUtil;
 import javafx.collections.FXCollections;
@@ -67,5 +68,15 @@ public class giaovienDao implements DaoInterface{
         s.close();
 
         return FXCollections.observableArrayList(list);
+    }
+
+    public String getGv_id_last() {
+        Session s = hibernateUtil.getSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(GiaovienEntity.class);
+        query.from(GiaovienEntity.class);
+        List<GiaovienEntity>  list=  s.createQuery(query).getResultList();
+        s.close();
+        return list.get(list.size()-1).getMaGv();
     }
 }

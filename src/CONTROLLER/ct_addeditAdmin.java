@@ -26,6 +26,8 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -47,8 +49,6 @@ public class ct_addeditAdmin implements Initializable{
     @FXML
     private TextField txt_tenAd;
 
-    @FXML
-    private TextField txt_ngaysinh;
 
     @FXML
     private TextField txt_us;
@@ -62,6 +62,8 @@ public class ct_addeditAdmin implements Initializable{
     @FXML
     private RadioButton rdb_disable;
 
+    @FXML
+    private DatePicker dp_Ngaysinh;
 
     @FXML
     private Button btn_save;
@@ -75,17 +77,20 @@ public class ct_addeditAdmin implements Initializable{
     adminDao adminDao = new adminDao();
     File source, dest;
     int flag =0;
+    DateTimeFormatter formatER= DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
-
-    public Boolean check_Admin(){
-        return true;
+    public void check_Admin(){
+        String str =adminDao.getAd_id_last();
+        int id =Integer.parseInt(str.substring(str.indexOf("AD")+2))+1;
+        txt_maAd.setText("AD"+id);
+        txt_us.setText("admin"+id);
     }
     public Boolean check_Empty(){
-        if(txt_maAd.getText()!=""
-                && txt_tenAd.getText()!=""
-                && txt_ngaysinh.getText()!=""
-                && txt_pw.getText()!=""
-                && txt_us.getText()!="")
+        if(txt_maAd.getText().equals("")==false
+                && txt_tenAd.getText().equals("")==false
+                && dp_Ngaysinh.getValue()!=null
+                && txt_pw.getText().equals("")==false
+                && txt_us.getText().equals("")==false)
             return true;
         else
             return false;
@@ -120,6 +125,7 @@ public class ct_addeditAdmin implements Initializable{
 
     @FXML
     void cancel(ActionEvent event) {
+
         System.out.println("Cancel");
         System.out.println(flag);
     }
@@ -159,7 +165,7 @@ public class ct_addeditAdmin implements Initializable{
             AdminEntity adminEntity = new AdminEntity(
                     txt_maAd.getText(),
                     txt_tenAd.getText(),
-                    convertStringToTimestamp(txt_ngaysinh.getText()),
+                    convertStringToTimestamp(formatER.format(dp_Ngaysinh.getValue())),
                     url,
                     taikhoanEntity
             );
@@ -241,7 +247,8 @@ public class ct_addeditAdmin implements Initializable{
     void setInformation_Admin(AdminEntity admin) throws ParseException {
         txt_maAd.setText(admin.getMaAd());
         txt_tenAd.setText(admin.getTenAd());
-        txt_ngaysinh.setText(convertTimeStamptoDate(admin.getNgaysinh()));
+        dp_Ngaysinh.setValue(LocalDate.parse(convertTimeStamptoDate(admin.getNgaysinh()),formatER));
+        url=admin.getImgAd();
         txt_us.setText(admin.getTaikhoanByUsername().getUsername());
         txt_pw.setText(admin.getTaikhoanByUsername().getPasswords());
         if(admin.getTaikhoanByUsername().getTrangthai()==true){
@@ -255,13 +262,14 @@ public class ct_addeditAdmin implements Initializable{
         if (admin.getImgAd().equals("")==false)
             setImg(new Image(admin.getImgAd()));
         flag =1;
+
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         addComboboxItem();
         rdb_active.setSelected(true);
-
+        check_Admin();
 //        setImg(new Image("file:/Users/trong/Pictures/Saved Pictures/1.jpg"));
     }
 }

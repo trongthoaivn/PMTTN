@@ -55,7 +55,7 @@
             </HBox>
          </top>
          <center>
-            <Pane fx:id="pane" prefHeight="618.0" prefWidth="689.0" BorderPane.alignment="CENTER" />
+            <Pane fx:id="pane" prefHeight="618.0" prefWidth="689.0" styleClass="mainmenu" BorderPane.alignment="CENTER" />
          </center>
       </BorderPane>
    </center>

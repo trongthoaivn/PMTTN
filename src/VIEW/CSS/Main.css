@@ -169,3 +169,7 @@
     -fx-border-radius: 10;
     -fx-background-radius: 10;
 }
+.mainmenu{
+    -fx-background-image: url("../Image/back-school-background-with-school-supplies-copy-space.jpg");
+    -fx-background-size: cover;
+}

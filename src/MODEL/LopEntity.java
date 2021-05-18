@@ -23,6 +23,21 @@ public class LopEntity {
 //        this.id = id;
 //    }
 
+
+    public LopEntity(String maLop, String tenLop, Collection<HocsinhEntity> hocsinhsByMaLop, KhoiEntity khoiByMaKhoi) {
+        this.maLop = maLop;
+        this.tenLop = tenLop;
+        this.hocsinhsByMaLop = hocsinhsByMaLop;
+        this.khoiByMaKhoi = khoiByMaKhoi;
+    }
+
+    public LopEntity() {
+    }
+
+    public LopEntity(String maLop) {
+        this.maLop = maLop;
+    }
+
     @Id
     @Column(name = "ma_Lop")
     public String getMaLop() {

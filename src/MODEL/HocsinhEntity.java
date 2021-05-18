@@ -26,6 +26,15 @@ public class HocsinhEntity {
         this.taikhoanByUsername = taikhoanByUsername;
     }
 
+    public HocsinhEntity(String maHs, String tenHs, Timestamp ngaysinh, String imgHs, LopEntity lopByMaLop, TaikhoanEntity taikhoanByUsername) {
+        this.maHs = maHs;
+        this.tenHs = tenHs;
+        this.ngaysinh = ngaysinh;
+        this.imgHs = imgHs;
+        this.lopByMaLop = lopByMaLop;
+        this.taikhoanByUsername = taikhoanByUsername;
+    }
+
     public HocsinhEntity() {
     }
 

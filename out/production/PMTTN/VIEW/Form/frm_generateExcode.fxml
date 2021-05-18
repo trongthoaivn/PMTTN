@@ -13,6 +13,7 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="681.0" prefWidth="1329.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.ct_genarateExcode">
    <bottom>
@@ -87,12 +88,18 @@
                   </AnchorPane>
                 <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="308.0" prefWidth="565.0">
                      <children>
-                        <TableView fx:id="tbv_jsonView" layoutX="14.0" layoutY="8.0" onMouseClicked="#Select_ExQuestion" prefHeight="338.0" prefWidth="506.0">
+                        <TableView fx:id="tbv_jsonView" layoutX="84.0" layoutY="8.0" onMouseClicked="#Select_ExQuestion" prefHeight="338.0" prefWidth="436.0">
                           <columns>
-                            <TableColumn prefWidth="75.0" text="Mã câu hỏi" />
-                            <TableColumn prefWidth="428.79988861083984" text="Nội dung câu hỏi" />
+                            <TableColumn prefWidth="125.60003089904785" text="Mã câu hỏi" />
+                            <TableColumn prefWidth="376.7998962402344" text="Nội dung câu hỏi" />
                           </columns>
                         </TableView>
+                        <Label layoutX="18.0" layoutY="148.0" text="Số câu ">
+                           <font>
+                              <Font name="System Bold" size="15.0" />
+                           </font>
+                        </Label>
+                        <TextField fx:id="txt_STT" alignment="CENTER" editable="false" layoutX="14.0" layoutY="179.0" prefHeight="26.0" prefWidth="54.0" />
                      </children>
                   </AnchorPane>
               </items>
@@ -103,7 +110,7 @@
    <right>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <ListView fx:id="lsv_Questions" layoutX="11.0" layoutY="22.0" onMouseClicked="#Select_Questions" prefHeight="283.0" prefWidth="181.0" />
+            <ListView fx:id="lsv_Questions" layoutX="9.0" layoutY="22.0" onMouseClicked="#Select_Questions" prefHeight="283.0" prefWidth="181.0" />
             <HBox alignment="CENTER" layoutY="305.0" prefHeight="82.0" prefWidth="200.0" spacing="20.0">
                <children>
                   <Button mnemonicParsing="false" onAction="#Save_Questions" text="Save Questions" />

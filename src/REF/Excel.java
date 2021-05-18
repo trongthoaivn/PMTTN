@@ -16,39 +16,42 @@ import java.util.List;
 
 public class Excel {
 
+
     private void writeCauhoi(CauhoiEntity aCauhoi, Row row) {
+        HashCode DES = new HashCode();
+        String key ="012ab3456cd789ef";
         Cell cell = row.createCell(1);
-        cell.setCellValue(aCauhoi.getMaCh());
+        cell.setCellValue(DES.encrypt(String.valueOf(aCauhoi.getMaCh()) ,key));
 
         cell = row.createCell(2);
-        cell.setCellValue(aCauhoi.getLoai());
+        cell.setCellValue(DES.encrypt(String.valueOf(aCauhoi.getLoai()),key));
 
         cell = row.createCell(3);
-        cell.setCellValue(aCauhoi.getNdCh());
+        cell.setCellValue(DES.encrypt(aCauhoi.getNdCh(),key));
 
         cell = row.createCell(4);
-        cell.setCellValue(aCauhoi.getImgCh());
+        cell.setCellValue(DES.encrypt(aCauhoi.getImgCh(),key));
 
         cell = row.createCell(5);
-        cell.setCellValue(aCauhoi.getAudCh());
+        cell.setCellValue(DES.encrypt(aCauhoi.getAudCh(),key));
 
         cell = row.createCell(6);
-        cell.setCellValue(aCauhoi.getTl1());
+        cell.setCellValue(DES.encrypt(aCauhoi.getTl1(),key));
 
         cell = row.createCell(7);
-        cell.setCellValue(aCauhoi.getTl2());
+        cell.setCellValue(DES.encrypt(aCauhoi.getTl2(),key));
 
         cell = row.createCell(8);
-        cell.setCellValue(aCauhoi.getTl3());
+        cell.setCellValue(DES.encrypt(aCauhoi.getTl3(),key));
 
         cell = row.createCell(9);
-        cell.setCellValue(aCauhoi.getTl4());
+        cell.setCellValue(DES.encrypt(aCauhoi.getTl4(),key));
 
         cell = row.createCell(10);
-        cell.setCellValue(aCauhoi.getDa());
+        cell.setCellValue(DES.encrypt(aCauhoi.getDa(),key));
 
         cell = row.createCell(11);
-        cell.setCellValue(aCauhoi.getDokho());
+        cell.setCellValue(DES.encrypt(String.valueOf(aCauhoi.getDokho()),key));
 
     }
 
@@ -86,6 +89,8 @@ public class Excel {
 
     public List<CauhoiEntity> readExcel(String excelFilePath) throws IOException {
         FileInputStream fis = new FileInputStream(new File(excelFilePath));
+        String key ="012ab3456cd789ef";
+        HashCode Des = new HashCode();
         HSSFWorkbook wb = new HSSFWorkbook(fis);
         HSSFSheet sheet = wb.getSheetAt(0);
         HSSFSheet sheet2 = wb.getSheetAt(1);
@@ -93,17 +98,17 @@ public class Excel {
         List<CauhoiEntity> list = new ArrayList<>();
         for (Row row : sheet) {
             if (row!=null){
-                Integer maCh = (int)row.getCell(1).getNumericCellValue();
-                Boolean loai=row.getCell(2).getBooleanCellValue();
-                String ndCh=row.getCell(3).getStringCellValue();
-                String imgCh=row.getCell(4).getStringCellValue();
-                String audCh=row.getCell(5).getStringCellValue();
-                String tl1=row.getCell(6).getStringCellValue();
-                String tl2=row.getCell(7).getStringCellValue();
-                String tl3=row.getCell(8).getStringCellValue();
-                String tl4=row.getCell(9).getStringCellValue();
-                String da=row.getCell(10).getStringCellValue();
-                Integer dokho=(int)row.getCell(11).getNumericCellValue();
+                Integer maCh = Integer.valueOf(Des.decrypt(row.getCell(1).getStringCellValue(),key));
+                Boolean loai=Boolean.valueOf(Des.decrypt(row.getCell(2).getStringCellValue(),key));
+                String ndCh=String.valueOf(Des.decrypt(row.getCell(3).getStringCellValue(),key));
+                String imgCh=String.valueOf(Des.decrypt(row.getCell(4).getStringCellValue(),key));
+                String audCh=String.valueOf(Des.decrypt(row.getCell(5).getStringCellValue(),key));
+                String tl1=String.valueOf(Des.decrypt(row.getCell(6).getStringCellValue(),key));
+                String tl2=String.valueOf(Des.decrypt(row.getCell(7).getStringCellValue(),key));
+                String tl3=String.valueOf(Des.decrypt(row.getCell(8).getStringCellValue(),key));
+                String tl4=String.valueOf(Des.decrypt(row.getCell(9).getStringCellValue(),key));
+                String da=String.valueOf(Des.decrypt(row.getCell(10).getStringCellValue(),key));
+                Integer dokho=Integer.valueOf(Des.decrypt(row.getCell(11).getStringCellValue(),key));
                 CauhoiEntity acauhoi = new CauhoiEntity(maCh,loai,ndCh,imgCh,audCh,tl1,tl2,tl3,tl4,da,dokho,bode);
                 list.add(acauhoi);
             }
@@ -112,7 +117,7 @@ public class Excel {
     }
 
     public static void main(String[] args) throws IOException {
-        Excel excel = new Excel();
+            Excel excel = new Excel();
 //        cauhoiDao dao = new cauhoiDao();
 //        madeDao dao1 = new madeDao();
 //        MadeEntity madeEntity= dao1.getMadebyMadeid("BIO2020123");

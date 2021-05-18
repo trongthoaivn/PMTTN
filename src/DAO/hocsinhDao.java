@@ -1,5 +1,6 @@
 package DAO;
 
+import MODEL.AdminEntity;
 import MODEL.HocsinhEntity;
 import UTILITY.hibernateUtil;
 import javafx.collections.FXCollections;
@@ -67,5 +68,15 @@ public class hocsinhDao implements DaoInterface{
         s.close();
 
         return FXCollections.observableArrayList(list);
+    }
+
+    public String geHS_id_last() {
+        Session s = hibernateUtil.getSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(HocsinhEntity.class);
+        query.from(HocsinhEntity.class);
+        List<HocsinhEntity>  list=  s.createQuery(query).getResultList();
+        s.close();
+        return list.get(list.size()-1).getMaHs();
     }
 }

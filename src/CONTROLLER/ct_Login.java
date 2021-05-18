@@ -9,9 +9,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
-import javafx.scene.control.PasswordField;
-import javafx.scene.control.TextField;
+import javafx.scene.control.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.text.Text;
@@ -19,10 +17,21 @@ import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
 import java.net.URL;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.ResourceBundle;
 
 
 public class ct_Login implements Initializable {
+    @FXML
+    private RadioButton rdb_Teacher;
+
+    @FXML
+    private ToggleGroup login;
+
+    @FXML
+    private RadioButton rdb_Student;
+
     @FXML
     private TextField txt_US;
 
@@ -39,31 +48,42 @@ public class ct_Login implements Initializable {
     private ImageView btn_close;
 
 
+    Thread thread ;
+    taikhoanDao taikhoanDao= new taikhoanDao();
+    List<TaikhoanEntity> list = new ArrayList<>();
+
+    void getList(){
+        list = taikhoanDao.getlist();
+        thread.interrupt();
+    }
+
     @FXML
     void btn_login_click(ActionEvent event)  {
-        taikhoanDao taikhoanDao= new taikhoanDao();
-        TaikhoanEntity taikhoan =taikhoanDao.getUser_Pass(txt_US.getText());
-        if(taikhoan !=  null && taikhoan.getPasswords().equals(txt_PW.getText())){
-            lb_error.setVisible(false);
-            if(taikhoan.getQuyenByMaQuyen().getMaQuyen() == 1){
-                try{
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("../VIEW/Form/frm_Main.fxml"));
-                    Parent root = loader.load();
-                    ct_Main main = loader.getController();
-                    main.Login_info(taikhoan);
-                    Stage stage = new Stage();
-                    stage.setScene(new Scene(root));
-                    stage.initStyle(StageStyle.UTILITY);
-                    stage.show();
-                    ((Node)(event.getSource())).getScene().getWindow().hide();
-                }catch (Exception e){
 
+        for (TaikhoanEntity taikhoan :list){
+            if(taikhoan !=  null && taikhoan.getUsername().equals(txt_US.getText())&&taikhoan.getPasswords().equals(txt_PW.getText())&&rdb_Teacher.isSelected()){
+                lb_error.setVisible(false);
+                if(taikhoan.getQuyenByMaQuyen().getMaQuyen() == 1){
+                    try{
+                        FXMLLoader loader = new FXMLLoader(getClass().getResource("../VIEW/Form/frm_Main.fxml"));
+                        Parent root = loader.load();
+                        ct_Main main = loader.getController();
+                        main.Login_info(taikhoan);
+                        Stage stage = new Stage();
+                        stage.setScene(new Scene(root));
+                        stage.initStyle(StageStyle.UTILITY);
+                        stage.show();
+                        ((Node)(event.getSource())).getScene().getWindow().hide();
+                    }catch (Exception e){
+
+                    }
                 }
-            }
 
-        }else {
-            lb_error.setVisible(true);
+            }else {
+                lb_error.setVisible(true);
+            }
         }
+
     }
     @FXML
     void close(MouseEvent event) {
@@ -72,6 +92,8 @@ public class ct_Login implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
+        thread= new Thread(this::getList);
+        thread.start();
+        rdb_Teacher.setSelected(true);
     }
 }

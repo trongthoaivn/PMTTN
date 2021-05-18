@@ -2,9 +2,11 @@ package CONTROLLER;
 
 import DAO.giaovienDao;
 import DAO.hocsinhDao;
+import DAO.lopDao;
 import DAO.taikhoanDao;
 import MODEL.*;
 import REF.ComboItem;
+import REF.ComboboxString;
 import javafx.collections.FXCollections;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -22,9 +24,9 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Optional;
-import java.util.ResourceBundle;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.*;
 
 public class ct_addeditStudent implements Initializable {
 
@@ -41,7 +43,7 @@ public class ct_addeditStudent implements Initializable {
     private TextField txt_tenS;
 
     @FXML
-    private TextField txt_ngaysinh;
+    private DatePicker dp_Ngaysinh;
 
     @FXML
     private TextField txt_us;
@@ -51,6 +53,9 @@ public class ct_addeditStudent implements Initializable {
 
     @FXML
     private ComboBox<ComboItem> cbo_rule;
+
+    @FXML
+    private ComboBox<ComboboxString> cbo_Class;
 
     @FXML
     private Button btn_save;
@@ -72,11 +77,14 @@ public class ct_addeditStudent implements Initializable {
     Boolean status ;
     File source, dest;
     String   url="";
+    DateTimeFormatter formatER= DateTimeFormatter.ofPattern("dd/MM/yyyy");
     int flag =0;
 
-    @FXML
-    void CheckEmpty(MouseEvent event) {
-
+    void CheckStudent() {
+        String str =hocsinhDao.geHS_id_last();
+        int id =Integer.parseInt(str.substring(str.indexOf("HS")+2))+1;
+        txt_maS.setText("HS"+id);
+        txt_us.setText("hocsinh"+id);
     }
 
     @FXML
@@ -97,9 +105,11 @@ public class ct_addeditStudent implements Initializable {
     void setInformation_Student(HocsinhEntity hocsinh) throws ParseException {
         txt_maS.setText(hocsinh.getMaHs());
         txt_tenS.setText(hocsinh.getTenHs());
-        txt_ngaysinh.setText(convertTimeStamptoDate(hocsinh.getNgaysinh()));
+        dp_Ngaysinh.setValue(LocalDate.parse(convertTimeStamptoDate(hocsinh.getNgaysinh()),formatER));
+        url = hocsinh.getImgHs();
         txt_us.setText(hocsinh.getTaikhoanByUsername().getUsername());
         txt_pw.setText(hocsinh.getTaikhoanByUsername().getPasswords());
+        cbo_Class.getSelectionModel().select(new ComboboxString(hocsinh.getLopByMaLop().getTenLop(),hocsinh.getLopByMaLop().getMaLop()));
         if(hocsinh.getTaikhoanByUsername().getTrangthai()==true){
             rdb_active.setSelected(true);
         }else{
@@ -153,8 +163,9 @@ public class ct_addeditStudent implements Initializable {
            HocsinhEntity hocsinhEntity = new HocsinhEntity(
                     txt_maS.getText(),
                     txt_tenS.getText(),
-                    convertStringToTimestamp(txt_ngaysinh.getText()),
+                    convertStringToTimestamp(formatER.format(dp_Ngaysinh.getValue())),
                     url,
+                    new LopEntity(cbo_Class.getSelectionModel().getSelectedItem().getValue()),
                     taikhoanEntity
             );
             try{
@@ -213,11 +224,11 @@ public class ct_addeditStudent implements Initializable {
         }
     }
     public Boolean check_Empty(){
-        if(txt_maS.getText()!=""
-                && txt_tenS.getText()!=""
-                && txt_ngaysinh.getText()!=""
-                && txt_pw.getText()!=""
-                && txt_us.getText()!="")
+        if(txt_maS.getText().equals("")==false
+                && txt_tenS.getText().equals("")==false
+                && dp_Ngaysinh.getValue()!=null
+                && txt_pw.getText().equals("")==false
+                && txt_us.getText().equals("")==false)
             return true;
         else
             return false;
@@ -240,6 +251,17 @@ public class ct_addeditStudent implements Initializable {
         }
     }
 
+    public  void addComboboxClass(){
+        lopDao dao = new lopDao();
+        List<LopEntity> list=dao.getAll();
+        List<ComboboxString> list1 =new ArrayList<>();
+        for (LopEntity alop :list){
+            list1.add(new ComboboxString(alop.getTenLop(),alop.getMaLop()));
+        }
+        cbo_Class.setItems(FXCollections.observableArrayList(list1));
+        cbo_Class.getSelectionModel().selectFirst();
+    }
+
     public void addComboboxItem(){
         cbo_rule.setItems(FXCollections.observableArrayList(
                 new ComboItem("Admin",1),
@@ -253,5 +275,7 @@ public class ct_addeditStudent implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         addComboboxItem();
         rdb_active.setSelected(true);
+        addComboboxClass();
+        CheckStudent();
     }
 }

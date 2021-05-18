@@ -307,7 +307,7 @@ public class ct_Main implements Initializable,Runnable {
             ControllerStudent =loader.getController();
             pane_Center.setCenter(frm_student);
         }else{
-            pane_Center.setCenter(null);
+            pane_Center.setCenter(pane);
         }
 
     }
@@ -321,7 +321,7 @@ public class ct_Main implements Initializable,Runnable {
             ControllerTeacher =loader.getController();
             pane_Center.setCenter(frm_teacher);
         }else{
-            pane_Center.setCenter(null);
+            pane_Center.setCenter(pane);
         }
 
     }
@@ -334,7 +334,7 @@ public class ct_Main implements Initializable,Runnable {
             ControllerExam =loader.getController();
             pane_Center.setCenter(frm_Exam);
         }else{
-            pane_Center.setCenter(null);
+            pane_Center.setCenter(pane);
         }
     }
 
@@ -393,7 +393,7 @@ public class ct_Main implements Initializable,Runnable {
             ControllerAdmin =loader.getController();
             pane_Center.setCenter(frm_admin);
         }else{
-            pane_Center.setCenter(null);
+            pane_Center.setCenter(pane);
         }
 
     }
@@ -411,8 +411,8 @@ public class ct_Main implements Initializable,Runnable {
         thread.start();
 //        border_Menu.setLeft(null);
 //        pane_Main.setRight(null);
-        adminDao adminDao= new adminDao();
-        admin = adminDao.infoAdmin("admin1");
+//        adminDao adminDao= new adminDao();
+//        admin = adminDao.infoAdmin("admin1");
 //        System.out.println(admin.getTenAd());
 
     }

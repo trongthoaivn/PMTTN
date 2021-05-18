@@ -96,5 +96,14 @@ public class adminDao  implements  DaoInterface<AdminEntity>{
 
         return admin.get(0);
     }
+    public String getAd_id_last(){
+        Session s = hibernateUtil.getSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(AdminEntity.class);
+        query.from(AdminEntity.class);
+        List<AdminEntity>  list=  s.createQuery(query).getResultList();
+        s.close();
+        return list.get(list.size()-1).getMaAd();
+    }
 
 }

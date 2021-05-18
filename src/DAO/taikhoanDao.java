@@ -8,6 +8,7 @@ import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
@@ -62,6 +63,8 @@ public class taikhoanDao implements DaoInterface<TaikhoanEntity>{
         }
     }
 
+
+
     @Override
     public ObservableList<TaikhoanEntity> getAll() {
 
@@ -76,6 +79,16 @@ public class taikhoanDao implements DaoInterface<TaikhoanEntity>{
         return FXCollections.observableArrayList(list);
     }
 
+
+    public List<TaikhoanEntity> getlist(){
+        Session s = hibernateUtil.getSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(TaikhoanEntity.class);
+        query.from(TaikhoanEntity.class);
+        List<TaikhoanEntity>  list=  s.createQuery(query).getResultList();
+        s.close();
+        return list;
+    }
     public TaikhoanEntity getUser_Pass(String username){
 
         Session session = hibernateUtil.getSession();
@@ -94,6 +107,12 @@ public class taikhoanDao implements DaoInterface<TaikhoanEntity>{
         return Taikhoan;
 
     }
-
+    public String getAc_id_last(int i){
+        Session s = hibernateUtil.getSession();
+        Query query = s.createQuery("select a from TaikhoanEntity a where a.quyenByMaQuyen.maQuyen=:i");
+        List<TaikhoanEntity>  list=  query.setParameter("i",i).getResultList();
+        s.close();
+        return list.get(list.size()-1).getUsername();
+    }
 
 }

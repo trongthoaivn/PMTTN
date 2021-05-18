@@ -23,6 +23,8 @@ import java.sql.Timestamp;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Optional;
 import java.util.ResourceBundle;
@@ -35,7 +37,6 @@ public class ct_addeditTeacher implements Initializable {
     public Rectangle img;
     public TextField txt_maT;
     public TextField txt_tenT;
-    public TextField txt_ngaysinh;
     public TextField txt_us;
     public TextField txt_pw;
     public ComboBox<ComboItem> cbo_rule;
@@ -44,6 +45,8 @@ public class ct_addeditTeacher implements Initializable {
     public RadioButton rdb_active;
     public ToggleGroup radiobutton;
     public RadioButton rdb_disable;
+    @FXML
+    private DatePicker dp_Ngaysinh;
 
     DAO.taikhoanDao taikhoanDao = new taikhoanDao();
     DAO.giaovienDao giaovienDao = new giaovienDao();
@@ -51,11 +54,13 @@ public class ct_addeditTeacher implements Initializable {
     File source, dest;
     String   url="";
     int flag =0;
+    DateTimeFormatter formatER= DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     void setInformation_Teacher(GiaovienEntity teacher) throws ParseException {
         txt_maT.setText(teacher.getMaGv());
         txt_tenT.setText(teacher.getTenGv());
-        txt_ngaysinh.setText(convertTimeStamptoDate(teacher.getNgaysinh()));
+        dp_Ngaysinh.setValue(LocalDate.parse(convertTimeStamptoDate(teacher.getNgaysinh()),formatER));
+        url=teacher.getImgGv();
         txt_us.setText(teacher.getTaikhoanByUsername().getUsername());
         txt_pw.setText(teacher.getTaikhoanByUsername().getPasswords());
         if(teacher.getTaikhoanByUsername().getTrangthai()==true){
@@ -124,7 +129,7 @@ public class ct_addeditTeacher implements Initializable {
             GiaovienEntity giaovienEntity = new GiaovienEntity(
                     txt_maT.getText(),
                     txt_tenT.getText(),
-                    convertStringToTimestamp(txt_ngaysinh.getText()),
+                    convertStringToTimestamp(formatER.format(dp_Ngaysinh.getValue())),
                     url,
                     taikhoanEntity
             );
@@ -190,11 +195,11 @@ public class ct_addeditTeacher implements Initializable {
         }
     }
     public Boolean check_Empty(){
-        if(txt_maT.getText()!=""
-                && txt_tenT.getText()!=""
-                && txt_ngaysinh.getText()!=""
-                && txt_pw.getText()!=""
-                && txt_us.getText()!="")
+        if(txt_maT.getText().equals("")==false
+                && txt_tenT.getText().equals("")==false
+                && dp_Ngaysinh.getValue()!=null
+                && txt_pw.getText().equals("")==false
+                && txt_us.getText().equals("")==false)
             return true;
         else
             return false;
@@ -216,6 +221,12 @@ public class ct_addeditTeacher implements Initializable {
             os.close();
         }
     }
+    public void check_Teacher(){
+        String str =giaovienDao.getGv_id_last();
+        int id =Integer.parseInt(str.substring(str.indexOf("GV")+2))+1;
+        txt_maT.setText("GV"+id);
+        txt_us.setText("giaovien"+id);
+    }
 
     public void addComboboxItem(){
         cbo_rule.setItems(FXCollections.observableArrayList(
@@ -223,12 +234,13 @@ public class ct_addeditTeacher implements Initializable {
                 new ComboItem("Teacher",2),
                 new ComboItem("Student",3)
         ));
-        cbo_rule.getSelectionModel().select(1);
+        cbo_rule.getSelectionModel().select(2);
     }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         addComboboxItem();
         rdb_active.setSelected(true);
+        check_Teacher();
     }
 }
