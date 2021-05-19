@@ -73,25 +73,35 @@ public class ct_Admin implements Initializable {
         taikhoanDao taikhoanDao = new taikhoanDao();
         System.out.println(SelectedAd.getTenAd());
         if(SelectedAd.getTenAd()!=null){
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Delete Admin");
-            alert.setHeaderText("Are you sure you want delete "+ SelectedAd.getTenAd());
-            Optional<ButtonType> option = alert.showAndWait();
-            if(option.get()==ButtonType.OK) {
-                SelectedAdacc = taikhoanDao.getUser_Pass(SelectedAd.getTaikhoanByUsername().getUsername());
-                System.out.println(SelectedAdacc.getUsername());
-                File image = new File("src/"+SelectedAd.getImgAd());
-                if (image.exists()&& image.delete()){
-                    System.out.println("image delete :"+image.getName());
-                }else {
-                    System.out.println("image delete fail" +image.getPath());
-                }
-                System.out.println("admin delete: "+adminDao.delData(SelectedAd));
-                System.out.println("account delete:"+taikhoanDao.delData(SelectedAdacc));
-            }else if(option.get()==ButtonType.CANCEL){
-                alert.close();
-            }else
-                alert.close();
+            try {
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Delete Admin");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure you want delete "+ SelectedAd.getTenAd());
+                Optional<ButtonType> option = alert.showAndWait();
+                if(option.get()==ButtonType.OK) {
+                    SelectedAdacc = taikhoanDao.getUser_Pass(SelectedAd.getTaikhoanByUsername().getUsername());
+                    System.out.println(SelectedAdacc.getUsername());
+                    File image = new File("src/"+SelectedAd.getImgAd());
+                    if (image.exists()&& image.delete()){
+                        System.out.println("image delete :"+image.getName());
+                    }else {
+                        System.out.println("image delete fail" +image.getPath());
+                    }
+                    System.out.println("admin delete: "+adminDao.delData(SelectedAd));
+                    System.out.println("account delete:"+taikhoanDao.delData(SelectedAdacc));
+                }else if(option.get()==ButtonType.CANCEL){
+                    alert.close();
+                }else
+                    alert.close();
+            }catch (Exception e){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setTitle("Error");
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+
         }
 
 

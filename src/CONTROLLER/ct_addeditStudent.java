@@ -172,7 +172,8 @@ public class ct_addeditStudent implements Initializable {
                 if (flag == 0){
                     if(taikhoanDao.addData(taikhoanEntity)==1 && hocsinhDao.addData(hocsinhEntity)==1 ) {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setHeaderText("Add new Teacher complete!");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Add new Student complete!");
                         alert.show();
                     }
                 }
@@ -180,14 +181,16 @@ public class ct_addeditStudent implements Initializable {
                 else{
                     if(taikhoanDao.updateData(taikhoanEntity)==1 && hocsinhDao.updateData(hocsinhEntity)==1 ) {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setHeaderText("Update Teacher complete!");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Update Teacher complete!");
                         alert.show();
                     }
                 }
 
             }catch (Exception e){
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                alert.setHeaderText(e.toString());
+                alert.setHeaderText(null);
+                alert.setContentText(e.toString());
                 alert.show();
             }
         }

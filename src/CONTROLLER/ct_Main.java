@@ -129,7 +129,8 @@ public class ct_Main implements Initializable,Runnable {
     void exit(ActionEvent event) {
         Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
         alert.setTitle("Warning");
-        alert.setHeaderText("Are you sure you want to logout ?");
+        alert.setHeaderText(null);
+        alert.setContentText("Are you sure you want to logout ?");
         Optional<ButtonType> option = alert.showAndWait();
         if(option.get()==ButtonType.OK) {
             Platform.exit();

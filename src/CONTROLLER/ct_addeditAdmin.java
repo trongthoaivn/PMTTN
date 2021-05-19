@@ -173,7 +173,8 @@ public class ct_addeditAdmin implements Initializable{
                 if (flag == 0){
                     if(taikhoanDao.addData(taikhoanEntity)==1 && adminDao.addData(adminEntity)==1 ) {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setHeaderText("Add new Admin complete!");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Add new Admin complete!");
                         alert.show();
                     }
                 }
@@ -181,7 +182,8 @@ public class ct_addeditAdmin implements Initializable{
                 else{
                         if(taikhoanDao.updateData(taikhoanEntity)==1 && adminDao.updateData(adminEntity)==1 ) {
                             Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                            alert.setHeaderText("Update Admin complete!");
+                            alert.setHeaderText(null);
+                            alert.setContentText("Update Admin complete!");
                             alert.show();
                         }
                     }

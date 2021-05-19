@@ -166,6 +166,10 @@ public class ct_genarateExcode implements Initializable {
             }
         }
 
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText("Save complete");
+        alert.showAndWait();
         this.Refresh(event);
 
     }
@@ -330,8 +334,16 @@ public class ct_genarateExcode implements Initializable {
     public void Generate(ActionEvent actionEvent) {
         InputDialog inputDialog = new InputDialog();
         Matrix  matrix = inputDialog.Display();
-        LvQuestions.add(Matrix(matrix));
-        lsv_Questions.setItems(FXCollections.observableArrayList(LvQuestions));
+        try{
+            LvQuestions.add(Matrix(matrix));
+            lsv_Questions.setItems(FXCollections.observableArrayList(LvQuestions));
+        }catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
     }
     private void countitem(){
         txt_STT.setText(String.valueOf(tbv_jsonView.getItems().size()));

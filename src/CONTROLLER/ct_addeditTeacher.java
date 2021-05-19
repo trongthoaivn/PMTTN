@@ -137,7 +137,8 @@ public class ct_addeditTeacher implements Initializable {
                 if (flag == 0){
                     if(taikhoanDao.addData(taikhoanEntity)==1 && giaovienDao.addData(giaovienEntity)==1 ) {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setHeaderText("Add new Teacher complete!");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Add new Teacher complete!");
                         alert.show();
                     }
                 }
@@ -145,7 +146,8 @@ public class ct_addeditTeacher implements Initializable {
                 else{
                     if(taikhoanDao.updateData(taikhoanEntity)==1 && giaovienDao.updateData(giaovienEntity)==1 ) {
                         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                        alert.setHeaderText("Update Teacher complete!");
+                        alert.setHeaderText(null);
+                        alert.setContentText("Update Teacher complete!");
                         alert.show();
                     }
                 }
@@ -234,7 +236,7 @@ public class ct_addeditTeacher implements Initializable {
                 new ComboItem("Teacher",2),
                 new ComboItem("Student",3)
         ));
-        cbo_rule.getSelectionModel().select(2);
+        cbo_rule.getSelectionModel().select(1);
     }
 
     @Override

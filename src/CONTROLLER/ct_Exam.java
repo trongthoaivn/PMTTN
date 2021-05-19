@@ -137,17 +137,27 @@ public class ct_Exam implements Initializable {
 
     }
     public void DeleteExam() {
-        if(recent.getMaBode()!= null){
-            Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
-            alert.setTitle("Delete Test");
-            alert.setHeaderText("Are you sure you want delete "+ recent.getMaBode());
-            Optional<ButtonType> option = alert.showAndWait();
-            if(option.get()==ButtonType.OK && cauhoiDao.DeleteQuestiobymaDe(recent)==1 && dao.delData(recent)==1 ) {
-                System.out.println("delete ListTest : 1");
-            }else if (option.get() ==ButtonType.CANCEL){
-                alert.close();
-            }else alert.close();
+        try {
+            if(recent.getMaBode()!= null){
+                Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+                alert.setTitle("Delete Test");
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure you want delete "+ recent.getMaBode());
+                Optional<ButtonType> option = alert.showAndWait();
+                if(option.get()==ButtonType.OK && cauhoiDao.DeleteQuestiobymaDe(recent)==1 && dao.delData(recent)==1 ) {
+                    System.out.println("delete ListTest : 1");
+                }else if (option.get() ==ButtonType.CANCEL){
+                    alert.close();
+                }else alert.close();
+            }
+        }catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
         }
+
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {

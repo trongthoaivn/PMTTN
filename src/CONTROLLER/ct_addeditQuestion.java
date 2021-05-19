@@ -139,6 +139,10 @@ public class ct_addeditQuestion implements Initializable {
     private void save_all(){
         cauhoiDao dao = new cauhoiDao();
         System.out.println("insert or update : "+dao.InsertorUpdate(listview));
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setHeaderText(null);
+        alert.setContentText("Add complete!");
+        alert.show();
     }
 
     @FXML
