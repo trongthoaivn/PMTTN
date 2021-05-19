@@ -13,17 +13,13 @@ public class nodeUSPW extends Application{
 
 
         public void start(Stage stage) {
-            Button b1 = new Button("Close");
-            b1.setEffect(new DropShadow());
-
-            VBox root = new VBox();
-            root.getChildren().addAll(b1);
-
-            Scene scene = new Scene(root);
-            stage.setScene(scene);
-            stage.setTitle("Testing LayoutBounds");
-            stage.show();
-
+            InputDialog inputDialog = new InputDialog();
+            Matrix matrix = inputDialog.Display();
+            System.out.println("Socau :"+ matrix.getSocau());
+            System.out.println("hieu :" +(matrix.getSocau()* matrix.getHieu())/100);
+            System.out.println("biet :" +(matrix.getSocau()* matrix.getBiet())/100);
+            System.out.println("vdthap :" +(matrix.getSocau()* matrix.getVdthap())/100);
+            System.out.println("vdcao :" +(matrix.getSocau()* matrix.getVdcao())/100);
         }
 
 

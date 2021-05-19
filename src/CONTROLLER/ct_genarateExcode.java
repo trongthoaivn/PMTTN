@@ -6,6 +6,8 @@ import MODEL.BodeEntity;
 import MODEL.CauhoiEntity;
 import MODEL.MadeEntity;
 import REF.Excel;
+import REF.InputDialog;
+import REF.Matrix;
 import javafx.collections.FXCollections;
 import javafx.collections.ListChangeListener;
 import javafx.collections.ObservableList;
@@ -20,11 +22,13 @@ import javafx.scene.layout.VBox;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.Workbook;
 
+import java.util.Random;
 import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.stream.Collectors;
 
 public class ct_genarateExcode implements Initializable {
 
@@ -289,7 +293,46 @@ public class ct_genarateExcode implements Initializable {
         }
         loadExamcode();
     }
+    public List<CauhoiEntity> Matrix (Matrix matrix){
+         int hieu = (matrix.getSocau()* matrix.getHieu())/100;
+         int biet = (matrix.getSocau()* matrix.getBiet())/100;
+         int vdthap = (matrix.getSocau()* matrix.getVdthap())/100;
+         int vdcao = (matrix.getSocau()* matrix.getVdcao())/100;
+         Random random = new Random();
+         List<CauhoiEntity> listin = cauhoiEntities.stream().collect(Collectors.toList());
+         List<CauhoiEntity> listout = new ArrayList<>();
+        while (listout.size()<matrix.getSocau()) {
+            CauhoiEntity ch = listin.get(random.nextInt(listin.size()));
+            if (ch.getDokho() == 1 && hieu > 0) {
+                listout.add(ch);
+                listin.remove(ch);
+                hieu--;
+            }
+            if (ch.getDokho() == 2 && biet > 0) {
+                listout.add(ch);
+                listin.remove(ch);
+                biet--;
+            }
+            if (ch.getDokho() == 3 && vdthap > 0) {
+                listout.add(ch);
+                listin.remove(ch);
+                vdthap--;
+            }
+            if (ch.getDokho() == 4 && vdcao > 0) {
+                listout.add(ch);
+                listin.remove(ch);
+                vdcao--;
+            }
+        }
+            return listout;
+    }
 
+    public void Generate(ActionEvent actionEvent) {
+        InputDialog inputDialog = new InputDialog();
+        Matrix  matrix = inputDialog.Display();
+        LvQuestions.add(Matrix(matrix));
+        lsv_Questions.setItems(FXCollections.observableArrayList(LvQuestions));
+    }
     private void countitem(){
         txt_STT.setText(String.valueOf(tbv_jsonView.getItems().size()));
     }
@@ -299,4 +342,6 @@ public class ct_genarateExcode implements Initializable {
         V_Box_Excode.getChildren().remove(0);
 
     }
+
+
 }
