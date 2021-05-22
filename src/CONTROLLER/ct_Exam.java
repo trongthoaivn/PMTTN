@@ -6,6 +6,7 @@ import DAO.monhocDao;
 import MODEL.BodeEntity;
 import MODEL.MonhocEntity;
 import REF.ComboboxString;
+import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -40,8 +41,9 @@ public class ct_Exam implements Initializable {
     BodeEntity recent = new BodeEntity();
     bodeDao dao = new bodeDao();
     cauhoiDao cauhoiDao = new cauhoiDao();
-    ObservableList<BodeEntity> list = dao.getAll();
+    List<BodeEntity> list =  new ArrayList<>();
     Thread thread = new Thread();
+    Thread thread1 = new Thread();
 
     @FXML
     void edit_question(ActionEvent event) throws IOException {
@@ -76,16 +78,27 @@ public class ct_Exam implements Initializable {
 
         });
         cbo_Subject.setItems(FXCollections.observableArrayList(listItem));
-        cbo_Subject.getSelectionModel().selectFirst();
+        thread1.interrupt();
+        Platform.runLater(new Runnable() {
+            @Override
+            public void run() {
+                cbo_Subject.getSelectionModel().selectFirst();
+            }
+        });
     }
     private void loadListTesttoListview(){
 
+        list = dao.getAll();
         List<String> listitem = new ArrayList<>();
         list.forEach(e ->{
             listitem.add(e.getMaBode()+"\n"+e.getTenBode());
         });
         lsv_Exam.setItems(FXCollections.observableArrayList(listitem));
         thread.interrupt();
+
+    }
+    public void selectfisrt(){
+        cbo_Subject.getSelectionModel().selectFirst();
     }
 
     @FXML
@@ -161,9 +174,11 @@ public class ct_Exam implements Initializable {
     }
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        loadSubjecttocombobox();
         thread = new Thread(this::loadListTesttoListview);
         thread.start();
+        thread1 = new Thread(this::loadSubjecttocombobox);
+        thread1.start();
+
     }
 
 

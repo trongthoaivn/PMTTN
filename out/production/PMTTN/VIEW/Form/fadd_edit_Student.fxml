@@ -25,11 +25,11 @@
       <TextField fx:id="txt_us" editable="false" layoutX="190.0" layoutY="364.0" prefHeight="26.0" prefWidth="242.0" />
       <Label layoutX="94.0" layoutY="406.0" text="Mật khẩu :" />
       <TextField fx:id="txt_pw" layoutX="190.0" layoutY="402.0" prefHeight="26.0" prefWidth="242.0" />
-      <ComboBox fx:id="cbo_rule" layoutX="468.0" layoutY="402.0" prefWidth="150.0" />
+      <ComboBox fx:id="cbo_rule" disable="true" layoutX="468.0" layoutY="402.0" prefWidth="150.0" />
       <Button fx:id="btn_save" layoutX="468.0" layoutY="441.0" mnemonicParsing="false" onAction="#save_Student" text="Save" />
       <Button fx:id="btn_cancel" layoutX="566.0" layoutY="441.0" mnemonicParsing="false" onAction="#cancel" text="Cancel" />
       <Pane layoutX="443.0" layoutY="345.0" prefHeight="47.0" prefWidth="200.0" />
-      <DatePicker fx:id="dp_Ngaysinh" layoutX="384.0" layoutY="181.0" prefHeight="26.0" prefWidth="242.0" />
+      <DatePicker fx:id="dp_Ngaysinh" editable="false" layoutX="384.0" layoutY="181.0" prefHeight="26.0" prefWidth="242.0" />
       <RadioButton fx:id="rdb_active" layoutX="468.0" layoutY="368.0" mnemonicParsing="false" text="Active">
          <toggleGroup>
             <ToggleGroup fx:id="radiobutton" />

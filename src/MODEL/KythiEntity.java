@@ -18,20 +18,24 @@ public class KythiEntity {
     private Time tgKetthuc;
     private Integer slCh;
     private Collection<BodeEntity> bodesByMaKt;
+    private Collection<GacthiEntity> gacthisByMaKt;
     private Collection<KetquaEntity> ketquasByMaKt;
     private MonhocEntity monhocByMaMh;
-    private GiaovienEntity giaovienByMaGv;
-    private HocsinhEntity hocsinhByMaHs;
+    private Collection<ThisinhEntity> thisinhsByMaKt;
 
-//    @Id
-//    @GeneratedValue
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
+    public KythiEntity() {
+    }
+
+    public KythiEntity(String maKt, String tenKt, Timestamp ngaythi, Integer tgLambai, Time tgBatdau, Time tgKetthuc, Integer slCh, MonhocEntity monhocByMaMh) {
+        this.maKt = maKt;
+        this.tenKt = tenKt;
+        this.ngaythi = ngaythi;
+        this.tgLambai = tgLambai;
+        this.tgBatdau = tgBatdau;
+        this.tgKetthuc = tgKetthuc;
+        this.slCh = slCh;
+        this.monhocByMaMh = monhocByMaMh;
+    }
 
     @Id
     @Column(name = "ma_KT")
@@ -103,6 +107,7 @@ public class KythiEntity {
         this.slCh = slCh;
     }
 
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -126,6 +131,15 @@ public class KythiEntity {
     }
 
     @OneToMany(mappedBy = "kythiByMaKt")
+    public Collection<GacthiEntity> getGacthisByMaKt() {
+        return gacthisByMaKt;
+    }
+
+    public void setGacthisByMaKt(Collection<GacthiEntity> gacthisByMaKt) {
+        this.gacthisByMaKt = gacthisByMaKt;
+    }
+
+    @OneToMany(mappedBy = "kythiByMaKt")
     public Collection<KetquaEntity> getKetquasByMaKt() {
         return ketquasByMaKt;
     }
@@ -144,23 +158,12 @@ public class KythiEntity {
         this.monhocByMaMh = monhocByMaMh;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "ma_GV", referencedColumnName = "ma_GV")
-    public GiaovienEntity getGiaovienByMaGv() {
-        return giaovienByMaGv;
+    @OneToMany(mappedBy = "kythiByMaKt")
+    public Collection<ThisinhEntity> getThisinhsByMaKt() {
+        return thisinhsByMaKt;
     }
 
-    public void setGiaovienByMaGv(GiaovienEntity giaovienByMaGv) {
-        this.giaovienByMaGv = giaovienByMaGv;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "ma_HS", referencedColumnName = "ma_HS")
-    public HocsinhEntity getHocsinhByMaHs() {
-        return hocsinhByMaHs;
-    }
-
-    public void setHocsinhByMaHs(HocsinhEntity hocsinhByMaHs) {
-        this.hocsinhByMaHs = hocsinhByMaHs;
+    public void setThisinhsByMaKt(Collection<ThisinhEntity> thisinhsByMaKt) {
+        this.thisinhsByMaKt = thisinhsByMaKt;
     }
 }

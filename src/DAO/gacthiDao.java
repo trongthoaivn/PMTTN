@@ -1,17 +1,12 @@
 package DAO;
 
-import MODEL.AdminEntity;
-import MODEL.KythiEntity;
 import UTILITY.hibernateUtil;
-import javafx.collections.FXCollections;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
-public class kythiDao implements DaoInterface{
+public class gacthiDao implements DaoInterface{
     @Override
     public int addData(Object Data) {
         try {
@@ -30,7 +25,7 @@ public class kythiDao implements DaoInterface{
     @Override
     public int delData(Object Data) {
         try {
-            Session session =hibernateUtil.getSession();
+            Session session = hibernateUtil.getSession();
             Transaction transaction =session.beginTransaction();
             session.delete(Data);
             transaction.commit();
@@ -45,7 +40,7 @@ public class kythiDao implements DaoInterface{
     @Override
     public int updateData(Object Data) {
         try {
-            Session session =hibernateUtil.getSession();
+            Session session = hibernateUtil.getSession();
             Transaction transaction =session.beginTransaction();
             session.update(Data);
             transaction.commit();
@@ -58,15 +53,7 @@ public class kythiDao implements DaoInterface{
     }
 
     @Override
-    public List<KythiEntity> getAll() {
-        Session s = hibernateUtil.getSession();
-        CriteriaBuilder builder = s.getCriteriaBuilder();
-        CriteriaQuery query = builder.createQuery(KythiEntity.class);
-        query.from(KythiEntity.class);
-        List<KythiEntity>  list=  s.createQuery(query).getResultList();
-        s.close();
-        return list;
+    public List getAll() {
+        return null;
     }
-
-
 }

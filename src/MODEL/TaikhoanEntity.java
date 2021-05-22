@@ -16,6 +16,7 @@ public class TaikhoanEntity {
     private Collection<HocsinhEntity> hocsinhsByUsername;
     private QuyenEntity quyenByMaQuyen;
 
+
     public TaikhoanEntity(String username, String passwords, Boolean trangthai, QuyenEntity quyenByMaQuyen) {
         this.username = username;
         this.passwords = passwords;
@@ -26,15 +27,6 @@ public class TaikhoanEntity {
     public TaikhoanEntity() {
     }
 
-//    @Id
-//    @GeneratedValue
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
 
     @Id
     @Column(name = "username")

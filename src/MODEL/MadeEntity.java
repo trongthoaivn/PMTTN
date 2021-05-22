@@ -12,17 +12,6 @@ public class MadeEntity {
     private String maCHde;
     private BodeEntity bodeByMaBode;
 
-//    @Id
-//    @GeneratedValue
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-
-
     public MadeEntity(String maDe, String tenMade, String maCHde, BodeEntity bodeByMaBode) {
         this.maDe = maDe;
         this.tenMade = tenMade;

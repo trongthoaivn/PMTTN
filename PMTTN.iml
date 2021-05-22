@@ -33,5 +33,7 @@
     <orderEntry type="library" name="com.fasterxml.jackson.core:jackson-core:2.7.2" level="project" />
     <orderEntry type="library" name="org.apache.poi:poi:3.17" level="project" />
     <orderEntry type="library" name="org.apache.poi:poi-ooxml:3.17" level="project" />
+    <orderEntry type="library" name="view-11.10.1" level="project" />
+    <orderEntry type="library" name="jfxtras-all-8.0-r6" level="project" />
   </component>
 </module>

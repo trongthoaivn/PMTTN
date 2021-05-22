@@ -27,6 +27,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Optional;
@@ -80,10 +81,14 @@ public class ct_addeditAdmin implements Initializable{
     DateTimeFormatter formatER= DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     public void check_Admin(){
-        String str =adminDao.getAd_id_last();
-        int id =Integer.parseInt(str.substring(str.indexOf("AD")+2))+1;
-        txt_maAd.setText("AD"+id);
-        txt_us.setText("admin"+id);
+        LocalDateTime dateTime =  java.time.LocalDateTime.now();
+        int year=  dateTime.getYear();
+        int day = dateTime.getDayOfMonth();
+        int h =dateTime.getHour();
+        int m = dateTime.getMinute();
+        int s = dateTime.getSecond();
+        txt_maAd.setText("AD"+""+year+""+day+""+h+""+m+""+s);
+        txt_us.setText("AD"+""+year+""+day+""+h+""+m+""+s);
     }
     public Boolean check_Empty(){
         if(txt_maAd.getText().equals("")==false

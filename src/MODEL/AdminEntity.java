@@ -25,16 +25,6 @@ public class AdminEntity {
     public AdminEntity() {
     }
 
-//    @Id
-//    @GeneratedValue
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-
     @Id
     @Column(name = "ma_Ad")
     public String getMaAd() {

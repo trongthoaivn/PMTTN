@@ -24,6 +24,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Date;
 import java.util.Optional;
@@ -224,10 +225,14 @@ public class ct_addeditTeacher implements Initializable {
         }
     }
     public void check_Teacher(){
-        String str =giaovienDao.getGv_id_last();
-        int id =Integer.parseInt(str.substring(str.indexOf("GV")+2))+1;
-        txt_maT.setText("GV"+id);
-        txt_us.setText("giaovien"+id);
+        LocalDateTime dateTime =  java.time.LocalDateTime.now();
+        int year=  dateTime.getYear();
+        int day = dateTime.getDayOfMonth();
+        int h =dateTime.getHour();
+        int m = dateTime.getMinute();
+        int s = dateTime.getSecond();
+        txt_maT.setText("GV"+""+year+""+day+""+h+""+m+""+s);
+        txt_us.setText("GV"+""+year+""+day+""+h+""+m+""+s);
     }
 
     public void addComboboxItem(){

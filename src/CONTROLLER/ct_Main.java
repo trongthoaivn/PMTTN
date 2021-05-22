@@ -118,10 +118,12 @@ public class ct_Main implements Initializable,Runnable {
     Pane  frm_teacher = null;
     Pane  frm_student = null;
     Pane  frm_Exam = null;
+    Pane  frm_Schedule= null;
     Thread thread;
     private ct_Admin ControllerAdmin;
     private ct_Teacher ControllerTeacher;
     private ct_Student ControllerStudent;
+    private ct_Schedule ContollerSchedule;
     private ct_Exam ControllerExam;
 
 
@@ -139,8 +141,6 @@ public class ct_Main implements Initializable,Runnable {
             alert.close();
         }else
             alert.close();
-
-
     }
 
     @FXML
@@ -199,9 +199,8 @@ public class ct_Main implements Initializable,Runnable {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.initStyle(StageStyle.UTILITY);
-            if(stage.isShowing()==false){
-                stage.show();
-            }
+            stage.showAndWait();
+            btn_refresh.fire();
         }
         if(pane_Center.getCenter() ==frm_teacher){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../VIEW/Form/fadd_edit_Teacher.fxml"));
@@ -209,9 +208,8 @@ public class ct_Main implements Initializable,Runnable {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.initStyle(StageStyle.UTILITY);
-            if(stage.isShowing()==false){
-                stage.show();
-            }
+            stage.showAndWait();
+            btn_refresh.fire();
         }
         if(pane_Center.getCenter() ==frm_student){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../VIEW/Form/fadd_edit_Student.fxml"));
@@ -219,9 +217,8 @@ public class ct_Main implements Initializable,Runnable {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.initStyle(StageStyle.UTILITY);
-            if(stage.isShowing()==false){
-                stage.show();
-            }
+            stage.showAndWait();
+            btn_refresh.fire();
         }
         if(pane_Center.getCenter() ==frm_Exam){
             FXMLLoader loader = new FXMLLoader(getClass().getResource("../VIEW/Form/fadd_edit_Exam.fxml"));
@@ -229,9 +226,8 @@ public class ct_Main implements Initializable,Runnable {
             Stage stage = new Stage();
             stage.setScene(new Scene(root));
             stage.initStyle(StageStyle.UTILITY);
-            if(stage.isShowing()==false){
-                stage.show();
-            }
+            stage.showAndWait();
+            btn_refresh.fire();
         }
 
     }
@@ -288,8 +284,20 @@ public class ct_Main implements Initializable,Runnable {
     }
 
     @FXML
-    void load_frm_schedule(ActionEvent event) {
+    void load_frm_schedule(ActionEvent event) throws IOException {
+        if (pane_Center.getCenter()!= frm_Schedule || pane_Center.getCenter()==null){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/VIEW//Form/frm_Schedule.fxml"));
 
+            frm_Schedule = (Pane) loader.load();
+
+            ContollerSchedule =loader.getController();
+            Stage stage = new Stage();
+            stage.setScene( new Scene(frm_Schedule));
+            stage.showAndWait();
+            System.out.println("off");
+        }else{
+            pane_Center.setCenter(pane);
+        }
     }
 
     @FXML

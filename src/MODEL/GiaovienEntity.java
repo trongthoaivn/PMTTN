@@ -13,8 +13,8 @@ public class GiaovienEntity {
     private String tenGv;
     private Timestamp ngaysinh;
     private String imgGv;
+    private Collection<GacthiEntity> gacthisByMaGv;
     private TaikhoanEntity taikhoanByUsername;
-    private Collection<KythiEntity> kythisByMaGv;
 
     public GiaovienEntity(String maGv, String tenGv, Timestamp ngaysinh, String imgGv, TaikhoanEntity taikhoanByUsername) {
         this.maGv = maGv;
@@ -26,17 +26,6 @@ public class GiaovienEntity {
 
     public GiaovienEntity() {
     }
-
-//    @Id
-//    @GeneratedValue
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-
     @Id
     @Column(name = "ma_GV")
     public String getMaGv() {
@@ -90,6 +79,15 @@ public class GiaovienEntity {
         return Objects.hash(maGv, tenGv, ngaysinh, imgGv);
     }
 
+    @OneToMany(mappedBy = "giaovienByMaGv")
+    public Collection<GacthiEntity> getGacthisByMaGv() {
+        return gacthisByMaGv;
+    }
+
+    public void setGacthisByMaGv(Collection<GacthiEntity> gacthisByMaGv) {
+        this.gacthisByMaGv = gacthisByMaGv;
+    }
+
     @ManyToOne
     @JoinColumn(name = "username", referencedColumnName = "username", nullable = false)
     public TaikhoanEntity getTaikhoanByUsername() {
@@ -98,14 +96,5 @@ public class GiaovienEntity {
 
     public void setTaikhoanByUsername(TaikhoanEntity taikhoanByUsername) {
         this.taikhoanByUsername = taikhoanByUsername;
-    }
-
-    @OneToMany(mappedBy = "giaovienByMaGv")
-    public Collection<KythiEntity> getKythisByMaGv() {
-        return kythisByMaGv;
-    }
-
-    public void setKythisByMaGv(Collection<KythiEntity> kythisByMaGv) {
-        this.kythisByMaGv = kythisByMaGv;
     }
 }

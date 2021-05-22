@@ -78,7 +78,7 @@ public class BaithiEntity {
     }
 
     @ManyToOne
-    @JoinColumn(name = "ma_KQ", referencedColumnName = "ma_KQ", nullable = false ,insertable = false,updatable = false)
+    @JoinColumn(name = "ma_KQ", referencedColumnName = "ma_KQ", nullable = false, insertable = false,updatable = false)
     public KetquaEntity getKetquaByMaKq() {
         return ketquaByMaKq;
     }

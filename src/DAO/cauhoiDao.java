@@ -2,7 +2,6 @@ package DAO;
 
 import MODEL.BodeEntity;
 import MODEL.CauhoiEntity;
-import MODEL.MadeJson;
 import UTILITY.hibernateUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;

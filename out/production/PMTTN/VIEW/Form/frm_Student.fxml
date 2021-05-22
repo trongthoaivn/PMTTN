@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
@@ -9,7 +10,7 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="562.0" prefWidth="680.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.ct_Student">
    <children>
-      <TableView fx:id="tbv_Student" layoutX="11.0" layoutY="90.0" onMouseClicked="#SelectStudent" prefHeight="458.0" prefWidth="658.0" stylesheets="@../CSS/Admin.css">
+      <TableView fx:id="tbv_Student" layoutX="11.0" layoutY="143.0" onMouseClicked="#SelectStudent" prefHeight="405.0" prefWidth="658.0" stylesheets="@../CSS/Admin.css">
          <columns>
             <TableColumn prefWidth="110.4000244140625" text="Mã học sinh" />
             <TableColumn prefWidth="211.20001220703125" text="Tên học sinh" />
@@ -25,6 +26,12 @@
       <Label layoutX="140.0" layoutY="23.0" text="DANH SÁCH HỌC SINH" textFill="#5c079c">
          <font>
             <Font name="Felix Titling" size="36.0" />
+         </font>
+      </Label>
+      <ComboBox fx:id="cbo_class" layoutX="516.0" layoutY="104.0" onAction="#sort_class" prefWidth="150.0" />
+      <Label layoutX="466.0" layoutY="106.0" prefHeight="21.0" prefWidth="46.0" text="Lớp :">
+         <font>
+            <Font name="System Bold" size="15.0" />
          </font>
       </Label>
    </children>

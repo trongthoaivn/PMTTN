@@ -1,22 +1,24 @@
 package CONTROLLER;
 
 import DAO.hocsinhDao;
+import DAO.lopDao;
 import DAO.taikhoanDao;
 import MODEL.HocsinhEntity;
+import MODEL.LopEntity;
 import MODEL.TaikhoanEntity;
+import REF.ComboboxString;
 import REF.CustomImage;
 import javafx.animation.PauseTransition;
 import javafx.beans.property.ReadOnlyStringWrapper;
+import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.ButtonType;
-import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableView;
+import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -29,6 +31,8 @@ import java.io.IOException;
 import java.net.URL;
 import java.sql.Timestamp;
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.ResourceBundle;
 
@@ -46,9 +50,13 @@ public class ct_Student implements Initializable {
     @FXML
     private TableColumn<HocsinhEntity, String> passwords;
 
+    @FXML
+    private ComboBox<ComboboxString> cbo_class;
+
     HocsinhEntity SelectedS = new HocsinhEntity();
     TaikhoanEntity SelectedAdacc = new TaikhoanEntity();
     Thread thread = new Thread();
+    Thread thread1 = new Thread();
     ObservableList<HocsinhEntity> hocsinhEntities;
 
     public void EditStudent() throws IOException, ParseException {
@@ -75,7 +83,8 @@ public class ct_Student implements Initializable {
             try{
                 Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
                 alert.setTitle("Delete Admin");
-                alert.setHeaderText("Are you sure you want delete "+ SelectedS.getTenHs());
+                alert.setHeaderText(null);
+                alert.setContentText("Are you sure you want delete "+ SelectedS.getTenHs());
                 Optional<ButtonType> option = alert.showAndWait();
                 if(option.get()==ButtonType.OK) {
                     SelectedAdacc = taikhoanDao.getUser_Pass(SelectedS.getTaikhoanByUsername().getUsername());
@@ -102,8 +111,26 @@ public class ct_Student implements Initializable {
 
         }
 
-
-
+    }
+    @FXML
+    void sort_class(ActionEvent event) {
+        List<HocsinhEntity> list = new ArrayList<>();
+        for(HocsinhEntity ahs : hocsinhEntities){
+            if (ahs.getLopByMaLop().getMaLop().equals(cbo_class.getValue().getValue())){
+                list.add(ahs);
+            }
+        }
+        tbv_Student.setItems(FXCollections.observableArrayList(list));
+    }
+    public void getClasstocbo(){
+        lopDao dao = new lopDao();
+        List<LopEntity> list=dao.getAll();
+        List<ComboboxString> list1 =new ArrayList<>();
+        for (LopEntity alop :list){
+            list1.add(new ComboboxString(alop.getTenLop(),alop.getMaLop()));
+        }
+        cbo_class.setItems(FXCollections.observableArrayList(list1));
+        thread1.interrupt();
     }
 
     public void getStudenttoTable(){
@@ -151,6 +178,8 @@ public class ct_Student implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         thread = new Thread(this::getStudenttoTable);
         thread.start();
+        thread1 = new Thread(this::getClasstocbo);
+        thread1.start();
     }
 
 

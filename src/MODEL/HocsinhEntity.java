@@ -16,7 +16,7 @@ public class HocsinhEntity {
     private LopEntity lopByMaLop;
     private TaikhoanEntity taikhoanByUsername;
     private Collection<KetquaEntity> ketquasByMaHs;
-    private Collection<KythiEntity> kythisByMaHs;
+    private Collection<ThisinhEntity> thisinhsByMaHs;
 
     public HocsinhEntity(String maHs, String tenHs, Timestamp ngaysinh, String imgHs, TaikhoanEntity taikhoanByUsername) {
         this.maHs = maHs;
@@ -37,16 +37,6 @@ public class HocsinhEntity {
 
     public HocsinhEntity() {
     }
-
-//    @Id
-//    @GeneratedValue
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
 
     @Id
     @Column(name = "ma_HS")
@@ -131,11 +121,11 @@ public class HocsinhEntity {
     }
 
     @OneToMany(mappedBy = "hocsinhByMaHs")
-    public Collection<KythiEntity> getKythisByMaHs() {
-        return kythisByMaHs;
+    public Collection<ThisinhEntity> getThisinhsByMaHs() {
+        return thisinhsByMaHs;
     }
 
-    public void setKythisByMaHs(Collection<KythiEntity> kythisByMaHs) {
-        this.kythisByMaHs = kythisByMaHs;
+    public void setThisinhsByMaHs(Collection<ThisinhEntity> thisinhsByMaHs) {
+        this.thisinhsByMaHs = thisinhsByMaHs;
     }
 }

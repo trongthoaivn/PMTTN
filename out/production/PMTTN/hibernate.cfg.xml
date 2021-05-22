@@ -8,7 +8,6 @@
     <property name="connection.driver_class">com.microsoft.sqlserver.jdbc.SQLServerDriver</property>
     <property name="connection.username">sa</property>
     <property name="connection.password">123@abc</property>
-    <property name="hibernate.jdbc.batch_size">20</property>
     <mapping class="MODEL.AdminEntity"/>
     <mapping class="MODEL.BaithiEntity"/>
     <mapping class="MODEL.BodeEntity"/>
@@ -23,6 +22,8 @@
     <mapping class="MODEL.MonhocEntity"/>
     <mapping class="MODEL.QuyenEntity"/>
     <mapping class="MODEL.TaikhoanEntity"/>
+    <mapping class="MODEL.GacthiEntity"/>
+    <mapping class="MODEL.ThisinhEntity"/>
 
 
     <!-- DB schema will be updated if needed -->

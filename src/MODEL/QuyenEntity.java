@@ -20,16 +20,6 @@ public class QuyenEntity {
     public QuyenEntity() {
     }
 
-//    @Id
-//    @GeneratedValue
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-
     @Id
     @Column(name = "ma_Quyen")
     public int getMaQuyen() {

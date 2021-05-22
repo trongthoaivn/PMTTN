@@ -20,17 +20,6 @@ public class CauhoiEntity {
     private Integer dokho;
     private BodeEntity bodeByMaBode;
 
-//    @Id
-//    @GeneratedValue
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-
-
     public CauhoiEntity(int maCh,String ndCh, String tl1, String tl2, String tl3, String tl4, String da,BodeEntity bodeByMaBode) {
         this.maCh = maCh;
         this.ndCh = ndCh;
@@ -83,6 +72,7 @@ public class CauhoiEntity {
                 ", bodeByMaBode=" + bodeByMaBode +
                 '}';
     }
+
 
     @Id
     @Column(name = "ma_CH")

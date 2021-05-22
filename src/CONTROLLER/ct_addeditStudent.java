@@ -25,6 +25,7 @@ import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
@@ -81,10 +82,14 @@ public class ct_addeditStudent implements Initializable {
     int flag =0;
 
     void CheckStudent() {
-        String str =hocsinhDao.geHS_id_last();
-        int id =Integer.parseInt(str.substring(str.indexOf("HS")+2))+1;
-        txt_maS.setText("HS"+id);
-        txt_us.setText("hocsinh"+id);
+        LocalDateTime dateTime =  java.time.LocalDateTime.now();
+        int year=  dateTime.getYear();
+        int day = dateTime.getDayOfMonth();
+        int h =dateTime.getHour();
+        int m = dateTime.getMinute();
+        int s = dateTime.getSecond();
+        txt_maS.setText("HS"+""+year+""+day+""+h+""+m+""+s);
+        txt_us.setText("HS"+""+year+""+day+""+h+""+m+""+s);
     }
 
     @FXML
@@ -156,8 +161,6 @@ public class ct_addeditStudent implements Initializable {
                     copyFileUsingStream(source,dest);
                     url = "DataSet/"+txt_maS.getText()+".jpg";
                 }
-
-
             }
 
            HocsinhEntity hocsinhEntity = new HocsinhEntity(
@@ -175,6 +178,8 @@ public class ct_addeditStudent implements Initializable {
                         alert.setHeaderText(null);
                         alert.setContentText("Add new Student complete!");
                         alert.show();
+                        CheckStudent();
+                        txt_tenS.clear();
                     }
                 }
 

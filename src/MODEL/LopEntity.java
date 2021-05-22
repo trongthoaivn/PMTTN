@@ -13,17 +13,6 @@ public class LopEntity {
     private Collection<HocsinhEntity> hocsinhsByMaLop;
     private KhoiEntity khoiByMaKhoi;
 
-//    @Id
-//    @GeneratedValue
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
-
-
     public LopEntity(String maLop, String tenLop, Collection<HocsinhEntity> hocsinhsByMaLop, KhoiEntity khoiByMaKhoi) {
         this.maLop = maLop;
         this.tenLop = tenLop;
@@ -37,7 +26,6 @@ public class LopEntity {
     public LopEntity(String maLop) {
         this.maLop = maLop;
     }
-
     @Id
     @Column(name = "ma_Lop")
     public String getMaLop() {
