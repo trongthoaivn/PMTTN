@@ -1,5 +1,6 @@
 package DAO;
 
+import MODEL.GacthiEntity;
 import MODEL.HocsinhEntity;
 import MODEL.KythiEntity;
 import MODEL.ThisinhEntity;
@@ -66,5 +67,34 @@ public class thisinhDao implements DaoInterface{
         query.setParameter("id",KT.getMaKt());
         List<HocsinhEntity> list =query.getResultList();
         return list;
+    }
+    public int InsertOrUpdateList(List<ThisinhEntity> thisinh){
+        try {
+            Session session = hibernateUtil.getSession();
+            Transaction transaction =session.beginTransaction();
+            for (ThisinhEntity Data :thisinh)
+                session.saveOrUpdate(Data);
+            transaction.commit();
+            session.close();
+            return 1;
+        }catch (Exception exception) {
+            System.out.println(exception);
+            return 0;
+        }
+    }
+    public int DeleteAll(KythiEntity kythi){
+        try {
+            Session session = hibernateUtil.getSession();
+            Transaction transaction =session.beginTransaction();
+            Query query = session.createQuery("delete  from ThisinhEntity a where a.maKt=:id");
+            query.setParameter("id",kythi.getMaKt());
+            query.executeUpdate();
+            transaction.commit();
+            session.close();
+            return 1;
+        }catch (Exception exception) {
+            System.out.println(exception);
+            return 0;
+        }
     }
 }

@@ -63,13 +63,13 @@
       <ComboBox fx:id="cbo_class" layoutX="1070.0" layoutY="62.0" onAction="#sort_class" prefWidth="150.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="323.0" layoutX="20.0" layoutY="457.0" stroke="BLACK" strokeType="INSIDE" width="508.0" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="321.0" layoutX="546.0" layoutY="458.0" stroke="BLACK" strokeType="INSIDE" width="710.0" />
-      <TableView fx:id="tbv_teacher_temp" layoutX="558.0" layoutY="508.0" prefHeight="262.0" prefWidth="335.0">
+      <TableView fx:id="tbv_teacher_temp" layoutX="558.0" layoutY="508.0" onMouseClicked="#select_gvTemp" prefHeight="262.0" prefWidth="335.0">
         <columns>
           <TableColumn prefWidth="112.53326416015625" text="Mã giáo viên" />
           <TableColumn prefWidth="226.4000244140625" text="Tên giáo viên" />
         </columns>
       </TableView>
-      <TableView fx:id="tbv_student_temp" layoutX="906.0" layoutY="508.0" prefHeight="262.0" prefWidth="340.0">
+      <TableView fx:id="tbv_student_temp" layoutX="906.0" layoutY="508.0" onMouseClicked="#select_hsTemp" prefHeight="262.0" prefWidth="340.0">
          <columns>
             <TableColumn prefWidth="112.53326416015625" text="Mã học sinh" />
             <TableColumn prefWidth="226.39984130859375" text="Tên học sinh" />
@@ -150,5 +150,7 @@
             <Font name="System Bold" size="15.0" />
          </font>
       </Label>
+      <Button layoutX="559.0" layoutY="62.0" mnemonicParsing="false" onAction="#LoadTeacher" prefHeight="26.0" prefWidth="76.0" text="Refresh" />
+      <Button layoutX="922.0" layoutY="62.0" mnemonicParsing="false" onAction="#LoadStudent" prefHeight="26.0" prefWidth="76.0" text="Refresh" />
    </children>
 </AnchorPane>

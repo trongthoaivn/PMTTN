@@ -13,15 +13,13 @@ public class ThisinhEntity {
     private KythiEntity kythiByMaKt;
     private HocsinhEntity hocsinhByMaHs;
 
-//    @Id
-//    @GeneratedValue
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
+    public ThisinhEntity() {
+    }
+
+    public ThisinhEntity(String maKt, String maHs) {
+        this.maKt = maKt;
+        this.maHs = maHs;
+    }
 
     @Id
     @Column(name = "ma_KT")

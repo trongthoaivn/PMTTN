@@ -13,6 +13,13 @@ public class GacthiEntity {
     private KythiEntity kythiByMaKt;
     private GiaovienEntity giaovienByMaGv;
 
+    public GacthiEntity() {
+    }
+
+    public GacthiEntity(String maKt, String maGv) {
+        this.maKt = maKt;
+        this.maGv = maGv;
+    }
 
     @Id
     @Column(name = "ma_KT")

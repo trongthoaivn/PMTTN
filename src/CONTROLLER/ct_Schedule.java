@@ -94,6 +94,7 @@ public class ct_Schedule implements Initializable {
     Thread threadClass = new Thread();
     Thread threadSubject = new Thread();
     int chooseGVorHS = 0;
+    int chooseKT=0;
     HocsinhEntity recent_hocsinh = null;
     GiaovienEntity recent_giaovien = null;
     KythiEntity recent_kythi = null;
@@ -103,8 +104,10 @@ public class ct_Schedule implements Initializable {
     @FXML
     void Add_KT(ActionEvent event) {
         setclear();
+        chooseKT=0;
         if (pane.isVisible()) pane.setVisible(false);
         else pane.setVisible(true);
+
     }
 
     public void setclear(){
@@ -120,6 +123,7 @@ public class ct_Schedule implements Initializable {
 
     @FXML
     void Select_KT(MouseEvent event) {
+        chooseKT = 1;
         pane.setVisible(true);
         recent_kythi = tbv_KT.getSelectionModel().getSelectedItem();
         try{
@@ -137,7 +141,8 @@ public class ct_Schedule implements Initializable {
                     }
                 }
                 thisinhDao dao = new thisinhDao();
-                hocsinh.clear();
+                gacthiDao dao1 = new gacthiDao();
+//                hocsinh.clear();
                 tbv_student_temp.getItems().clear();
                 hocsinh = dao.getThisinhbyKT(recent_kythi);
                 if (!hocsinh.isEmpty()){
@@ -147,7 +152,15 @@ public class ct_Schedule implements Initializable {
                     TableColumn col2 =   tbv_student_temp.getColumns().get(1);
                     col2.setCellValueFactory(new PropertyValueFactory<HocsinhEntity,String>("tenHs"));
                 }
-
+                tbv_teacher_temp.getItems().clear();
+                giaovien = dao1.getGacthibyKT(recent_kythi);
+                if (!giaovien.isEmpty()){
+                    tbv_teacher_temp.setItems(FXCollections.observableArrayList(giaovien));
+                    TableColumn col1 =   tbv_teacher_temp.getColumns().get(0);
+                    col1.setCellValueFactory(new PropertyValueFactory<HocsinhEntity,String>("maGv"));
+                    TableColumn col2 =   tbv_teacher_temp.getColumns().get(1);
+                    col2.setCellValueFactory(new PropertyValueFactory<HocsinhEntity,String>("tenGv"));
+                }
             }
         }catch (Exception e){}
 
@@ -184,17 +197,104 @@ public class ct_Schedule implements Initializable {
 
     @FXML
     void remove(ActionEvent event) {
-
+        if(chooseGVorHS==4){
+            tbv_student_temp.getItems().remove(recent_hocsinh);
+            tbv_student_temp.setItems(FXCollections.observableArrayList(tbv_student_temp.getItems()));
+            TableColumn col1 =   tbv_student_temp.getColumns().get(0);
+            col1.setCellValueFactory(new PropertyValueFactory<HocsinhEntity,String>("maHs"));
+            TableColumn col2 =   tbv_student_temp.getColumns().get(1);
+            col2.setCellValueFactory(new PropertyValueFactory<HocsinhEntity,String>("tenHs"));
+        }
+        if (chooseGVorHS==3){
+            tbv_teacher_temp.getItems().remove(recent_giaovien);
+            tbv_teacher_temp.setItems(FXCollections.observableArrayList(tbv_teacher_temp.getItems()));
+            TableColumn col1 =   tbv_teacher_temp.getColumns().get(0);
+            col1.setCellValueFactory(new PropertyValueFactory<HocsinhEntity,String>("maGv"));
+            TableColumn col2 =   tbv_teacher_temp.getColumns().get(1);
+            col2.setCellValueFactory(new PropertyValueFactory<HocsinhEntity,String>("tenGv"));
+        }
     }
 
     @FXML
     void remove_all(ActionEvent event) {
-
+        if(chooseGVorHS==4){
+            tbv_student_temp.getItems().clear();
+        }
+        if (chooseGVorHS==3){
+            tbv_teacher_temp.getItems().clear();
+        }
     }
 
     @FXML
     void save_DS(ActionEvent event) {
+        if (chooseKT== 1){
+            thisinhDao dao = new thisinhDao();
+            gacthiDao dao1 = new gacthiDao();
+            try {
+                dao.DeleteAll(recent_kythi);
+                dao1.DeleteAll(recent_kythi);
 
+            }catch (Exception e){
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.showAndWait();
+            }
+        }
+        if (SaveGT(tbv_teacher_temp.getItems())==1&&SaveTS(tbv_student_temp.getItems())==1){
+            Alert alert = new Alert(Alert.AlertType.INFORMATION);
+            alert.setContentText("Save complete!");
+            alert.setHeaderText(null);
+            alert.showAndWait();
+            chooseKT = 0;
+        }
+    }
+
+    public int SaveTS(List<HocsinhEntity> hsTemp){
+        thisinhDao dao = new thisinhDao();
+        int result =0;
+        try{
+            List<ThisinhEntity> thisinhlist = new ArrayList<>();
+            for (HocsinhEntity ahs: hsTemp){
+                if(!recent_kythi.getMaKt().equals("")){
+                    thisinhlist.add(new ThisinhEntity(recent_kythi.getMaKt(),ahs.getMaHs()));
+                }
+            }
+            if(!thisinhlist.isEmpty()&& dao.InsertOrUpdateList(thisinhlist)==1)
+            {
+                result =1;
+            }
+        }catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+        return result;
+    }
+
+    public int SaveGT(List<GiaovienEntity> gvTemp){
+        gacthiDao dao = new gacthiDao();
+        int result =0;
+        try{
+            List<GacthiEntity> gacthilist = new ArrayList<>();
+            for (GiaovienEntity agv: gvTemp){
+                if(!recent_kythi.getMaKt().equals("")){
+                    gacthilist.add(new GacthiEntity(recent_kythi.getMaKt(),agv.getMaGv()));
+                }
+            }
+            if(!gacthilist.isEmpty()&& dao.InsertOrUpdateList(gacthilist)==1)
+            {
+                result=1;
+            }
+
+        }catch (Exception e){
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setHeaderText(null);
+            alert.setContentText(e.getMessage());
+            alert.showAndWait();
+        }
+        return result;
     }
 
     @FXML
@@ -314,8 +414,36 @@ public class ct_Schedule implements Initializable {
     }
 
     @FXML
-    void select_all(ActionEvent event) {
+    void select_gvTemp(MouseEvent event) {
+        chooseGVorHS=3;
+        recent_giaovien =tbv_teacher_temp.getSelectionModel().getSelectedItem();
+    }
 
+    @FXML
+    void select_hsTemp(MouseEvent event) {
+        chooseGVorHS=4;
+        recent_hocsinh =tbv_student_temp.getSelectionModel().getSelectedItem();
+    }
+
+    @FXML
+    void select_all(ActionEvent event) {
+        if(chooseGVorHS==2){
+            gvTemp=tbv_Teacher.getItems();
+            tbv_teacher_temp.setItems(FXCollections.observableArrayList(gvTemp));
+            TableColumn col1 =   tbv_teacher_temp.getColumns().get(0);
+            col1.setCellValueFactory(new PropertyValueFactory<HocsinhEntity,String>("maGv"));
+            TableColumn col2 =   tbv_teacher_temp.getColumns().get(1);
+            col2.setCellValueFactory(new PropertyValueFactory<HocsinhEntity,String>("tenGv"));
+
+        }
+        if (chooseGVorHS==1){
+            hsTemp=tbv_Student.getItems();
+            tbv_student_temp.setItems(FXCollections.observableArrayList(hsTemp));
+            TableColumn col1 =   tbv_student_temp.getColumns().get(0);
+            col1.setCellValueFactory(new PropertyValueFactory<HocsinhEntity,String>("maHs"));
+            TableColumn col2 =   tbv_student_temp.getColumns().get(1);
+            col2.setCellValueFactory(new PropertyValueFactory<HocsinhEntity,String>("tenHs"));
+        }
     }
 
     @FXML
