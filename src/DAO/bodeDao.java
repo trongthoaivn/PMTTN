@@ -18,7 +18,7 @@ public class bodeDao implements DaoInterface{
         try {
             Session session =hibernateUtil.getSession();
             Transaction transaction =session.beginTransaction();
-            session.save(Data);
+            session.saveOrUpdate(Data);
             transaction.commit();
             session.close();
             return 1;

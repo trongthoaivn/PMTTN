@@ -119,6 +119,7 @@ public class ct_Main implements Initializable,Runnable {
     Pane  frm_student = null;
     Pane  frm_Exam = null;
     Pane  frm_Schedule= null;
+    Pane  frm_Network= null;
     Thread thread;
     private ct_Admin ControllerAdmin;
     private ct_Teacher ControllerTeacher;
@@ -279,8 +280,16 @@ public class ct_Main implements Initializable,Runnable {
     }
 
     @FXML
-    void load_frm_network(ActionEvent event) {
-
+    void load_frm_network(ActionEvent event) throws Exception {
+        if (pane_Center.getCenter()!= frm_Network|| pane_Center.getCenter()==null){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/VIEW//Form/frm_Network.fxml"));
+            frm_Network = (Pane) loader.load();
+            Stage stage = new Stage();
+            stage.setScene( new Scene(frm_Network));
+            stage.showAndWait();
+        }else{
+            pane_Center.setCenter(pane);
+        }
     }
 
     @FXML

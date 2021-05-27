@@ -15,10 +15,11 @@ public class BodeEntity {
     private Collection<CauhoiEntity> cauhoisByMaBode;
     private Collection<MadeEntity> madesByMaBode;
 
-    public BodeEntity(String maBode, String tenBode, MonhocEntity monhocByMaMh) {
+    public BodeEntity(String maBode, String tenBode, MonhocEntity monhocByMaMh, KythiEntity kythiByMaKt) {
         this.maBode = maBode;
         this.tenBode = tenBode;
         this.monhocByMaMh = monhocByMaMh;
+        this.kythiByMaKt = kythiByMaKt;
     }
 
     public BodeEntity(String maBode) {

@@ -27,6 +27,10 @@ public class TaikhoanEntity {
     public TaikhoanEntity() {
     }
 
+    public TaikhoanEntity(String username, String passwords) {
+        this.username = username;
+        this.passwords = passwords;
+    }
 
     @Id
     @Column(name = "username")

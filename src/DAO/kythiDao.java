@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
@@ -68,5 +69,12 @@ public class kythiDao implements DaoInterface{
         return list;
     }
 
+    public List<KythiEntity> getKythibyMH(String maMH){
+        Session s = hibernateUtil.getSession();
+        Query query = s.createQuery("select a from KythiEntity a where a.monhocByMaMh.maMh=:id");
+        query.setParameter("id",maMH);
+        List<KythiEntity> list =query.getResultList();
+        return list;
+    }
 
 }

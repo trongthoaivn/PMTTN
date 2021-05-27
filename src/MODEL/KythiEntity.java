@@ -37,6 +37,10 @@ public class KythiEntity {
         this.monhocByMaMh = monhocByMaMh;
     }
 
+    public KythiEntity(String maKt) {
+        this.maKt = maKt;
+    }
+
     @Id
     @Column(name = "ma_KT")
     public String getMaKt() {

@@ -2,12 +2,14 @@ package DAO;
 
 import MODEL.AdminEntity;
 import MODEL.HocsinhEntity;
+import MODEL.TaikhoanEntity;
 import UTILITY.hibernateUtil;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
@@ -70,13 +72,11 @@ public class hocsinhDao implements DaoInterface{
         return FXCollections.observableArrayList(list);
     }
 
-    public String geHS_id_last() {
+    public HocsinhEntity getHSbyTK(TaikhoanEntity tk) {
         Session s = hibernateUtil.getSession();
-        CriteriaBuilder builder = s.getCriteriaBuilder();
-        CriteriaQuery query = builder.createQuery(HocsinhEntity.class);
-        query.from(HocsinhEntity.class);
-        List<HocsinhEntity>  list=  s.createQuery(query).getResultList();
-        s.close();
-        return list.get(list.size()-1).getMaHs();
+        Query query = s.createQuery("select a from HocsinhEntity a where a.taikhoanByUsername.username=:id");
+        query.setParameter("id",tk.getUsername());
+        HocsinhEntity hs = (HocsinhEntity) query.getSingleResult();
+        return hs;
     }
 }

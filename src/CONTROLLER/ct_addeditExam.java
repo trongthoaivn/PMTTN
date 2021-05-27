@@ -1,10 +1,14 @@
 package CONTROLLER;
 
 import DAO.bodeDao;
+import DAO.kythiDao;
 import DAO.monhocDao;
 import MODEL.BodeEntity;
+import MODEL.KythiEntity;
 import MODEL.MonhocEntity;
 import REF.ComboboxString;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -22,6 +26,7 @@ import java.util.ResourceBundle;
 
 public class ct_addeditExam implements Initializable {
 
+
     @FXML
     private TextField txt_ListTestID;
 
@@ -31,7 +36,7 @@ public class ct_addeditExam implements Initializable {
     @FXML
     private Button btn_Save_list;
 
-
+    public ComboBox<ComboboxString> cbo_Schedule;
 
     @FXML
     private ComboBox<ComboboxString> cbo_Subject;
@@ -46,34 +51,42 @@ public class ct_addeditExam implements Initializable {
               cbo_Subject.getValue().getValue(),
               cbo_Subject.getValue().getKey()
             );
+            KythiEntity kythiEntity = new KythiEntity(cbo_Schedule.getValue().getValue());
+
             BodeEntity bodeEntity = new BodeEntity(
                     txt_ListTestID.getText(),
                     txt_ListTestname.getText(),
-                    monhocEntity
+                    monhocEntity,
+                    kythiEntity
             );
             try{
                 if (flag ==0 && bodeDao.addData(bodeEntity)==1)
                 {
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setHeaderText("Add new Test complete!");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Add new Test complete!");
                     alert.show();
                     System.out.println("add ListTest : 1" );
                 }
-                if (flag ==1 && bodeDao.updateData(bodeEntity)==1){
+                if (flag ==1 && bodeDao.addData(bodeEntity)==1){
                     Alert alert = new Alert(Alert.AlertType.INFORMATION);
-                    alert.setHeaderText("Update Test complete!");
+                    alert.setHeaderText(null);
+                    alert.setContentText("Update Test complete!");
                     alert.show();
                     System.out.println("update ListTest : 1" );
                 }
 
 
             }catch (Exception e){
-                e.printStackTrace();
+                Alert alert = new Alert(Alert.AlertType.ERROR);
+                alert.setHeaderText(null);
+                alert.setContentText(e.getMessage());
+                alert.show();
             }
 
         }
         System.out.println(cbo_Subject.getValue().getValue());
-
+        System.out.println(cbo_Schedule.getValue().getValue());
     }
 
 
@@ -87,7 +100,6 @@ public class ct_addeditExam implements Initializable {
 
         });
         cbo_Subject.setItems(FXCollections.observableArrayList(listItem));
-        cbo_Subject.getSelectionModel().selectFirst();
     }
 
     void  setinfoListTest(BodeEntity bodeEntity){
@@ -98,6 +110,15 @@ public class ct_addeditExam implements Initializable {
             cbo_Subject.getItems().forEach( e ->{
                 if (e.getValue().equals(bodeEntity.getMonhocByMaMh().getMaMh())){
                     cbo_Subject.getSelectionModel().select(e);
+                    new Thread(()->{
+                        kythiDao dao = new kythiDao();
+                        List<KythiEntity> list= dao.getKythibyMH(cbo_Subject.getValue().getValue());
+                        List<ComboboxString> cb_schedule = new ArrayList<>();
+                        for (KythiEntity a : list){
+                            cb_schedule.add(new ComboboxString(a.getTenKt(),a.getMaKt()));
+                        }
+                        cbo_Schedule.setItems(FXCollections.observableArrayList(cb_schedule));
+                    }).start();
                 }
             });
             flag=1;
@@ -107,9 +128,23 @@ public class ct_addeditExam implements Initializable {
         }
 
     }
+    public void select_Subject(ActionEvent actionEvent) {
+        new Thread(()->{
+            kythiDao dao = new kythiDao();
+            List<KythiEntity> list= dao.getKythibyMH(cbo_Subject.getValue().getValue());
+            List<ComboboxString> cb_schedule = new ArrayList<>();
+            for (KythiEntity a : list){
+                cb_schedule.add(new ComboboxString(a.getTenKt(),a.getMaKt()));
+            }
+            cbo_Schedule.setItems(FXCollections.observableArrayList(cb_schedule));
+        }).start();
+    }
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
         loadSubjecttocombobox();
+
     }
+
+
 }

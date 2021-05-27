@@ -1,5 +1,7 @@
 package REF;
 
+import java.io.Serializable;
+
 public class ComboboxString {
     private String key;
     private String value;
