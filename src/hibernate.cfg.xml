@@ -24,9 +24,10 @@
     <mapping class="MODEL.TaikhoanEntity"/>
     <mapping class="MODEL.GacthiEntity"/>
     <mapping class="MODEL.ThisinhEntity"/>
+    <mapping class="MODEL.LogEntity"/>
 
 
-    <!-- DB schema will be updated if needed -->
+      <!-- DB schema will be updated if needed -->
     <!-- <property name="hibernate.hbm2ddl.auto">update</property> -->
   </session-factory>
 </hibernate-configuration>

@@ -76,5 +76,11 @@ public class kythiDao implements DaoInterface{
         List<KythiEntity> list =query.getResultList();
         return list;
     }
-
+    public KythiEntity getTkbyTS(String maTS){
+        Session s = hibernateUtil.getSession();
+        Query query= s.createQuery("select kt from KythiEntity kt ,ThisinhEntity ts where ts.maKt=kt.maKt and ts.maHs =:id and day(kt.ngaythi)=day(current_timestamp ())and month(kt.ngaythi)=month(current_timestamp ())");
+        query.setParameter("id",maTS);
+        KythiEntity kt = (KythiEntity) query.getResultList().get(0);
+        return kt;
+    }
 }

@@ -17,15 +17,14 @@ public class KetquaEntity {
     private KythiEntity kythiByMaKt;
     private HocsinhEntity hocsinhByMaHs;
 
-//    @Id
-//    @GeneratedValue
-//    public Long getId() {
-//        return id;
-//    }
-//
-//    public void setId(Long id) {
-//        this.id = id;
-//    }
+    public KetquaEntity(String maKq, Timestamp ngaythi, Double diem, Boolean xeploai, KythiEntity kythiByMaKt, HocsinhEntity hocsinhByMaHs) {
+        this.maKq = maKq;
+        this.ngaythi = ngaythi;
+        this.diem = diem;
+        this.xeploai = xeploai;
+        this.kythiByMaKt = kythiByMaKt;
+        this.hocsinhByMaHs = hocsinhByMaHs;
+    }
 
     @Id
     @Column(name = "ma_KQ")

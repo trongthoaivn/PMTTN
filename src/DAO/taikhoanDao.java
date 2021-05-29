@@ -107,6 +107,13 @@ public class taikhoanDao implements DaoInterface<TaikhoanEntity>{
         return Taikhoan;
 
     }
+    public List<TaikhoanEntity> getTkbytoDay(){
+        Session s = hibernateUtil.getSession();
+        Query query = s.createQuery("select tk from TaikhoanEntity tk, HocsinhEntity hs,ThisinhEntity ts,KythiEntity kt where tk.username=hs.taikhoanByUsername.username and hs.maHs=ts.maHs and ts.maKt=kt.maKt and day(kt.ngaythi)= day(current_timestamp ()) and month(kt.ngaythi) = month(current_timestamp ())");
+        List<TaikhoanEntity> list = query.getResultList();
+        s.close();
+        return list;
+    }
     public String getAc_id_last(int i){
         Session s = hibernateUtil.getSession();
         Query query = s.createQuery("select a from TaikhoanEntity a where a.quyenByMaQuyen.maQuyen=:i");

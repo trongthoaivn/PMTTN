@@ -14,6 +14,7 @@ import javax.persistence.Query;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
+import java.util.Random;
 
 public class madeDao implements DaoInterface{
     @Override
@@ -82,5 +83,15 @@ public class madeDao implements DaoInterface{
         MadeEntity amade = (MadeEntity) query.getResultList().get(0);
         session.close();
         return amade;
+    }
+    public String getMadebyClient(String maHS,String maKT){
+        Session session = hibernateUtil.getSession();
+        Query query = session.createQuery("select md from MadeEntity md,BodeEntity bd, KythiEntity kt , ThisinhEntity ts where ts.maKt=kt.maKt and bd.kythiByMaKt.maKt=kt.maKt and md.bodeByMaBode.maBode =bd.maBode and ts.maHs=:hs and ts.maKt=:kt");
+        query.setParameter("hs",maHS);
+        query.setParameter("kt",maKT);
+        List<MadeEntity> list =query.getResultList();
+        session.close();
+        Random rand = new Random();
+        return list.get(rand.nextInt(list.size())).getMaCHde();
     }
 }

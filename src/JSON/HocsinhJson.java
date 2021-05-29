@@ -1,18 +1,24 @@
 package JSON;
 
-import java.sql.Timestamp;
+import java.io.Serializable;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
-public class HocsinhJson {
+public class HocsinhJson implements Serializable {
     private String maHs;
     private String tenHs;
-    private Timestamp ngaysinh;
+    private LocalDate ngaysinh;
     private String lopByMaLop;
 
-    public HocsinhJson(String maHs, String tenHs, Timestamp ngaysinh, String lopByMaLop) {
+    public HocsinhJson(String maHs, String tenHs, LocalDate ngaysinh, String lopByMaLop) {
         this.maHs = maHs;
         this.tenHs = tenHs;
         this.ngaysinh = ngaysinh;
         this.lopByMaLop = lopByMaLop;
+    }
+
+    public HocsinhJson(String maHs) {
+        this.maHs = maHs;
     }
 
     public HocsinhJson() {
@@ -34,11 +40,11 @@ public class HocsinhJson {
         this.tenHs = tenHs;
     }
 
-    public Timestamp getNgaysinh() {
+    public LocalDate getNgaysinh() {
         return ngaysinh;
     }
 
-    public void setNgaysinh(Timestamp ngaysinh) {
+    public void setNgaysinh(LocalDate ngaysinh) {
         this.ngaysinh = ngaysinh;
     }
 

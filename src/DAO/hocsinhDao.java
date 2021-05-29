@@ -72,11 +72,12 @@ public class hocsinhDao implements DaoInterface{
         return FXCollections.observableArrayList(list);
     }
 
-    public HocsinhEntity getHSbyTK(TaikhoanEntity tk) {
+    public HocsinhEntity getHSbyTK(String tk) {
         Session s = hibernateUtil.getSession();
         Query query = s.createQuery("select a from HocsinhEntity a where a.taikhoanByUsername.username=:id");
-        query.setParameter("id",tk.getUsername());
-        HocsinhEntity hs = (HocsinhEntity) query.getSingleResult();
+        query.setParameter("id",tk);
+        HocsinhEntity hs = (HocsinhEntity) query.getResultList().get(0);
+        s.close();
         return hs;
     }
 }

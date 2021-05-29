@@ -35,6 +35,10 @@ public class HocsinhEntity {
         this.taikhoanByUsername = taikhoanByUsername;
     }
 
+    public HocsinhEntity(String maHs) {
+        this.maHs = maHs;
+    }
+
     public HocsinhEntity() {
     }
 
