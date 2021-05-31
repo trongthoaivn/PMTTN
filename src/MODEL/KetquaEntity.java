@@ -26,6 +26,10 @@ public class KetquaEntity {
         this.hocsinhByMaHs = hocsinhByMaHs;
     }
 
+    public KetquaEntity() {
+
+    }
+
     @Id
     @Column(name = "ma_KQ")
     public String getMaKq() {

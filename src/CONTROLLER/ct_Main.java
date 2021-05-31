@@ -120,12 +120,14 @@ public class ct_Main implements Initializable,Runnable {
     Pane  frm_Exam = null;
     Pane  frm_Schedule= null;
     Pane  frm_Network= null;
+    Pane  frm_Result = null;
     Thread thread;
     private ct_Admin ControllerAdmin;
     private ct_Teacher ControllerTeacher;
     private ct_Student ControllerStudent;
     private ct_Schedule ContollerSchedule;
     private ct_Exam ControllerExam;
+    private ct_result ControllerResult;
 
 
     @FXML
@@ -275,8 +277,16 @@ public class ct_Main implements Initializable,Runnable {
     }
 
     @FXML
-    void load_frm_history(ActionEvent event) {
-
+    void load_frm_history(ActionEvent event) throws IOException {
+        if (pane_Center.getCenter()!= frm_Result|| pane_Center.getCenter()==null){
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/VIEW//Form/frm_Result.fxml"));
+            frm_Result = (Pane) loader.load();
+            Stage stage = new Stage();
+            stage.setScene( new Scene(frm_Result));
+            stage.showAndWait();
+        }else{
+            pane_Center.setCenter(pane);
+        }
     }
 
     @FXML

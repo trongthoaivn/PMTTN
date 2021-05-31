@@ -1,9 +1,14 @@
 package DAO;
 
+import MODEL.AdminEntity;
+import MODEL.KetquaEntity;
 import UTILITY.hibernateUtil;
+import javafx.collections.FXCollections;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import java.util.List;
 
 public class ketquaDao implements DaoInterface{
@@ -33,7 +38,14 @@ public class ketquaDao implements DaoInterface{
     }
 
     @Override
-    public List getAll() {
-        return null;
+    public List<KetquaEntity> getAll() {
+        Session s = hibernateUtil.getSession();
+        CriteriaBuilder builder = s.getCriteriaBuilder();
+        CriteriaQuery query = builder.createQuery(KetquaEntity.class);
+        query.from(KetquaEntity.class);
+        List<KetquaEntity>  list=  s.createQuery(query).getResultList();
+        s.close();
+
+        return list;
     }
 }

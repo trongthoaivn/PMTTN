@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="801.0" prefWidth="1267.0" xmlns="http://javafx.com/javafx/15.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="CONTROLLER.ct_result">
+   <children>
+      <Text layoutX="90.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã kỳ thi:" wrappingWidth="94.6700439453125">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <Text fill="#c400ff" layoutX="496.0" layoutY="96.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TRA CỨU KẾT QUẢ" wrappingWidth="292.652587890625">
+         <font>
+            <Font name="Segoe UI Bold" size="32.0" />
+         </font>
+      </Text>
+      <Text layoutX="506.0" layoutY="171.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lớp :" wrappingWidth="71.00253295898438">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <ComboBox fx:id="cbo_Lop" layoutX="593.0" layoutY="151.0" prefHeight="26.0" prefWidth="167.0" />
+      <Text layoutX="856.0" layoutY="163.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Text layoutX="816.0" layoutY="175.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mã học sinh :" wrappingWidth="181.07000732421875">
+         <font>
+            <Font name="System Bold" size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txt_MaHS" layoutX="998.0" layoutY="154.0" prefHeight="26.0" prefWidth="190.0" />
+      <TextField fx:id="txt_maKT" layoutX="210.0" layoutY="152.0" prefHeight="26.0" prefWidth="190.0" />
+      <TableView fx:id="tbv_KQ" onMouseClicked="#selectKQ" layoutX="69.0" layoutY="252.0" prefHeight="507.0" prefWidth="584.0">
+        <columns>
+          <TableColumn prefWidth="102.93331146240234" text="Mã kết quả" />
+          <TableColumn prefWidth="120.53330993652344" text="Ngày thi" />
+            <TableColumn prefWidth="65.06671142578125" text="Điểm" />
+            <TableColumn prefWidth="90.13336181640625" text="Xếp loại" />
+            <TableColumn prefWidth="105.86660766601562" text="Mã kỳ thi" />
+            <TableColumn prefWidth="99.199951171875" text="Mã học sinh" />
+        </columns>
+      </TableView>
+      <TextArea fx:id="txt_Kythi" layoutX="756.0" layoutY="285.0" prefHeight="137.0" prefWidth="460.0" wrapText="true" />
+      <Text layoutX="711.0" layoutY="486.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tên học sinh :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="710.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ngày thi :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="716.0" layoutY="716.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Điểm :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <Text layoutX="968.0" layoutY="716.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Xếp loại :">
+         <font>
+            <Font size="20.0" />
+         </font>
+      </Text>
+      <TextField fx:id="txt_tenHS" layoutX="741.0" layoutY="519.0" prefHeight="26.0" prefWidth="495.0" />
+      <TextField fx:id="txt_ngaythi" layoutX="745.0" layoutY="630.0" prefHeight="26.0" prefWidth="200.0" />
+      <TextField fx:id="txt_diem" layoutX="805.0" layoutY="695.0" prefHeight="26.0" prefWidth="108.0" />
+      <TextField fx:id="txt_xeploai" layoutX="1086.0" layoutY="695.0" prefHeight="26.0" prefWidth="143.0" />
+   </children>
+</AnchorPane>
